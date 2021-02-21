@@ -10,6 +10,16 @@ a {
   color: #000;
 }
 
+/*---------------------------------
+
+  トップページ
+
+---------------------------------*/
+
+/*---------------------------------
+  ヘッダー
+---------------------------------*/
+
 .container {
   max-width: 1280px;
   padding: 0 48px;
@@ -79,4 +89,41 @@ a {
     color: #fff;
     border-color: #555;
   }
+}
+
+/*---------------------------------
+  メインタイトル
+---------------------------------*/
+.main_title {
+  height: 85vh;
+  margin-top: -60px;
+  background-image: url('top_page.jpg');
+  background-repeat: no-repeat;
+  background-position: right top ;
+  background-size: cover;
+}
+
+.main_title_box {
+  padding-top: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 40%;
+}
+
+.title_top {
+  font-size: 70px;
+  font-weight: bold;
+  color: #000;
+  line-height: 1.6;
+}
+
+.title_sub {
+  margin-top: 60px;
+  font-size: 20px;
+  color: #000;
+  text-shadow: 1px 1px 5px #66FF99;
+  font-weight: bold;
+  text-align: center;
 }
