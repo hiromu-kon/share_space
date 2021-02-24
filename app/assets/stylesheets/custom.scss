@@ -8,6 +8,7 @@ ul li {
 
 a {
   color: #000;
+  text-decoration: none;
 }
 
 /*---------------------------------
@@ -28,7 +29,7 @@ a {
 
 .container {
   max-width: 1280px;
-  padding: 0 48px;
+  padding: 0 10px 0 48px;
   margin: 0 auto;
 }
 
@@ -43,7 +44,7 @@ a {
 
   img {
     vertical-align: bottom;
-    width: 400px;
+    width: 250px;
   }
 }
 
@@ -61,30 +62,27 @@ a {
   align-items: center;
 
   li + li {
-    margin-left: 30px;
+    margin-left: 15px;
   }
 }
 
 .btn-border {
   display: inline-block;
   text-align: left;
-  border: 3px solid #009933;
+  border: 2px solid #009933;
   color: 	#009933;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 8px 15px;
+  padding: 7px 12px;
   border-radius: 30px;
-  font-size: 17px;
+  font-size: 15px;
   background-color: #009933;
   color: #FFF;
-  margin-top: 12px;
+  margin-top: 30px;
 
   &:hover {
-    display: inline-block;
-    border: 3px solid #009933;
+    border: 2px solid #009933;
     color: 	#008000;
-    transition: .8s;
-    font-size: 17px;
+    transition: .9s;
+    font-size: 15px;
     background:rgba(0,0,0,0.0)
   }
 }
@@ -226,14 +224,97 @@ a {
 /*---------------------------------
   ログインページ
 ---------------------------------*/
+.device {
+  padding-top: 44px;
+  margin: 15px 0 80px 0;
+}
 
+.device_frame {
+  max-width: 700px;
+  text-align: center;
+  padding: 24px;
+  margin: 0px auto;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 3px 3px 2px rgba(21, 27, 38, 0.2);
+}
+
+.form_title {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+
+.device_inner {
+  width: 360px;
+  margin: 0px auto;
+}
+
+.form_control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.field, .actions {
+  margin-bottom: 10px;
+}
+
+.label_name {
+  display: block;
+  padding: 5px 0;
+}
+
+.link_blue {
+  color: #007bff;
+}
+
+.link_blue:hover {
+  color: #99CCFF;
+  transition: 0.3s;
+}
+
+.devise.btn_border {
+  color: #fff;
+}
+
+.btn_primary {
+  background-color: #339900;
+  color: #fff;
+  margin-top: 30px;
+  width: 108%;
+}
+
+.btn_primary:hover {
+  background-color: #66CC66;
+  transition: 0.3s;
+}
+
+.gest_button {
+  margin: 13px 0;
+  width: 100%;
+  background-color: #777;
+  color: #fff;
+
+  &:hover {
+    background-color: #999;
+    transition: 0.3s;
+  }
+}
 
 /*---------------------------------
   フッター
 ---------------------------------*/
 .footer {
   width: 100%;
-  background-color: #eee;
+  border-top: 1px solid #eaeaea;
   text-align: center;
   height: 80px;
   padding-top: 45px;
