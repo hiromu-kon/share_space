@@ -1,26 +1,33 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="device">
+  <div class="device_frame">
+    <div class="form_title">
+      <p>コールセンター専用</p>
+      <p>ログイン</p>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="device_inner">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email, class:"label_name" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_control" %>
+        </div>
+        <div class="field">
+          <%= f.label :password, class:"label_name" %>
+          <%= f.password_field :password, autocomplete: "current-password", class:"form_control" %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field　cp_ipcheck">
+            <%= f.check_box :remember_me, class:"option-input05" %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "ログイン", class:"form_control btn_primary" %>
+          <%= link_to "ゲストとしてログイン(コールセンター用)", '#', class:"form_control gest_button" %>
+        </div>
+      <% end %>
+      <div class="link_blue">
+        <%= link_to "新規登録の方はこちらから", new_call_center_user_registration_path, class:"link_blue" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "call_center_users/shared/links" %>
+</div>

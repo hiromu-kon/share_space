@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: YuGothic, '游ゴシック', sans-serif;
 }
 
 ul li {
@@ -226,7 +227,7 @@ a {
 ---------------------------------*/
 .device {
   padding-top: 44px;
-  margin: 15px 0 80px 0;
+  margin: 25px 0 120px 0;
 }
 
 .device_frame {
@@ -310,14 +311,137 @@ a {
 }
 
 /*---------------------------------
+  ログインページ
+---------------------------------*/
+
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 25px;
+  height: 25px;
+  border: 3px solid #005500;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  transition: all .12s, border-color .08s;
+}
+
+input[type="checkbox"]:checked + label:before {
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 5px;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+}
+
+/*---------------------------------
+  利用規約　プライバシーポリシー
+---------------------------------*/
+.row {
+  max-width: 1030px;
+  widows: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.static_page {
+  padding: 60px 0;
+  color: #777;
+  margin-bottom: 60px;
+}
+
+.static_page>h2 {
+  color: #474D4F;
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.static_page>p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.static_page > h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #474D4F;
+  margin: 20px 0 10px 0;
+}
+
+.static_page>ol li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+/*---------------------------------
   フッター
 ---------------------------------*/
 .footer {
   width: 100%;
-  border-top: 1px solid #eaeaea;
-  text-align: center;
-  height: 80px;
-  padding-top: 45px;
+  color: #fff;
+  background-color: #555;
+  height: 169px;
+  line-height: 1.5;
   position: absolute;/*←絶対位置*/
   bottom: 0;
+
+  img {
+    width: 200px;
+    vertical-align: bottom;
+  }
+
+  span {
+    margin-left: 10px;
+    line-height: 18px;
+    display: inline-block;
+    font-size: 14px;
+  }
+}
+
+.footer .container {
+  width: 950px;
+  margin: 10px auto;
+  padding: 0;
+}
+
+.footer_link {
+  font-size: 12px;
+  margin: 30px 0 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    width: 15%;
+    margin-left: 14%;
+  }
+
+  a {
+    color: #a7a7a7;
+    font-size: 12px;
+    color: #A7A7A7;
+    float: left;
+  }
+}
+
+.sub_footer {
+  font-size: 12px;
+  text-align: center;
+  line-height: 55px;
+  padding: 0;
 }
