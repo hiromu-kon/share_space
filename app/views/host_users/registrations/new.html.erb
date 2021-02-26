@@ -4,9 +4,9 @@
       <p>ホスト企業専用</p>
       <p>新規登録</p>
     </div>
+    <%= render "host_users/shared/error_messages", resource: resource %>
     <div class="device_inner">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "call_center_users/shared/error_messages", resource: resource %>
+      <%= form_with model: @host_user, url: host_user_registration_path, id: 'new_host_user', class: 'new_host_user', local: true do |f| %>
         <div class="field">
           <%= f.label :name, class:"label_name" %>
           <%= f.text_field :name, autofocus: true, class:"form_control" %>

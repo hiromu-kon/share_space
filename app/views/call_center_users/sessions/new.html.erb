@@ -4,8 +4,9 @@
       <p>コールセンター専用</p>
       <p>ログイン</p>
     </div>
+    <%= render "call_center_users/shared/login_error_messages", resource: resource %>
     <div class="device_inner">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @call_center_user, url: call_center_user_session_path, id: 'new_call_center_user', class: 'new_call_center_user', local: true do |f| %>
         <div class="field">
           <%= f.label :email, class:"label_name" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_control" %>

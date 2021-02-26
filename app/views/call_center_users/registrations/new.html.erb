@@ -4,9 +4,9 @@
       <p>コールセンター専用</p>
       <p>新規登録</p>
     </div>
+    <%= render "call_center_users/shared/error_messages", resource: resource %>
     <div class="device_inner">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "call_center_users/shared/error_messages", resource: resource %>
+      <%= form_with model: @call_center_user, url: call_center_user_registration_path, id: 'new_call_center_user', class: 'new_call_center_user', local: true do |f| %>
         <div class="field">
           <%= f.label :name, class:"label_name" %>
           <%= f.text_field :name, autofocus: true, class:"form_control" %>
@@ -25,7 +25,6 @@
         </div>
         <div class="actions">
           <%= f.submit "新しいアカウントを作成", class:"form_control btn_primary" %>
-          <%= link_to "ゲストとしてログイン(コールセンター用)", '#', class:"form_control gest_button" %>
         </div>
       <% end %>
       <div class="link_blue">

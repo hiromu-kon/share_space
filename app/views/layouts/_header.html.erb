@@ -1,18 +1,17 @@
-<header class="header">
-  <div>
-    <div class="container">
-      <div class="area_logo_header">
-        <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
-      </div>
-      <nav class="area_nav_header">
-        <ul class="list_nav_header">
-          <li>
-            <%= link_to "ホスト企業 | 新規登録orログイン", new_host_user_session_path, class:"btn-border" %>
-          </li>
-          <li>
-            <%= link_to "コールセンター | 新規登録orログイン", new_call_center_user_session_path, class:"btn-border" %>
-          </li>
-        </ul>
-      </nav>
+<header class="header " id="header">
+  <div class="container">
+    <div class="area_logo_header">
+      <%= link_to image_tag('logo.png'), root_path, class: "logo" %>
     </div>
-  </header>
+    <nav class="area_nav_header">
+      <ul class="list_nav_header">
+        <li>
+          <%= link_to "ホスト企業 | 新規登録orログイン", new_host_user_session_path, class:"btn-border" %>
+        </li>
+        <li>
+          <%= link_to "コールセンター | 新規登録orログイン", new_call_center_user_session_path, class:"btn-border" %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
