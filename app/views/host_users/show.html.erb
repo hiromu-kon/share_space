@@ -1,0 +1,35 @@
+<% provide(:title, @host_user.name) %>
+
+<div class="detail_frame">
+  <%= image_tag 'header_default.jpg', class:"header_detail" %>
+  <div class="company_block">
+    <%= image_tag 'user_default.png', class:"user_icon" %>
+    <p class="company_name">
+      <%= @host_user.name %>
+    </p>
+    <p class="company_address">
+      <i class="fas fa-map-marker-alt"></i>
+      北海道札幌市中央区北12条西８丁目4−28　ISビル８階
+    </p>
+    <div class="direct_message fade_in">
+      <p>ダイレクトメッセージを送る</p>
+    </div>
+    <div class="company_description fade_in">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      </p>
+    </div>
+    <div class="company_info fade_in">
+      <h3>会社情報</h3>
+      <ul class="info_box">
+        <li>業種<span class="sub_category">健康食品</span></li>
+        <li>設立年月<span class="sub_category">1998/04/05</span></li>
+        <li>平均年齢<span class="sub_category">25歳</span></li>
+        <li>募集中<span class="sub_category">2件</span></li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <h2 class="user_post_index"><%= @host_user.name %>さんの投稿</h2>
+  </div>
+</div>
