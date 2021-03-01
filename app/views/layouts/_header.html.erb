@@ -6,12 +6,19 @@
     <nav class="area_nav_header">
       <ul class="list_nav_header">
         <% if host_user_signed_in? %>
-           <%= link_to 'ログアウト', destroy_host_user_session_path, :method => :delete, class:"btn-border" %>
-
+          <li>
+            <%= link_to 'ログアウト', destroy_host_user_session_path, :method => :delete, class:"btn-border" %>
+          </li>
         <% else %>
           <li>
             <%= link_to "ホスト企業 | 新規登録orログイン", new_host_user_session_path, class:"btn-border" %>
           </li>
+        <% end %>
+        <% if call_center_user_signed_in? %>
+          <li>
+            <%= link_to 'ログアウト', destroy_call_center_user_session_path, :method => :delete, class:"btn-border" %>
+          </li>
+        <% else %>
           <li>
             <%= link_to "コールセンター | 新規登録orログイン", new_call_center_user_session_path, class:"btn-border" %>
           </li>

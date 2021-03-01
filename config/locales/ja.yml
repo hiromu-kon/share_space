@@ -220,6 +220,6 @@ ja:
       call_center_user:
         name: 企業名
         email: メールアドレス
-        password: パスワード(6文字以上)
+        password: パスワード
         password_confirmation: パスワード(確認用)
         remember_me: ログイン情報を記憶する
