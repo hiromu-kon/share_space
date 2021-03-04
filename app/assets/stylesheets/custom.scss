@@ -12,6 +12,17 @@ a {
   text-decoration: none;
 }
 
+::selection
+{
+  background: #3CB371;
+  color: #ffffff;
+}
+
+.form_control:focus {
+  border: 2px solid #3CB371;
+  outline: 0;
+}
+
 /*---------------------------------
 
   トップページ

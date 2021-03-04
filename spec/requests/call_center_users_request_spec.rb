@@ -7,7 +7,7 @@ RSpec.describe "CallCenterUsers", type: :request do
       get new_call_center_user_registration_path
     end
 
-    it "正常なレスポンスを返すこと" do
+    it "正常にレスポンスを返すこと" do
       expect(response).to have_http_status(:success)
     end
 
@@ -31,7 +31,7 @@ RSpec.describe "CallCenterUsers", type: :request do
       get new_call_center_user_session_path
     end
 
-    it "正常なレスポンスを返すこと" do
+    it "正常にレスポンスを返すこと" do
       expect(response).to have_http_status(:success)
     end
 
@@ -57,7 +57,7 @@ RSpec.describe "CallCenterUsers", type: :request do
       get call_center_user_path(call_center_user.id)
     end
 
-    it "正常なレスポンスを返すこと" do
+    it "正常でレスポンスを返すこと" do
       expect(response).to have_http_status(:success)
     end
   end
