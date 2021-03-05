@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'call_center_users/show'
-  get 'call_center_users/index'
-  get 'host_users/show'
-  get 'host_users/index'
   devise_for :call_center_users, controllers: {
     sessions:      'call_center_users/sessions',
     passwords:     'call_center_users/passwords',

@@ -1,11 +1,10 @@
-
+<%= provide(:title, "ログイン") %>
 <div class="device">
   <div class="device_frame">
     <div class="form_title">
       <p>ホスト企業専用</p>
       <p>ログイン</p>
     </div>
-    <%= render "host_users/shared/login_error_messages", resource: resource %>
     <div class="device_inner">
       <%= form_with model: @host_user, url: host_user_session_path, id: 'new_host_user', class: 'new_host_user', local: true do |f| %>
         <div class="field">

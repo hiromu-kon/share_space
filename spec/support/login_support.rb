@@ -2,17 +2,17 @@ module LoginSupport
   def log_in_as(host_user)
     visit root_path
     click_link "ホスト企業 | 新規登録orログイン"
-    fill_in "メールアドレス", with: user.email
-    fill_in "パスワード", with: user.password
-    click_button "ログインする"
+    fill_in "メールアドレス", with: host_user.email
+    fill_in "パスワード", with: host_user.password
+    click_button "ログイン"
   end
 
   def log_in_as(call_center_user)
     visit root_path
     click_link "コールセンター | 新規登録orログイン"
-    fill_in "メールアドレス", with: user.email
-    fill_in "パスワード", with: user.password
-    click_button "ログインする"
+    fill_in "メールアドレス", with: call_center_user.email
+    fill_in "パスワード", with: call_center_user.password
+    click_button "ログイン"
   end
 
   def sign_in_as(host_user)

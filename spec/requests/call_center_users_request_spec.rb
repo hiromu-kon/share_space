@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "CallCenterUsers", type: :request do
 
-  describe "GET /new" do
+  describe "ユーザー新規登録" do
     before do
       get new_call_center_user_registration_path
     end
 
-    it "正常にレスポンスを返すこと" do
+    it "正常なレスポンスを返すこと" do
       expect(response).to have_http_status(:success)
     end
 
@@ -26,12 +26,12 @@ RSpec.describe "CallCenterUsers", type: :request do
     end
   end
 
-  describe "GET session/new" do
+  describe "ユーザーログイン" do
     before do
       get new_call_center_user_session_path
     end
 
-    it "正常にレスポンスを返すこと" do
+    it "正常なレスポンスを返すこと" do
       expect(response).to have_http_status(:success)
     end
 
@@ -49,7 +49,7 @@ RSpec.describe "CallCenterUsers", type: :request do
     end
   end
 
-  describe "GET /show" do
+  describe "ユーザー詳細" do
     let(:call_center_user) { create :call_center_user }
 
     before do
@@ -57,7 +57,7 @@ RSpec.describe "CallCenterUsers", type: :request do
       get call_center_user_path(call_center_user.id)
     end
 
-    it "正常でレスポンスを返すこと" do
+    it "正常なレスポンスを返すこと" do
       expect(response).to have_http_status(:success)
     end
   end
