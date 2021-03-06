@@ -15,7 +15,7 @@
       <i class="fa fa-link"></i>
         <%= raw Rinku.auto_link(@host_user.home_page, :all, 'target="_blank"') if @host_user.home_page %>
     </p>
-    <% if current_user == @host_user %>
+    <% if current_host_user == @host_user %>
       <%= link_to 'アカウントを編集する', edit_host_user_registration_path, class:"direct_message mypage_edit" %>
     <% else %>
       <div class="direct_message fade_in">

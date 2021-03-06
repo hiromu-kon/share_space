@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_044653) do
+ActiveRecord::Schema.define(version: 2021_03_06_070144) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 2021_03_06_044653) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "industry"
+    t.integer "average_age"
+    t.text "introduction"
+    t.integer "employee"
+    t.string "prefectures"
+    t.string "home_page"
     t.index ["email"], name: "index_host_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_host_users_on_reset_password_token", unique: true
   end
