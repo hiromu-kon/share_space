@@ -3,7 +3,6 @@
 class CallCenterUsers::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
 
-
   # GET /resource/sign_up
   # def new
   #   super
@@ -48,7 +47,6 @@ class CallCenterUsers::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
   # If you have extra params to permit, append them to the sanitizer.
-
 
   def after_update_path_for(resource)
     call_center_user_path(resource)

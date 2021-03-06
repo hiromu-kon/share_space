@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "HostUsers", type: :request do
-
   describe "ユーザー登録" do
     before do
       get new_host_user_registration_path

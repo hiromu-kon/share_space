@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "CallCenterUsers", type: :request do
-
   describe "ユーザー新規登録" do
     before do
       get new_call_center_user_registration_path

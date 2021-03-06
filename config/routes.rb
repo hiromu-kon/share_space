@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :call_center_users, controllers: {
-    sessions:      'call_center_users/sessions',
-    passwords:     'call_center_users/passwords',
-    registrations: 'call_center_users/registrations'
+    sessions: 'call_center_users/sessions',
+    passwords: 'call_center_users/passwords',
+    registrations: 'call_center_users/registrations',
   }
   devise_for :host_users, controllers: {
-    sessions:      'host_users/sessions',
-    passwords:     'host_users/passwords',
-    registrations: 'host_users/registrations'
+    sessions: 'host_users/sessions',
+    passwords: 'host_users/passwords',
+    registrations: 'host_users/registrations',
   }
   root 'static_pages#home'
   get '/terms', to: 'static_pages#terms'
