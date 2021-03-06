@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_parameters
-    added_attrs = [:name]
-    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :image, :header_image, :prefectures, :home_page, :industry, :employee, :average_age, :introduction])
   end
 end

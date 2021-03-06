@@ -574,12 +574,22 @@ a {
   color: #555;
 }
 
-.company_address {
+.company_address, .company_homepage {
   margin-top: 15px;
   color: #555;
 }
 
-.fa-map-marker-alt {
+.company_homepage {
+  a {
+    color: #4689FF;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.fa-map-marker-alt, .fa-link {
   padding-right: 8px;
 }
 

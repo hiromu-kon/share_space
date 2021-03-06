@@ -1,6 +1,7 @@
 class HostUser < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, length: { maximum: 200 }
+  has_one_attached :image
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -17,5 +18,5 @@ class HostUser < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
-  end        
+  end
 end

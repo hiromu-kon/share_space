@@ -35,8 +35,43 @@
           </div>
 
           <div class="field">
-            <%= f.label :プロフィール写真, class:"label_name" %>
-            <%= f.file_field :image, multiple: true %>
+            <%= f.label :prefectures, class:"label_name" %>
+            <%= f.text_field :prefectures, autofocus: true, class:"form_control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :home_page, class:"label_name" %>
+            <%= f.text_field :home_page, autofocus: true, class:"form_control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :industry, class:"label_name" %>
+            <%= f.text_field :industry, autofocus: true, class:"form_control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :employee, class:"label_name" %>
+            <%= f.number_field :employee, autofocus: true, class:"form_control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :average_age, class:"label_name" %>
+            <%= f.number_field :average_age, autofocus: true, class:"form_control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :introduction, class:"label_name" %>
+            <%= f.text_area :introduction, autofocus: true, class:"form_control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :プロフィール画像, class:"label_name" %>
+            <%= f.file_field :image %>
+          </div>
+
+          <div class="field">
+            <%= f.label :ヘッダー画像, class:"label_name" %>
+            <%= f.file_field :header_image %>
           </div>
 
           <div class="actions">
@@ -44,7 +79,6 @@
           </div>
       <% end %>
           <h3>Cancel my account</h3>
-
           <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 
           <%= link_to "前のページに戻る", :back, class:"form_control back_button" %>

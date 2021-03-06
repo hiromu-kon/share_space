@@ -1,34 +1,44 @@
 <% provide(:title, @call_center_user.name) %>
 
 <div class="detail_frame">
-  <%= image_tag 'header_default.jpg', class:"header_detail" %>
+  <% if @call_center_user.header_image.attached? %>
+    <%= image_tag @call_center_user.header_image, class:"header_detail" %>
+  <% else %>
+    <%= image_tag 'header_default.jpg', class:"header_detail" %>
+  <% end %>
   <div class="company_block">
-    <%= image_tag 'user_default.png', class:"user_icon" %>
+    <% if @call_center_user.image.attached? %>
+      <%= image_tag  @call_center_user.image, class:"user_icon" %>
+    <% else %>
+      <%= image_tag 'user_default.png', class:"user_icon" %>
+    <% end %>
     <p class="company_name">
       <%= @call_center_user.name %>
     </p>
     <p class="company_address">
       <i class="fas fa-map-marker-alt"></i>
-      北海道札幌市中央区北12条西８丁目4−28　ISビル８階
+      <%= @call_center_user.prefectures %>
     </p>
-    <% if current_host_user == @host_user %>
-      <%= link_to 'ユーザーを編集する', edit_call_center_user_registration_path, class:"direct_message mypage_edit" %>
+    <p class="company_homepage">
+      <i class="fa fa-link"></i>
+        <%= raw Rinku.auto_link(@call_center_user.home_page, :all, 'target="_blank"') if @call_center_user.home_page %>
+    </p>
+    <% if current_call_center_user == @call_center_user %>
+      <%= link_to 'アカウントを編集する', edit_call_center_user_registration_path, class:"direct_message mypage_edit" %>
     <% else %>
       <div class="direct_message fade_in">
        <p>ダイレクトメッセージを送る</p>
       </div>
     <% end %>
     <div class="company_description fade_in">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      </p>
+      <p><%= @call_center_user.introduction %></p>
     </div>
     <div class="company_info fade_in">
       <h3>会社情報</h3>
       <ul class="info_box">
-        <li>業種<span class="sub_category">健康食品</span></li>
-        <li>設立年月<span class="sub_category">1998/04/05</span></li>
-        <li>平均年齢<span class="sub_category">25歳</span></li>
+        <li>業種<span class="sub_category"><%= @call_center_user.industry %></span>
+        </li>
+        <li>平均年齢<span class="sub_category"><%= @call_center_user.average_age %></span></li>
         <li>募集中<span class="sub_category">2件</span></li>
       </ul>
     </div>
