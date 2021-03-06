@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   resources :call_center_users, only: :show
   resources :host_users, only: :show
+  resources :post
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
