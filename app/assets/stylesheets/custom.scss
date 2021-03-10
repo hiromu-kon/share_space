@@ -24,12 +24,12 @@ a {
 }
 
 .Notification {
- .notice {
+ .notice, .success {
    background-color: #38AEF0;
    color: #fff;
    text-align: center;
  }
- .alert {
+ .alert, .danger {
    background-color: #F35500;
    color: #fff;
    text-align: center;
@@ -537,8 +537,8 @@ a {
 ---------------------------------*/
 
 .detail_frame {
-  margin-bottom: 300px;
   z-index: 1;
+  margin-bottom: 100px;
 }
 
 .header_detail {
@@ -550,6 +550,7 @@ a {
 .company_block {
  text-align: center;
  margin-top: -150px;
+ margin-bottom: 350px;
 }
 
 .user_icon {
@@ -577,11 +578,6 @@ a {
   p {
     word-wrap: break-word;
   }
-}
-
-.company_address, .company_homepage {
-  margin-top: 15px;
-  color: #555;
 }
 
 .company_homepage {
@@ -655,7 +651,11 @@ a {
 
 .user_post_index {
   text-align: center;
-  margin-top: 350px;
+}
+
+.user_post_area {
+  width: 800px;
+  margin: 50px auto;
 }
 /*---------------------------------
   ユーザー編集ページ
@@ -862,6 +862,10 @@ a {
 .post_title {
   font-size: 20px;
   margin: 10px 0 20px 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .post_content {
@@ -896,6 +900,7 @@ a {
   border-radius: 50%;
   vertical-align: bottom;
   margin-right: 10px;
+  border: 1px solid #DDD;
 }
 
 .post_company {
@@ -903,6 +908,10 @@ a {
   align-items: center;
   margin-bottom: 15px;
   font-weight: bold;
+
+  span:hover {
+    text-decoration: underline;
+  }
 }
 
 .post_address {

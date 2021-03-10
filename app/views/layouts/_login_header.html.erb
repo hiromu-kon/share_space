@@ -8,7 +8,8 @@
           <li><%= link_to 'マイページ', host_user_path(current_host_user.id) %></li>
           <li><%= link_to 'ユーザー編集', edit_host_user_registration_path %></li>
           <li><%= link_to '通知', '#' %></li>
-          <li><%= link_to 'ブックマーク', posts_path %></li>
+          <li><%= link_to '募集を見る', posts_path %></li>
+          <li><%= link_to 'ブックマーク', '#' %></li>
           <li><%= link_to 'ログアウト', destroy_host_user_session_path, :method => :delete %></li>
         </ul>
       </div>
@@ -24,6 +25,7 @@
           <li><%= link_to 'マイページ', call_center_user_path(current_call_center_user.id) %></li>
           <li><%= link_to 'ユーザー編集', edit_call_center_user_registration_path %></li>
           <li><%= link_to '通知', '#' %></li>
+          <li><%= link_to '募集を見る', posts_path %></li>
           <li><%= link_to 'ブックマーク', '#' %></li>
           <li><%= link_to 'ログアウト', destroy_call_center_user_session_path, :method => :delete %></li>
         </ul>

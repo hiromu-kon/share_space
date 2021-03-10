@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_host_user.posts.new
   end
 
   def show
@@ -12,14 +12,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Postfind(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def create
-    @post = cuurent_call_center_user(post_params)
-    @post = cuurent_host_user(post_params)
-    if @room.save
+    @post = current_host_user.posts.create(host_post_params)
+    if @post.save
       flash[:success] = "投稿しました"
+      redirect_to root_url
     else
       flash[:danger] = "投稿できませんでした。入力内容を見直してください。"
       redirect_to new_post_path
@@ -45,7 +45,11 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date).merge(call_center_user_id: current_call_center_user.id, host_user_id: host_user.id)
+    def host_post_params
+      params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(host_user_id: current_host_user.id)
+    end
+
+    def call_center_post_params
+      params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(call_center_user_id: current_call_center_user.id)
     end
 end

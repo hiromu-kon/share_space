@@ -1,7 +1,7 @@
 <div class="device">
   <div class="post_form">
     <h4>タイトル</h4>
-    <%= form_with model: @post, url:'/post', local:true do |f| %>
+    <%= form_with model: @post do |f| %>
     <%= f.text_field :title, placeholder:"タイトルを入力してください(60文字以内)", class:"post_form_title" %>
     <h4 class="heading_title">本文</h4>
     <div class="post_text_btn">

@@ -11,7 +11,7 @@
       <div class="settings_title_section">
         <p>プロフィールの変更</p>
       </div>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_with model: @host_user, url: host_user_registration_path, id: 'edit_host_user', class: 'edit_host_user', local: true do |f| %>
       <%= render "host_users/shared/error_messages", resource: resource %>
 
         <div class="device_inner">
