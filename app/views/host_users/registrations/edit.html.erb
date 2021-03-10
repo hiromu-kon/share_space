@@ -33,7 +33,7 @@
             <%= f.label :password_confirmation, class:"label_name" %><i>(変更する場合のみ入力)</i>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form_control" %>
           </div>
-          
+
           <div class="field">
             <%= f.label :prefectures, class:"label_name" %>
             <%= f.text_field :prefectures, autofocus: true, class:"form_control" %>
@@ -65,13 +65,16 @@
           </div>
 
           <div class="field">
-            <%= f.label :プロフィール画像, class:"label_name" %>
-            <%= f.file_field :image %>
+            <%= f.label :ヘッダー画像, class:"label_name" %>
+            <%= f.file_field :header_image, onChange: "imgPreView(event, 'preview1')" %>
+            <div id="preview1" class="header_img"></div>
           </div>
+          <div id="preview"></div>
 
           <div class="field">
-            <%= f.label :ヘッダー画像, class:"label_name" %>
-            <%= f.file_field :header_image %>
+            <%= f.label :プロフィール画像, class:"label_name" %>
+            <%= f.file_field :image, onChange: "imgPreView(event, 'preview2')" %>
+            <div id="preview2" class="edit_user_icon"></div>
           </div>
 
           <div class="actions">

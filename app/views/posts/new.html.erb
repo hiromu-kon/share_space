@@ -1,12 +1,34 @@
 <div class="device">
-  <div class="device_frame">
-<h1>新規投稿</h1>
-<%= form_with model: @list, url:'/todolists', local:true do |f| %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>本文</h4>
-  <%= f.text_area :content %>
-  <%= f.submit '投稿' %>
-<% end %>
-</div>
+  <div class="post_form">
+    <h4>タイトル</h4>
+    <%= form_with model: @post, url:'/post', local:true do |f| %>
+    <%= f.text_field :title, placeholder:"タイトルを入力してください(60文字以内)", class:"post_form_title" %>
+    <h4 class="heading_title">本文</h4>
+    <div class="post_text_btn">
+      <div class="post_edit_btn">編集</div>
+      <div class="post_edit_btn preview">プレビュー</div>
+    </div>
+    <%= f.text_area :content, placeholder:"本文を入力してください(マークダウン対応)", class:"post_form_text" %>
+    <div class="post_date_field">
+      <h4 class="heading_title">募集期間(開始日)</h4>
+      <h4 class="heading_title">募集期間(終了日)</h4>
+      </div>
+      <div class="post_date_field">
+      <%= f.date_field :start_date, placeholder:"", class:"post_form_title number_input empty_right" %>
+
+      <%= f.date_field :finish_date, placeholder:"", class:"post_form_title number_input" %>
+    </div>
+    <h4 class="heading_title">報酬</h4>
+    <%= f.number_field :reward, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
+    <h4 class="heading_title">募集オペレーター人数</h4>
+    <%= f.number_field :recruit_people, placeholder:"", class:"post_form_title number_input" %>
+    <h4 class="heading_title"></h4>
+    <%= f.file_field :image, onChange: "imgPreView(event, 'preview1')" %>
+    <div>
+      <div id="preview1" class="post_img"></div>
+    </div>
+
+    <%= f.submit '投稿', class:"form_control btn_primary" %>
+    <% end %>
+  </div>
 </div>

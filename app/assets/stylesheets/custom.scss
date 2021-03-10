@@ -557,6 +557,7 @@ a {
   width: 250px;
   border-radius: 50%;
   border: 10px solid #fff;
+  background-color: #fff;
 }
 
 .company_name {
@@ -572,6 +573,10 @@ a {
   text-align: left;
   float: left;
   color: #555;
+
+  p {
+    word-wrap: break-word;
+  }
 }
 
 .company_address, .company_homepage {
@@ -750,6 +755,17 @@ a {
   border-top: 1px solid #3a3a3a;
   margin: 45px 0;
 }
+
+.edit_user_icon #previewImage-preview2 {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+.header_img #previewImage-preview1 {
+  width: 100%;
+  height: 200px;
+}
 /*---------------------------------
   要素フェードイン
 ---------------------------------*/
@@ -901,7 +917,106 @@ a {
 /*---------------------------------
   Post詳細ページ
 ---------------------------------*/
+.post_form {
+  width: 800px;
+  margin: 0px auto 100px;
 
+  h1 {
+    font-size: 28px;
+  }
+}
+
+.heading_title {
+ margin: 40px 0 5px 0;
+}
+
+.post_form_title {
+  height: 40px;
+  width: 100%;
+  outline: none;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 2px solid #BBB;
+  font-size: 16px;
+
+  &:focus {
+    border: 2px solid #3CB371;
+    outline: 0;
+  }
+
+  &::placeholder {
+    color: #AAA;
+  }
+}
+
+.post_form_text {
+  height: 200px;
+  width: 100%;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #BBB;
+  font-size: 16px;
+
+  &:focus {
+    border: 2px solid #3CB371;
+    outline: 0;
+  }
+
+  &::placeholder {
+    color: #AAA;
+  }
+}
+
+.post_text_btn {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 0 20px 0;
+  margin-top: -20px;
+}
+
+.post_edit_btn {
+  color: #fff;
+  background-color: #0066CC;
+  border-color: #0066CC;
+  border-radius: 50px;
+  padding: 10px 35px;
+
+  &:hover {
+    background-color: #1E90FF;
+    border-color: #1E90FF;
+    transition: .4s;
+  }
+}
+
+.post_date_field {
+  display: flex;
+  justify-content: space-around;
+}
+
+.preview {
+  background-color: #6c757d;
+  border-color: #6c757d;
+
+  &:hover {
+    background-color: #AAA;
+    border-color: #AAA;
+    transition: .4s;
+  }
+}
+
+.number_input {
+  width: 45%;
+}
+
+#previewImage-preview1, #previewImage-preview2 {
+  height: 300px;
+  width: 70%;
+  object-fit: cover;
+  object-position: center;
+  border: solid thin lightgray;
+  margin-top: 10px;
+}
 
 
 /*---------------------------------

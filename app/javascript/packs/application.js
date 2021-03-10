@@ -18,7 +18,7 @@ window.addEventListener("scroll", function () {
   header.classList.toggle("hidden", window.scrollY > 0);
 });
 
-// トップへ戻るイベント
+// トップへ戻るボタンのイベント
 document.addEventListener("turbolinks:load", function () {
   const PageTopBtn = document.getElementById('js_button');
   PageTopBtn.addEventListener('click', () =>{
@@ -29,7 +29,7 @@ document.addEventListener("turbolinks:load", function () {
   });
 });
 
-// 要素フェードイン
+// 下から要素フェードイン
 window.addEventListener("scroll", function () {
   let scrollAnimationElm = document.querySelectorAll('.fade_in');
   let scrollAnimationFunc = function(){
@@ -42,4 +42,25 @@ window.addEventListener("scroll", function () {
   }
   window.addEventListener('load', scrollAnimationFunc);
   window.addEventListener('scroll', scrollAnimationFunc);
+});
+
+
+// ファイル選択時画像プレビュー
+document.addEventListener("turbolinks:load", function () {
+  window.imgPreView = function imgPreView(event, targetId){
+    var file = event.target.files[0];
+    var reader = new FileReader();
+    var preview = document.getElementById(targetId);
+    var previewImage = document.getElementById("previewImage-"+targetId);
+
+    if(previewImage != null)
+    preview.removeChild(previewImage);
+    reader.onload = function(event) {
+      var img = document.createElement("img");
+      img.setAttribute("src", reader.result);
+      img.setAttribute("id", "previewImage-"+targetId);
+      preview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  }
 });

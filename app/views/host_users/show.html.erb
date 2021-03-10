@@ -1,9 +1,17 @@
 <% provide(:title, @host_user.name) %>
 
 <div class="detail_frame">
-  <%= image_tag 'header_default.jpg', class:"header_detail" %>
+  <% if @host_user.header_image.attached? %>
+    <%= image_tag @host_user.header_image, class:"header_detail" %>
+  <% else %>
+    <%= image_tag 'header_default.jpg', class:"header_detail" %>
+  <% end %>
   <div class="company_block">
-    <%= image_tag 'user_default.png', class:"user_icon" %>
+    <% if @host_user.image.attached? %>
+      <%= image_tag  @host_user.image, class:"user_icon" %>
+    <% else %>
+      <%= image_tag 'user_default.png', class:"user_icon" %>
+    <% end %>
     <p class="company_name">
       <%= @host_user.name %>
     </p>
