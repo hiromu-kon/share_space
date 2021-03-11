@@ -16,7 +16,6 @@
       <%= @host_user.name %>
     </p>
     <p class="company_homepage">
-      <i class="fa fa-link"></i>
         <%= raw Rinku.auto_link(@host_user.home_page, :all, 'target="_blank"') if @host_user.home_page %>
     </p>
     <% if current_host_user == @host_user %>
@@ -27,7 +26,7 @@
       </div>
     <% end %>
     <div class="company_description fade_in">
-      <p><%= @host_user.introduction %></p>
+      <p class="company_show_content"><%= @host_user.introduction %></p>
     </div>
     <div class="company_info fade_in">
       <h3>会社情報</h3>

@@ -2,18 +2,20 @@
   <div class="post_form">
     <h4>タイトル</h4>
     <%= form_with model: @post do |f| %>
-    <%= f.text_field :title, placeholder:"タイトルを入力してください(60文字以内)", class:"post_form_title" %>
+    <%= f.text_field :title, placeholder:"タイトルを入力してください(60文字以内)", class:"post_form_title", id:"text1", onkeyup:"StringCount('text1', 'textcount1')" %>
+    <p id="textcount1">0文字</p>
     <h4 class="heading_title">本文</h4>
     <div class="post_text_btn">
       <div class="post_edit_btn">編集</div>
       <div class="post_edit_btn preview">プレビュー</div>
     </div>
-    <%= f.text_area :content, placeholder:"本文を入力してください(マークダウン対応)", class:"post_form_text" %>
+    <%= f.text_area :content, placeholder:"本文を入力してください(マークダウン対応)", class:"post_form_text", id:"text2", onkeyup:"StringCount('text2', 'textcount2')" %>
+    <p id="textcount2">0文字</p>
     <div class="post_date_field">
       <h4 class="heading_title">募集期間(開始日)</h4>
       <h4 class="heading_title">募集期間(終了日)</h4>
-      </div>
-      <div class="post_date_field">
+    </div>
+    <div class="post_date_field">
       <%= f.date_field :start_date, placeholder:"", class:"post_form_title number_input empty_right" %>
 
       <%= f.date_field :finish_date, placeholder:"", class:"post_form_title number_input" %>

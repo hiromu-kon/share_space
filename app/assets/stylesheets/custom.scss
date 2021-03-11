@@ -364,7 +364,7 @@ a {
 }
 
 /*---------------------------------
-  ログインページ
+  新規登録ページ
 ---------------------------------*/
 .device {
   padding-top: 100px;
@@ -384,6 +384,7 @@ a {
 .form_title {
   font-size: 35px;
   margin-bottom: 20px;
+  color: #444;
 }
 
 
@@ -401,7 +402,7 @@ a {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 2px solid #ced4da;
   border-radius: .25rem;
 }
 
@@ -722,11 +723,7 @@ a {
   width: 0;
   min-width: 0;
   margin-left: 18px;
-  background-color: #fff;
-  border: 1px solid transparent;
   padding: 32px;
-  box-shadow: 0 3px 3px 2px rgba(21, 27, 38, 0.2);
-  border-radius: 15px;
 }
 
 .settings_title_section {
@@ -765,6 +762,10 @@ a {
 .header_img #previewImage-preview1 {
   width: 100%;
   height: 200px;
+}
+
+.edit_form::placeholder {
+  color: #AAA;
 }
 /*---------------------------------
   要素フェードイン
@@ -924,7 +925,7 @@ a {
   }
 }
 /*---------------------------------
-  Post詳細ページ
+  Post 新規投稿ページ
 ---------------------------------*/
 .post_form {
   width: 800px;
@@ -1026,8 +1027,143 @@ a {
   border: solid thin lightgray;
   margin-top: 10px;
 }
+/*---------------------------------
+  Post 詳細ページ
+---------------------------------*/
+.post_show {
+  width: 800px;
+  margin: 0px auto 100px;
 
+  h1 {
+    font-size: 20px;
+  }
 
+  .btn-border {
+    padding: 10px 40px;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 17px;
+  }
+}
+
+.post_show .btn-border:hover {
+  border: 2px solid #00BB00;
+  color: #fff;
+  background-color: #00BB00;
+}
+
+.btn-border_reverse {
+  display: inline-block;
+  border: 2px solid #009933;
+  padding: 10px 40px;
+  color: #008000;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 17px;
+  background-color: #fff;
+  margin-top: 10px;
+
+  &:hover {
+    border: 2px solid #009933;
+    color: #fff;
+    background-color: #009933;
+    transition: .8s;
+  }
+}
+
+.fa-bookmark, .fa-envelope {
+  padding-right: 3px;
+}
+
+.post_show_img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  max-height: 350px;
+  margin-top: 25px;
+}
+
+.post_show_btn {
+  text-align: center;
+  margin: 20px 0 40px 0;
+}
+
+.require_area {
+  color: #333;
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 50px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
+.require_item {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.post_show_company {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.post_show_company .post_company_image {
+  width: 80px;
+  height: 80px;
+}
+
+#textcount1, #textcount2 {
+  color: #444;
+  font-size: 12px;
+}
+
+.post_show_content, .company_show_content {
+  white-space: pre-wrap;
+}
+
+.post_show_content {
+  margin-top: 15px;
+}
+
+.post_company_name {
+  font-size: 18px;
+  margin: 30px 0 0 10px;
+  font-weight: bold;
+  color: #333;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.post_company_introduction {
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.item_box_up, .item_box_down {
+  display: flex;
+}
+
+.right_column {
+  margin-left: 30%;
+}
+
+.recruit {
+  margin-top: 30px;
+}
+
+.item_box_down {
+  margin: 5px 0 30px 0;
+
+  .right_column {
+    margin-left: 15px;
+  }
+}
 /*---------------------------------
   フッター
 ---------------------------------*/

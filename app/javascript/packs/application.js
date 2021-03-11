@@ -44,7 +44,6 @@ window.addEventListener("scroll", function () {
   window.addEventListener('scroll', scrollAnimationFunc);
 });
 
-
 // ファイル選択時画像プレビュー
 document.addEventListener("turbolinks:load", function () {
   window.imgPreView = function imgPreView(event, targetId){
@@ -64,3 +63,9 @@ document.addEventListener("turbolinks:load", function () {
     reader.readAsDataURL(file);
   }
 });
+
+// 文字数カウント
+window.StringCount = function StringCount(countTarget, resultTarget) {
+  var len = document.getElementById(countTarget).value.length;
+  document.getElementById(resultTarget).innerText = len + "文字";
+}

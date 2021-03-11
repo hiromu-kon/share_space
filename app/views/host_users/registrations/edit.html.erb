@@ -35,33 +35,34 @@
           </div>
 
           <div class="field">
-            <%= f.label :prefectures, class:"label_name" %>
-            <%= f.text_field :prefectures, autofocus: true, class:"form_control" %>
+            <%= f.label :活動拠点, class:"label_name" %>
+            <%= f.text_field :prefectures, autofocus: true, class:"form_control edit_form", placeholder:"都道府県で入力してください" %>
           </div>
 
           <div class="field">
-            <%= f.label :home_page, class:"label_name" %>
-            <%= f.text_field :home_page, autofocus: true, class:"form_control" %>
+            <%= f.label :ホームページ, class:"label_name" %>
+            <%= f.text_field :home_page, autofocus: true, class:"form_control", placeholder:"URLを入力してください" %>
           </div>
 
           <div class="field">
-            <%= f.label :industry, class:"label_name" %>
+            <%= f.label :業界, class:"label_name" %>
             <%= f.text_field :industry, autofocus: true, class:"form_control" %>
           </div>
 
           <div class="field">
-            <%= f.label :employee, class:"label_name" %>
+            <%= f.label :従業員数, class:"label_name" %>
             <%= f.number_field :employee, autofocus: true, class:"form_control" %>
           </div>
 
           <div class="field">
-            <%= f.label :average_age, class:"label_name" %>
+            <%= f.label :平均年齢, class:"label_name" %>
             <%= f.number_field :average_age, autofocus: true, class:"form_control" %>
           </div>
 
           <div class="field">
-            <%= f.label :introduction, class:"label_name" %>
-            <%= f.text_area :introduction, autofocus: true, class:"form_control" %>
+            <%= f.label :企業紹介, class:"label_name" %>
+            <%= f.text_area :introduction, autofocus: true, class:"form_control", id:"text1", onkeyup:"StringCount('text1', 'textcount1')", placeholder:"" %>
+            <p id="textcount1">0文字</p>
           </div>
 
           <div class="field">
@@ -82,9 +83,7 @@
           </div>
         <% end %>
           <h3>Cancel my account</h3>
-
           <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-
           <%= link_to "前のページに戻る", :back, class:"form_control back_button" %>
       </div>
     </div>
