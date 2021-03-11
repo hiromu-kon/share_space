@@ -68,14 +68,14 @@
           <div class="field">
             <%= f.label :ヘッダー画像, class:"label_name" %>
             <%= f.file_field :header_image, onChange: "imgPreView(event, 'preview1')" %>
-            <div id="preview1" class="header_img"></div>
+            <div id="preview1" class="header_img"><%= image_tag @host_user.header_image, id:"previewImage-preview1" if @host_user.header_image.present? %></div>
           </div>
           <div id="preview"></div>
 
           <div class="field">
             <%= f.label :プロフィール画像, class:"label_name" %>
             <%= f.file_field :image, onChange: "imgPreView(event, 'preview2')" %>
-            <div id="preview2" class="edit_user_icon"></div>
+            <div id="preview2" class="edit_user_icon"><%= image_tag @host_user.image, id:"previewImage-preview2" if @host_user.image.present? %></div>
           </div>
 
           <div class="actions">

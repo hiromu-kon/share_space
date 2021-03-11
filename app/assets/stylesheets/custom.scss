@@ -68,7 +68,7 @@ a {
 
   img {
     vertical-align: bottom;
-    width: 250px;
+    width: 270px;
   }
 }
 
@@ -789,7 +789,7 @@ a {
 }
 
 .post_index {
-  padding-top: 100px;
+  padding-top: 90px;
 }
 
 .left_box {
@@ -833,8 +833,8 @@ a {
 
 .fa-search {
   position: absolute;
-  top: 168px;
-  left: 82px;
+  top: 158px;
+  left: 85px;
   font-size: 18px;
 }
 
@@ -924,6 +924,27 @@ a {
     color: #444;
   }
 }
+
+.recruit_link {
+  text-align: center;
+  border-radius: 50px;
+  margin-left: 150px;
+  background: unset;
+  background-image: linear-gradient(260deg, #3399FF, #00BFFF);
+  padding: 20px 80px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 52px;
+  color: white !important;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-image: linear-gradient(260deg, #5D99FF, #00ECFF);
+    transition: .5s;
+  }
+}
 /*---------------------------------
   Post 新規投稿ページ
 ---------------------------------*/
@@ -933,6 +954,10 @@ a {
 
   h1 {
     font-size: 28px;
+  }
+
+  .btn_primary {
+    width: 100%;
   }
 }
 
@@ -1030,6 +1055,10 @@ a {
 /*---------------------------------
   Post 詳細ページ
 ---------------------------------*/
+.post_show_container .device {
+  padding-top: 80px;
+}
+
 .post_show {
   width: 800px;
   margin: 0px auto 100px;
@@ -1162,6 +1191,51 @@ a {
 
   .right_column {
     margin-left: 15px;
+  }
+}
+
+.index_link {
+  position: relative;
+  display: inline-block;
+  transition: .3s;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  color: #666;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: #5D99FF;
+    transition: .3s;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: #5D99FF;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+/*---------------------------------
+  投稿編集ページ
+---------------------------------*/
+.post_delete {
+  margin-top: 50px ;
+  width: 96%;
+  background-color: #666;
+  color: #fff;
+  text-align: center;
+
+  &:hover {
+    background-color: #888;
+    transition: .4s;
   }
 }
 /*---------------------------------

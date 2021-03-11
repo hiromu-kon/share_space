@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = current_host_user.posts.create(host_post_params)
     if @post.save
       flash[:success] = "投稿しました"
-      redirect_to root_url
+      redirect_to posts_path
     else
       flash[:danger] = "投稿できませんでした。入力内容を見直してください。"
       redirect_to new_post_path
@@ -28,9 +28,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
+    if @post.update(host_post_params)
       flash[:success] = "投稿を編集しました"
-      redirect_to posts_path
+      redirect_to post_path
     else
       flash[:danger] = "投稿を編集できませんでした"
       redirect_to edit_post_path

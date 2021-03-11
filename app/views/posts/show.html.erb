@@ -1,50 +1,59 @@
-<div class="device">
-  <div class="post_show">
-    <h1><%= @post.title %></h1>
-    <%= image_tag @post.image, class:"post_show_img" %>
-    <div class="post_show_btn">
-    <%= link_to "#", class:"btn-border" do %>
-      <i class="far fa-envelope"></i> DMを送る
-    <% end %>
-    <%= link_to "#", class:"btn-border_reverse" do %>
-      <i class="far fa-bookmark"></i> ブックマークに追加
-    <% end %>
-    </div>
-    <div class="require_area">
-      <h2>募集要件</h2>
-      <div class="require_area_item">
-        <div class="item_box_up">
-          <div>
-            <h3>報酬(月単価)</h3>
-            <p class="require_item"><%= @post.reward %>円</p>
+<div class="post_show_container">
+  <div class="device">
+    <div class="post_show">
+      <%= link_to posts_path, class:"index_link" do%>
+        <i class="far fa-arrow-alt-circle-left"></i>募集一覧に戻る
+      <% end %>
+      <h1><%= @post.title %></h1>
+        <%= image_tag @post.image, class:"post_show_img" %>
+        <div class="post_show_btn">
+          <% if @post.host_user == current_host_user %>
+            <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
+          <% else %>
+            <%= link_to "#", class:"btn-border" do %>
+              <i class="far fa-envelope"></i> DMを送る
+            <% end %>
+            <%= link_to "#", class:"btn-border_reverse" do %>
+              <i class="far fa-bookmark"></i> ブックマークに追加
+            <% end %>
+          <% end %>
+        </div>
+      <div class="require_area">
+        <h2>募集要件</h2>
+        <div class="require_area_item">
+          <div class="item_box_up">
+            <div>
+              <h3>報酬(月単価)</h3>
+              <p class="require_item"><%= number_to_currency(@post.reward) %></p>
+            </div>
+            <div class="right_column">
+              <h3>募集オペレーター人数</h3>
+              <p class="require_item"><%= @post.recruit_people %>人</p>
+            </div>
           </div>
-          <div class="right_column">
-            <h3>募集オペレーター人数</h3>
-            <p class="require_item"><%= @post.recruit_people %>人</p>
+          <h3 class="recruit">オフィス住所</h3>
+          <p>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</p>
+          <h3 class="recruit">募集期間</h3>
+          <div class="item_box_down">
+            <p><%= @post.start_date %></p>
+            <p class="right_column">〜</p>
+            <p class="right_column"><%= @post.finish_date %></p>
           </div>
         </div>
-        <h3 class="recruit">オフィス住所</h3>
-        <p>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</p>
-        <h3 class="recruit">募集期間</h3>
-        <div class="item_box_down">
-          <p><%= @post.start_date %></p>
-          <p class="right_column">〜</p>
-          <p class="right_column"><%= @post.finish_date %></p>
-        </div>
+        <h3>募集詳細</h3>
+        <p class="post_show_content"><%= @post.content %></p>
       </div>
-      <h3>募集詳細</h3>
-      <p class="post_show_content"><%= @post.content %></p>
-    </div>
 
-    <hr class="post_separate">
-    <%= link_to @post.host_user do %>
-      <div class="post_show_company">
-        <%= image_tag @post.host_user.image, class:"post_company_image" %>
-        <div class="post_company_name"><%= @post.host_user.name %></div>
-      </div>
-    <% end %>
-    <p class="post_company_introduction"><%= @post.host_user.introduction %><p>
-    <hr class="post_separate">
-    <h3 class="">おすすめ投稿</h3>
+      <hr class="post_separate">
+      <%= link_to @post.host_user do %>
+        <div class="post_show_company">
+          <%= image_tag @post.host_user.image, class:"post_company_image" %>
+          <div class="post_company_name"><%= @post.host_user.name %></div>
+        </div>
+      <% end %>
+      <p class="post_company_introduction"><%= @post.host_user.introduction %><p>
+      <hr class="post_separate">
+      <h3 class="">おすすめ投稿</h3>
+    </div>
   </div>
 </div>
