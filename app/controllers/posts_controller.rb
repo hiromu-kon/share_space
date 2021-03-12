@@ -21,8 +21,8 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました"
       redirect_to posts_path
     else
-      flash[:danger] = "投稿できませんでした。入力内容を見直してください。"
-      redirect_to new_post_path
+      flash.now[:danger] = "投稿できませんでした。入力内容を見直してください。"
+      render 'new'
     end
   end
 
