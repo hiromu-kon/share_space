@@ -4,6 +4,10 @@
       <%= link_to posts_path, class:"index_link" do%>
         <i class="far fa-arrow-alt-circle-left"></i>募集一覧に戻る
       <% end %>
+      <div class="pv_count">
+        <span><%= Pv.count %></span>
+        <span>views</span>
+      </div>
       <h1><%= @post.title %></h1>
         <%= image_tag @post.image, class:"post_show_img" %>
         <div class="post_show_btn">

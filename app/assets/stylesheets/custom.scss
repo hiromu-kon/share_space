@@ -293,6 +293,10 @@ a {
   margin: 30px 0;
 }
 
+.section_title.new {
+  margin-bottom: 200px;
+}
+
 .en {
   display: inline-block;
   position: relative;
@@ -1223,6 +1227,19 @@ a {
   }
 }
 
+.pv_count {
+  float: right;
+  margin-right: 30px;
+  color: #666;
+
+  span:first-child {
+    margin-right: 5px;
+  }
+
+  span:last-child {
+    font-size: 14px;
+  }
+}
 /*---------------------------------
   投稿編集ページ
 ---------------------------------*/

@@ -9,6 +9,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @pv = Pv.find_by(ip: request.remote_ip)
+    if @pv
+      @post = Post.find(params[:id])
+    else
+      @post = Post.find(params[:id])
+      Pv.create(ip: request.remote_ip)
+    end
   end
 
   def edit
