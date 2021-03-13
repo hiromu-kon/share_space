@@ -69,3 +69,26 @@ window.StringCount = function StringCount(countTarget, resultTarget) {
   var len = document.getElementById(countTarget).value.length;
   document.getElementById(resultTarget).innerText = len + "文字";
 }
+
+document.addEventListener("turbolinks:load", function () {
+  var mySwiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    loop: true,
+    speed: 2000,
+    autoplay: {
+      delay: 3000,
+      stopOnLastSlide: false,
+      disableOnInteraction: false,
+      reverseDirection: false
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    }
+  });
+});
