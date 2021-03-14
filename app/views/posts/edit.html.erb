@@ -26,7 +26,9 @@
         <h4 class="heading_title"></h4>
         <%= f.file_field :image, onChange: "imgPreView(event, 'preview1')" %>
         <div>
-          <div id="preview1" class="post_img"><%= image_tag @post.image, id:"previewImage-preview1" %></div>
+          <% if @post.image.attached? %>
+            <div id="preview1" class="post_img"><%= image_tag @post.image, id:"previewImage-preview1" %></div>
+          <% end %>
         </div>
 
         <%= f.submit '投稿を変更する', class:"form_control btn_primary" %>

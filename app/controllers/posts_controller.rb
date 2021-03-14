@@ -1,6 +1,14 @@
 class PostsController < ApplicationController
+
   def index
-    @posts = Post.all
+    if params[:q].present?
+      @q = Post.ransack(params[:q])
+      @posts = @q.result.includes(:host_user)
+    else
+      params[:q] = { sorts: 'id desc' }
+      @q = Post.ransack(params[:q])
+      @posts = @q.result.includes(:host_user)
+    end
   end
 
   def new
@@ -50,13 +58,22 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    @q = Post.search(search_params)
+    @posts = @q.result.includes(:host_user)
+  end
+
   private
 
-    def host_post_params
-      params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(host_user_id: current_host_user.id)
-    end
+  def host_post_params
+    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(host_user_id: current_host_user.id)
+  end
 
-    def call_center_post_params
-      params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(call_center_user_id: current_call_center_user.id)
-    end
+  def call_center_post_params
+    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(call_center_user_id: current_call_center_user.id)
+  end
+
+  def search_params
+    params.require(:q).permit(:sorts)
+  end
 end

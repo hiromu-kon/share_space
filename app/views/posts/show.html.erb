@@ -9,19 +9,21 @@
         <span>views</span>
       </div>
       <h1><%= @post.title %></h1>
+      <% if @post.image.attached? %>
         <%= image_tag @post.image, class:"post_show_img" %>
-        <div class="post_show_btn">
-          <% if @post.host_user == current_host_user %>
-            <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
-          <% else %>
-            <%= link_to "#", class:"btn-border" do %>
-              <i class="far fa-envelope"></i> DMを送る
-            <% end %>
-            <%= link_to "#", class:"btn-border_reverse" do %>
-              <i class="far fa-bookmark"></i> ブックマークに追加
-            <% end %>
+      <% end %>
+      <div class="post_show_btn">
+        <% if @post.host_user == current_host_user %>
+          <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
+        <% else %>
+          <%= link_to "#", class:"btn-border" do %>
+            <i class="far fa-envelope"></i> DMを送る
           <% end %>
-        </div>
+          <%= link_to "#", class:"btn-border_reverse" do %>
+            <i class="far fa-bookmark"></i> ブックマークに追加
+          <% end %>
+        <% end %>
+      </div>
       <div class="require_area">
         <h2>募集要件</h2>
         <div class="require_area_item">
