@@ -27,11 +27,15 @@ a {
  .notice, .success {
    background-color: #38AEF0;
    color: #fff;
+   font-size: 20px;
+   font-weight: bold;
    text-align: center;
  }
  .alert, .danger {
    background-color: #F35500;
    color: #fff;
+   font-size: 20px;
+   font-weight: bold;
    text-align: center;
  }
 }
@@ -141,13 +145,13 @@ a {
   ヘッダーハンバーガーメニュー
 ---------------------------------*/
 
-.cp_offcm01 {
+.offcm01 {
 	position: absolute;
 	top: 3px;
 	right: 60px;
 	display: inline-block;
 
-  & .cp_menu {
+  & .menu {
 	  position: fixed;
 	  top: 0;
 	  right: -100vw;
@@ -162,12 +166,12 @@ a {
 	  opacity: 0.8;
   }
 
-  & .cp_menu ul {
+  & .menu ul {
 	  margin: 0;
 	  padding: 0;
   }
 
-  & .cp_menu li a {
+  & .menu li a {
    	display: block;
 	  padding: 35px 0 35px 80px;
 	  color: #ffffff;
@@ -175,22 +179,22 @@ a {
 	  border-bottom: 1px solid #ffffff;
   }
 
-  & .cp_menu li:hover {
+  & .menu li:hover {
     background-color: #444;
   }
 
-  & #cp_toggle01 {
+  & #toggle01 {
 	  position: absolute;
 	  display: none;
     opacity: 0;
   }
 
-  & #cp_toggle01:checked ~ .cp_menu {
+  & #toggle01:checked ~ .menu {
 	  -webkit-transform: translateX(-100vw);
 	         transform: translateX(-100vw);
   }
 
-  & #cp_toggle01 ~ label {
+  & #toggle01 ~ label {
 	  display: block;
 	  padding: 0.5em;
 	  cursor: pointer;
@@ -202,19 +206,19 @@ a {
 	  color: #000;
   }
 
-  & #cp_toggle01:checked ~ label {
+  & #toggle01:checked ~ label {
 	   -webkit-transform: translateX(-400px);
 	         transform: translateX(-400px);
   }
 
-  & #cp_toggle01 ~ label::before {
+  & #toggle01 ~ label::before {
 	  font-family: 'FontAwesome';
     font-weight: 900;
 	  content: '\f0c9';
 	  font-size: 3.5em
   }
 
-  & #cp_toggle01:checked ~ label::before {
+  & #toggle01:checked ~ label::before {
 	  content: '\f00d';
   }
 }
@@ -256,17 +260,15 @@ a {
 }
 
 #error_explanation {
-  display: block;
+  background-color: #F35500;
+  color: #fff;
   text-align: center;
 
   h2 {
     font-size: 20px;
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    border-radius: 20px;
   }
 }
+
 
 .error_li, #flash_alert {
   padding: 5px;
@@ -674,88 +676,43 @@ a {
   padding-left: 16px;
 }
 
-.settings_container {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  max-width: 1100px;
-  margin-right: auto;
-  margin-left: auto;
+.edit_page .form_title {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.settings_menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 280px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 1em;
-  background-color: #fff;
-  border: 1px solid transparent;
-  padding: 16px;
-  box-shadow: 1px 1px 3px 1px rgba(21, 27, 38, 0.2);
-  border-radius: 10px;
-
-  & a:hover {
-    text-decoration: underline;
-  }
+.edit_page .device_inner {
+  width: 600px;
 }
 
-.menu_item_active {
+.edit_page .label_name {
   font-weight: bold;
-  font-size: 18px;
 }
 
-.settings_menu_item {
+.edit_page .index_link {
+  margin-bottom: 0;
+}
+
+.edit_text {
+  height: 200px;
   width: 100%;
-  padding: 8px 0;
-  border-top: 1px solid #e8e8e8;
-  color: #555;
-  padding: 20px 0;
-
-  &:first-child {
-    border-top: none;
-    padding-top: 10px;
-  }
-
-  &:last-child {
-    padding-bottom: 10px;
-  }
 }
 
-.settings_main {
-  flex-grow: 1;
-  width: 0;
-  min-width: 0;
-  margin-left: 18px;
-  padding: 32px;
-}
-
-.settings_title_section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 35px;
-  margin-bottom: 32px;
-}
-
-.back_button {
+.user_destroy_btn {
   margin: 13px 0;
   text-align: center;
-  width: 100%;
-  background-color: #777;
+  width: 50%;
+  background-color: #555;
   color: #fff;
 
   &:hover {
-    background-color: #999;
+    background-color: #777;
     transition: 0.3s;
   }
 }
 
 .post_separate {
-  border-top: 1px solid #3a3a3a;
+  border-top: 2px solid #BBB;
   margin: 45px 0;
 }
 
@@ -772,6 +729,46 @@ a {
 
 .edit_form::placeholder {
   color: #AAA;
+}
+
+.user_edit_heading {
+  margin-top: 10px;
+}
+
+.file {
+  margin-top: 5px;
+  display: inline-block;
+  position: relative;
+  padding: 5px 20px;
+  text-align: center;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #3399FF;
+  overflow: hidden;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease;
+}
+.file:hover {
+  background-color: #00CCFF;
+}
+.file_input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.left_column {
+  margin-right: 5%;
+}
+
+.user_destroy {
+  margin-top: 40px;
 }
 /*---------------------------------
   要素フェードイン
@@ -814,7 +811,7 @@ a {
 }
 .form_search {
   border-radius: 50px;
-  border: 1px solid #3a3a3a;
+  border: 2px solid #999;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -830,16 +827,15 @@ a {
   }
 
   &:focus {
-    border: 1px solid #2eb9e6;
+    border: 2px solid #2eb9e6;
     border-radius: 30px;
-    box-shadow: 1px 1px 10px 1px rgba(52,120,200,0.4);
     transition: .4s;
   }
 }
 
 .fa-search {
   position: absolute;
-  top: 158px;
+  top: 221px;
   left: 85px;
   font-size: 18px;
 }
@@ -949,6 +945,22 @@ a {
   &:hover {
     background-image: linear-gradient(260deg, #5D99FF, #00ECFF);
     transition: .5s;
+  }
+}
+
+.select_sort select {
+  background: #fff;
+  border: 2px solid #999;
+  border-radius: 4px;
+  height: calc(1.5rem + 1rem + 2px);
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  width: 90%;
+  margin-bottom: 20px;
+
+  &:focus {
+    outline: 0;
+    border-color:	#2eb9e6;
   }
 }
 /*---------------------------------
@@ -1293,6 +1305,35 @@ a {
 /* 4の倍数＋4枚目のスライドのスタイル（4枚目、8枚目…） */
 .swiper-slide:nth-child(4n+4) {
 	background-color: #BEDAE5;
+}
+
+
+/*---------------------------------
+  ページネーション
+---------------------------------*/
+.pagination {
+  margin: 100px 0 30px 0;
+  font-size: 18px;
+
+  span {
+    margin: 0 10px;
+  }
+
+  a:hover {
+    color: #2ecc71;
+    transition: .4s;
+  }
+}
+
+.current {
+  background-color: #2ecc71;
+  border-radius: 100%;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+  text-align: center;
+  line-height: 45px;
 }
 /*---------------------------------
   フッター

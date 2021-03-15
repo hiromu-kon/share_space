@@ -1,3 +1,4 @@
+<%= provide(:title, "新規募集") %>
 <div class="post_show_container">
   <div class="device">
     <div class="post_form">
@@ -24,8 +25,11 @@
       <%= f.number_field :reward, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
       <h4 class="heading_title">募集オペレーター人数</h4>
       <%= f.number_field :recruit_people, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
-      <h4 class="heading_title"></h4>
-      <%= f.file_field :image, onChange: "imgPreView(event, 'preview1')" %>
+      <h4 class="heading_title">オフィス画像</h4>
+      <div class="file">
+        ファイルを選択
+        <%= f.file_field :image, onChange: "imgPreView(event, 'preview1')", class:"file_input" %>
+      </div>
       <div>
         <div id="preview1" class="post_img"></div>
       </div>

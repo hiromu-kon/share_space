@@ -3,11 +3,11 @@ class PostsController < ApplicationController
   def index
     if params[:q].present?
       @q = Post.ransack(params[:q])
-      @posts = @q.result.includes(:host_user)
+      @posts = @q.result.includes(:host_user).page(params[:page]).per(10)
     else
       params[:q] = { sorts: 'id desc' }
       @q = Post.ransack(params[:q])
-      @posts = @q.result.includes(:host_user)
+      @posts = @q.result.includes(:host_user).page(params[:page]).per(10)
     end
   end
 
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
   def search
     @q = Post.search(search_params)
-    @posts = @q.result.includes(:host_user)
+    @posts = @q.result.includes(:host_user).page(params[:page]).per(10)
   end
 
   private
