@@ -4,6 +4,9 @@ class HostUser < ApplicationRecord
   has_one_attached :image
   has_one_attached :header_image
   has_many :posts, dependent: :destroy
+  has_many :messages
+  has_many :entries
+  has_many :rooms, through: :entries
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
