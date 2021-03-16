@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_070144) do
+ActiveRecord::Schema.define(version: 2021_03_12_120357) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -78,6 +78,29 @@ ActiveRecord::Schema.define(version: 2021_03_06_070144) do
     t.index ["reset_password_token"], name: "index_host_users_on_reset_password_token", unique: true
   end
 
+  create_table "posts", charset: "utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "reward"
+    t.integer "recruit_people"
+    t.date "start_date"
+    t.date "finish_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "host_user_id"
+    t.bigint "call_center_user_id"
+    t.index ["call_center_user_id"], name: "index_posts_on_call_center_user_id"
+    t.index ["host_user_id"], name: "index_posts_on_host_user_id"
+  end
+
+  create_table "pvs", charset: "utf8", force: :cascade do |t|
+    t.string "ip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "posts", "call_center_users"
+  add_foreign_key "posts", "host_users"
 end

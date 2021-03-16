@@ -1,8 +1,9 @@
 class CallCenterUser < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
-  validates :email, length: { maximum: 200 }
+  validates :email, length: { maximum: 200 }, presence: true, uniqueness: true
   has_one_attached :image
   has_one_attached :header_image
+  has_many :posts, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

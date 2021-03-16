@@ -1,89 +1,89 @@
 <%= provide(:title, "編集") %>
+<%= render "host_users/shared/error_messages_top", resource: resource %>
 <div class="edit_page">
-  <div class="settings_container">
-    <div class="settings_menu">
-      <%= link_to 'プロフィールの変更', '#', class:"menu_item_active settings_menu_item" %>
-      <%= link_to 'ヘッダー画像とアイコンの変更', '#', class:"settings_menu_item" %>
-      <%= link_to 'メールアドレス・パスワードの変更', '#', class:"settings_menu_item" %>
-      <%= link_to 'アカウントを削除する', '#', class:"settings_menu_item" %>
+  <div class="device_inner">
+    <%= link_to host_user_path(current_host_user.id), class:"index_link" do %>
+      <i class="far fa-arrow-alt-circle-left"></i>アカウント詳細に戻る
+      <% end %>
+    <div class="form_title">
+      <p>プロフィールの変更</p>
     </div>
-    <div class="settings_main">
-      <div class="settings_title_section">
-        <p>プロフィールの変更</p>
+    <%= form_with model: @host_user, url: host_user_registration_path, id: 'edit_host_user', class: 'edit_host_user', local: true do |f| %>
+    <%= render "host_users/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :name, class:"label_name" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form_control" %>
       </div>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "host_users/shared/error_messages", resource: resource %>
-
-        <div class="device_inner">
-          <div class="field">
-            <%= f.label :name, class:"label_name" %>
-            <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form_control" %>
-          </div>
-          <div class="field">
-            <%= f.label :email, class:"label_name" %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :password, class:"label_name" %><i>(変更する場合のみ入力)</i>
-            <%= f.password_field :password, autocomplete: "new-password", class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :password_confirmation, class:"label_name" %><i>(変更する場合のみ入力)</i>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form_control" %>
-          </div>
-          
-          <div class="field">
-            <%= f.label :prefectures, class:"label_name" %>
-            <%= f.text_field :prefectures, autofocus: true, class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :home_page, class:"label_name" %>
-            <%= f.text_field :home_page, autofocus: true, class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :industry, class:"label_name" %>
-            <%= f.text_field :industry, autofocus: true, class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :employee, class:"label_name" %>
-            <%= f.number_field :employee, autofocus: true, class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :average_age, class:"label_name" %>
-            <%= f.number_field :average_age, autofocus: true, class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :introduction, class:"label_name" %>
-            <%= f.text_area :introduction, autofocus: true, class:"form_control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :プロフィール画像, class:"label_name" %>
-            <%= f.file_field :image %>
-          </div>
-
-          <div class="field">
-            <%= f.label :ヘッダー画像, class:"label_name" %>
-            <%= f.file_field :header_image %>
-          </div>
-
-          <div class="actions">
-            <%= f.submit "プロフィールを変更する", class:"form_control btn_primary" %>
-          </div>
-        <% end %>
-          <h3>Cancel my account</h3>
-
-          <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-
-          <%= link_to "前のページに戻る", :back, class:"form_control back_button" %>
+      <div class="field">
+        <%= f.label :email, class:"label_name" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_control" %>
       </div>
-    </div>
+
+      <div class="field">
+        <%= f.label :password, class:"label_name" %><i>(変更する場合のみ入力)</i>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form_control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class:"label_name" %><i>(変更する場合のみ入力)</i>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form_control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :ホームページ, class:"label_name" %>
+        <%= f.text_field :home_page, autofocus: true, class:"form_control", placeholder:"URLを入力してください" %>
+      </div>
+
+      <div class="field post_date_field">
+        <h4 class="user_edit_heading left_column">活動拠点</h4>
+        <h4 class="user_edit_heading">業界</h4>
+      </div>
+      <div class="field post_date_field">
+        <%= f.text_field :prefectures, autofocus: true, class:"form_control number_input left_column", placeholder:"都道府県で入力してください" %>
+        <%= f.text_field :industry, autofocus: true, class:"form_control number_input", placeholder:"例) 通信業、金融、食品" %>
+      </div>
+
+      <div class="field post_date_field">
+        <h4 class="user_edit_heading left_column">従業員数</h4>
+        <h4 class="user_edit_heading">平均年齢</h4>
+      </div>
+
+      <div class="field post_date_field">
+        <%= f.number_field :employee, autofocus: true, class:"form_control number_input left_column", placeholder:"数字で入力してください" %>
+        <%= f.number_field :average_age, autofocus: true, class:"form_control number_input", placeholder:"数字で入力してください" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :企業紹介, class:"label_name" %>
+        <%= f.text_area :introduction, autofocus: true, class:"form_control edit_text", id:"text1", onkeyup:"StringCount('text1', 'textcount1')", placeholder:"" %>
+        <p id="textcount1">0文字</p>
+      </div>
+
+      <div class="field">
+        <%= f.label :ヘッダー画像, class:"label_name" %>
+        <div class="file">
+          ファイルを選択
+          <%= f.file_field :header_image, onChange: "imgPreView(event, 'preview1')", class:"file_input" %>
+        </div>
+        <div id="preview1" class="header_img"><%= image_tag @host_user.header_image, id:"previewImage-preview1" if @host_user.header_image.present? %></div>
+      </div>
+      <div id="preview"></div>
+
+      <div class="field">
+        <%= f.label :プロフィール画像, class:"label_name" %>
+        <div class="file">
+          ファイルを選択
+          <%= f.file_field :image, onChange: "imgPreView(event, 'preview2')", class:"file_input" %>
+        </div>
+        <div id="preview2" class="edit_user_icon"><%= image_tag @host_user.image, id:"previewImage-preview2" if @host_user.image.present? %></div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "プロフィールを変更する", class:"form_control btn_primary" %>
+      </div>
+      <% end %>
+      <h4 class="user_destroy">アカウントを削除する</h4>
+      <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか?" }, method: :delete, class:"form_control user_destroy_btn" %>
   </div>
 </div>

@@ -1,0 +1,43 @@
+<%= provide(:title, "募集編集") %>
+<div class="post_show_container">
+  <div class="device">
+    <div class="post_form">
+      <%= link_to post_path, class:"index_link" do%>
+        <i class="far fa-arrow-alt-circle-left"></i>募集詳細に戻る
+      <% end %>
+      <h4>タイトル(60文字以内)</h4>
+      <%= form_with model: @post do |f| %>
+        <%= f.text_field :title, placeholder:"タイトルを入力してください(60文字以内)", class:"post_form_title", id:"text1", onkeyup:"StringCount('text1', 'textcount1')" %>
+        <p id="textcount1">0文字</p>
+        <h4 class="heading_title">本文</h4>
+        <%= f.text_area :content, placeholder:"本文を入力してください", class:"post_form_text", id:"text2", onkeyup:"StringCount('text2', 'textcount2')" %>
+        <p id="textcount2">0文字</p>
+        <div class="post_date_field">
+          <h4 class="heading_title">募集期間(開始日)</h4>
+          <h4 class="heading_title">募集期間(終了日)</h4>
+        </div>
+        <div class="post_date_field">
+          <%= f.date_field :start_date, placeholder:"", class:"post_form_title number_input empty_right" %>
+          <%= f.date_field :finish_date, placeholder:"", class:"post_form_title number_input" %>
+        </div>
+        <h4 class="heading_title">報酬</h4>
+        <%= f.number_field :reward, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
+        <h4 class="heading_title">募集オペレーター人数</h4>
+        <%= f.number_field :recruit_people, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
+        <h4 class="heading_title">オフィス画像</h4>
+        <div class="file">
+          ファイルを選択
+          <%= f.file_field :image, onChange: "imgPreView(event, 'preview1')", class:"file_input" %>
+        </div>
+        <div>
+          <% if @post.image.attached? %>
+            <div id="preview1" class="post_img"><%= image_tag @post.image, id:"previewImage-preview1" %></div>
+          <% end %>
+        </div>
+
+        <%= f.submit '投稿を変更する', class:"form_control btn_primary" %>
+        <%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class:"form_control post_delete" %>
+      <% end %>
+    </div>
+  </div>
+</div>
