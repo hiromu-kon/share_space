@@ -9,6 +9,9 @@
         <span><%= Pv.count %></span>
         <span>views</span>
       </div>
+      <div class="created_time">
+        <%= l(@post.created_at, format: :long) %>
+      </div>
       <h1><%= @post.title %></h1>
       <% if @post.image.attached? %>
         <%= image_tag @post.image, class:"post_show_img" %>

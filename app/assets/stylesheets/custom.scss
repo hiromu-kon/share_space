@@ -1308,7 +1308,7 @@ a {
   }
 }
 
-.pv_count {
+.pv_count, .created_time {
   float: right;
   margin-right: 30px;
   color: #666;
@@ -1320,6 +1320,11 @@ a {
   span:last-child {
     font-size: 14px;
   }
+}
+
+.created_time {
+  font-size: 14px;
+  line-height: 27px;
 }
 /*---------------------------------
   投稿編集ページ
