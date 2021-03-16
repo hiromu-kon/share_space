@@ -21,9 +21,7 @@
     <% if current_host_user.id == @host_user.id %>
       <%= link_to 'アカウントを編集する', edit_host_user_registration_path, class:"direct_message mypage_edit" %>
     <% else %>
-      <div class="direct_message fade_in">
-       <p>ダイレクトメッセージを送る</p>
-      </div>
+      <%= render "contact" %>
     <% end %>
     <div class="company_description fade_in">
       <p class="company_show_content"><%= @host_user.introduction %></p>

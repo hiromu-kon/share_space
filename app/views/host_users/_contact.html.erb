@@ -1,0 +1,12 @@
+<% if @isRoom == true %>
+  <div class="direct_message fade_in">
+    <%= link_to "ダイレクトメッセージを送る", room_path(@roomId) %>
+  </div>
+<% else %>
+  <%= form_with(model:@room, local: true) do |f| %>
+    <%= fields_for @entry do |e| %>
+      <%= e.hidden_field :host_user_id, value: @host_user.id %>
+    <% end %>
+    <%= f.submit "ダイレクトメッセージを送る", class:"direct_message fade_in"%>
+  <% end %>
+<% end %>

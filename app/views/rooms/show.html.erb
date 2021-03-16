@@ -1,0 +1,43 @@
+<div class="post_index">
+  <h4 class="rooms_title">####</h4>
+  <% @entries.each do |e| %>
+    <div class="user_name">
+      <strong>
+        <% if e.host_user.id != current_host_user.id %>
+          <%= link_to host_user_path(e.host_user.id) do %>
+            <%= image_tag e.host_user.image, class:"user_image" %>
+            <%= e.host_user.name %>さん
+          <% end %>
+        <% end %>
+      </strong>
+    </div>
+  <% end %>
+  <hr>
+  <div class="chats">
+    <div class="chat">
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <div class="chat-box">
+            <div class="chat-face">
+              <%= image_tag m.host_user.image, class:"user-image" %>
+            </div>
+            <div class="chat-hukidashi"> <strong><%= m.message %></strong> <br>
+              <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+            </div>
+          </div>
+          <div class="posts">
+            <%= form_with(model: @message, url: edit_message_path(m.id), remote: true, method: :get) do |f| %>
+              <%= f.hidden_field :room_id, value: @room.id %>
+              <%= f.submit "編集" %>
+              <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+      <%= form_with(model: @message, id: "room-show__form") do |f| %>
+        <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.submit "投稿",class: 'form-submit'%>
+      <% end %>
+  </div>
+</div>
