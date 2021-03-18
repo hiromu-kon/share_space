@@ -52,7 +52,7 @@
             <%= image_tag post.image, class:"post_index_image" %>
           </div>
           <h1 class="post_title"><%= post.title %></h1>
-          <p class="post_content"><%= post.content %></p>
+          <p class="post_content"><%= truncate(post.content, length: 90) %></p>
           <div class="group"><h3>報酬(月単価)<span>約<%= number_to_currency(post.reward)%></span></h3></div>
           <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
           <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>

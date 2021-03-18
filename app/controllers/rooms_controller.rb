@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = current_host_user.rooms.includes(:messages).order("messages.created_at desc")
+    @rooms = current_host_user.rooms.joins(:messages).includes(:messages).order("messages.created_at desc")
   end
 
   def create
