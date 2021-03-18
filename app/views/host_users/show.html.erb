@@ -1,55 +1,65 @@
 <% provide(:title, @host_user.name) %>
 
-<div class="detail_frame">
-  <% if @host_user.header_image.attached? %>
-    <%= image_tag @host_user.header_image, class:"header_detail" %>
-  <% else %>
-    <%= image_tag 'header_default.jpg', class:"header_detail" %>
-  <% end %>
-  <div class="company_block">
-    <% if @host_user.image.attached? %>
-      <%= image_tag  @host_user.image, class:"user_icon" %>
+<div class="user_show">
+  <div class="detail_frame">
+    <% if @host_user.header_image.attached? %>
+      <%= image_tag @host_user.header_image, class:"header_detail" %>
     <% else %>
-      <%= image_tag 'user_default.png', class:"user_icon" %>
+      <%= image_tag 'header_default.jpg', class:"header_detail" %>
     <% end %>
-    <p class="company_name">
-      <%= @host_user.name %>
-    </p>
-    <p class="company_homepage">
-        <%= raw Rinku.auto_link(@host_user.home_page, :all, 'target="_blank"') if @host_user.home_page %>
-    </p>
-    <% if current_host_user.id == @host_user.id %>
-      <%= link_to 'アカウントを編集する', edit_host_user_registration_path, class:"direct_message mypage_edit" %>
-    <% else %>
-      <%= render "contact" %>
-    <% end %>
-    <div class="company_description fade_in">
-      <p class="company_show_content"><%= @host_user.introduction %></p>
-    </div>
-    <div class="company_info fade_in">
-      <h3>会社情報</h3>
-      <ul class="info_box">
-        <li>業種<span class="sub_category"><%= @host_user.industry %></span>
-        </li>
-        <li>平均年齢<span class="sub_category"><%= @host_user.average_age %></span></li>
-        <li>活動拠点<span class="sub_category"></span><%= @host_user.prefectures %></li>
-      </ul>
-    </div>
-  </div>
-  <h2 class="user_post_index"><%= @host_user.name %>さんのスペース投稿(<%= @host_user.posts.count %>件)</h2>
-    <% @host_user.posts.each do |post| %>
-      <%= link_to post do %>
-      <div class="user_post_area">
-        <div>
-          <%= image_tag post.image, class:"post_index_image" %>
-        </div>
-        <h1 class="post_title"><%= post.title %></h1>
-        <p class="post_content"><%= post.content %></p>
-        <div class="group"><h3>報酬(月単価)<span>約<%= number_to_currency(post.reward)%></span></h3></div>
-        <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
-        <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
-        <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
-      </div>
+    <div class="company_block">
+      <% if @host_user.image.attached? %>
+        <%= image_tag  @host_user.image, class:"user_icon" %>
+      <% else %>
+        <%= image_tag 'user_default.png', class:"user_icon" %>
       <% end %>
-    <% end %>
+      <p class="company_name">
+        <%= @host_user.name %>
+      </p>
+      <p class="company_homepage">
+          <%= raw Rinku.auto_link(@host_user.home_page, :all, 'target="_blank"') if @host_user.home_page %>
+      </p>
+      <% if current_host_user.id == @host_user.id %>
+        <%= link_to 'アカウントを編集する', edit_host_user_registration_path, class:"direct_message mypage_edit" %>
+      <% else %>
+        <%= render "contact" %>
+      <% end %>
+      <div class="company_description fade_in">
+        <p class="company_show_content"><%= @host_user.introduction %></p>
+      </div>
+      <div class="company_info fade_in">
+        <div class="label_box">
+          <div class="label_box_tape"></div>
+          <p class="label_box_title">会社情報</p>
+          <p class="label_box_subtitle">
+            <ul class="info_box">
+              <li>業種<span class="sub_category"><%= @host_user.industry %></span>
+              </li>
+              <li>平均年齢<span class="sub_category"><%= @host_user.average_age %></span>
+              </li>
+              <li>活動拠点<span class="sub_category"></span><%= @host_user.prefectures %>
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+    <h2 class="user_post_index"><%= @host_user.name %>さんのスペース投稿(<%= @host_user.posts.count %>件)</h2>
+      <% @host_user.posts.each do |post| %>
+        <%= link_to post do %>
+        <div class="user_post_area">
+          <div>
+            <%= image_tag post.image, class:"post_index_image" %>
+          </div>
+          <h1 class="post_title"><%= post.title %></h1>
+          <p class="post_content"><%= post.content %></p>
+          <div class="group"><h3>報酬(月単価)<span>約<%= number_to_currency(post.reward)%></span></h3></div>
+          <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
+          <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
+          <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
+        </div>
+        <% end %>
+        <hr class="post_separate">
+      <% end %>
+  </div>
 </div>

@@ -7,7 +7,6 @@ class RoomsController < ApplicationController
     @room = Room.create
     @joinCurrentUser = Entry.create(host_user_id: current_host_user.id, room_id: @room.id)
     @joinUser = Entry.create(join_room_params)
-    @first_message = @room.messages.create(host_user_id: current_host_user.id, message: "初めまして！")
     redirect_to room_path(@room.id)
   end
 
@@ -16,7 +15,7 @@ class RoomsController < ApplicationController
     if Entry.where(host_user_id: current_host_user.id, room_id: @room.id).present?
       @messages = @room.messages.includes(:host_user).order("created_at asc")
       @message = Message.new
-      @entries = @room.entries
+      @entries = @room.entries.includes(:host_user)
     else
       redirect_back(fallback_location: root_path)
     end
