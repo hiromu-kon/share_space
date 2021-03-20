@@ -1,0 +1,7 @@
+<%= form_for @message, remote: true do |f| %>
+  <div class="chat_form">
+    <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form_chat_text", id:"message_content" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "送信", class: 'form-submit reset'%>
+  </div>
+<% end %>

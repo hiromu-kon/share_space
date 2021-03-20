@@ -1,0 +1,34 @@
+<div id="message_<%= message.id %>">
+    <% if message.host_user_id == current_host_user.id %>
+      <div class="room_item_right">
+        <span class="chat_message">
+          <%= message.message %>
+        </span>
+      </div>
+      <div class="room_item_right_bottom">
+        <%= form_for @message, url: message_path(message.id), method: :delete, data: { confirm: '削除してよろしいですか？' }, remote: true do |f| %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "削除", class:"destroy_message" %>
+        <% end %>
+        <div class="room_item_date">
+          <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
+        </div>
+      </div>
+    <% else %>
+      <div class="room_item_left">
+        <div class="room_item">
+          <% if message.host_user.image.attached? %>
+            <%= image_tag message.host_user.image, class:"message_user_image" %>
+          <% else %>
+            <%= image_tag "user_default.png", class:"message_user_image" %>
+          <% end %>
+          <span class="chat_message">
+            <%= message.message %>
+          </span>
+        </div>
+        <div class="room_item_date">
+          <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
+        </div>
+      </div>
+    <% end %>
+</div>

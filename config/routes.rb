@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     end
   end
   resources :rooms, only: [:index, :create, :show]
-  resources :messages, only: [:create, :edit, :update, :destroy]
+  resources :messages, only: [:create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -8,6 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+require('jquery')
+
 require('./top_button')
 require('./header_follow')
 require('./image_preview')
