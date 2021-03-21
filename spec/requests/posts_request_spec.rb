@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "Posts", type: :request do
 
   describe "Post一覧ページ" do
-    let(:host_user) { create :host_user }
+    let(:user) { create :user }
     let(:post) { create :post }
 
     before do
-      sign_in_as host_user
+      sign_in_as user
       get "/posts"
     end
 

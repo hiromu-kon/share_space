@@ -30,14 +30,14 @@
 
         <% @posts.each do |post| %>
           <hr class="post_separate">
-          <%= link_to post.host_user do %>
+          <%= link_to post.user do %>
             <div class="post_company">
-              <% if post.host_user.image.attached? %>
-                <%= image_tag  post.host_user.image, class:"post_company_image" %>
+              <% if post.user.image.attached? %>
+                <%= image_tag  post.user.image, class:"post_company_image" %>
               <% else %>
                 <%= image_tag 'user_default.png', class:"post_company_image" %>
               <% end %>
-              <span><%= post.host_user.name %></span>
+              <span><%= post.user.name %></span>
             </div>
           <% end %>
           <%= link_to post do %>

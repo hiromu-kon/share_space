@@ -211,20 +211,12 @@ ja:
     pm: 午後
   activerecord:
     models:
-      host_user: ユーザー
-      call_center_user: ユーザー
+      user: ユーザー
     attributes:
-      host_user:
+      user:
         name: 企業名
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認用)
         remember_me: ログイン情報を記憶する
-        host_user: ユーザー
-      attributes:
-      call_center_user:
-        name: 企業名
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード(確認用)
-        remember_me: ログイン情報を記憶する
+        user: ユーザー

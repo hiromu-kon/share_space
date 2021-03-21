@@ -6,6 +6,6 @@ FactoryBot.define do
     recruit_people { 1 }
     start_date { "2021-03-14" }
     finish_date { "2021-03-14" }
-    association :host_user
+    association :user
   end
 end

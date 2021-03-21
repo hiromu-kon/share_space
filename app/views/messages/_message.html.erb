@@ -1,5 +1,5 @@
 <div id="message_<%= message.id %>">
-    <% if message.host_user_id == current_host_user.id %>
+    <% if message.user_id == current_user.id %>
       <div class="room_item_right">
         <span class="chat_message">
           <%= message.message %>
@@ -17,8 +17,8 @@
     <% else %>
       <div class="room_item_left">
         <div class="room_item">
-          <% if message.host_user.image.attached? %>
-            <%= image_tag message.host_user.image, class:"message_user_image" %>
+          <% if message.user.image.attached? %>
+            <%= image_tag message.user.image, class:"message_user_image" %>
           <% else %>
             <%= image_tag "user_default.png", class:"message_user_image" %>
           <% end %>

@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create(message_params)
-    @message.host_user_id = current_host_user.id
+    @message.user_id = current_user.id
     @message.room_id = params[:room_id]
 
     if @message.save
@@ -30,11 +30,11 @@ class MessagesController < ApplicationController
    end
 
    def gets_entries_all_messages
-     @messages = @room.messages.includes(:host_user).order("created_at asc")
+     @messages = @room.messages.includes(:user).order("created_at asc")
      @entries = @room.entries
    end
 
    def message_params
-     params.require(:message).permit(:host_user_id, :message, :room_id).merge(host_user_id: current_host_user.id)
+     params.require(:message).permit(:user_id, :message, :room_id).merge(user_id: current_user.id)
    end
 end

@@ -6,17 +6,17 @@
     <ul>
       <% @rooms.each do |room| %>
         <li class="room_index_item">
-          <% host_user = opened_host_user(room)%>
-          <%= link_to host_user do %>
-            <% if host_user.image.attached?%>
-            <%= image_tag host_user.image, class:"message_user_image" %>
+          <% user = opened_user(room) %>
+          <%= link_to user do %>
+            <% if user.image.attached? %>
+            <%= image_tag user.image, class:"message_user_image" %>
             <% else %>
               <%= image_tag "user_default.png", class:"message_user_image" %>
             <% end %>
           <% end %>
           <%= link_to room, class: 'room_index_item_content' do %>
             <div class="room_index_content">
-              <strong class=""><%= host_user.name %></strong>
+              <strong class=""><%= user.name %></strong>
               <% message = get_most_new_message(room) %>
               <% if message.present? %>
                 <div class="room_index_content_message">

@@ -1,4 +1,4 @@
-<% if host_user_signed_in? %>
+<% if user_signed_in? %>
   <li>
     <div class="offcm01">
       <input type="checkbox" id="toggle01" class="toggle_button">
@@ -6,12 +6,12 @@
       <div class="menu">
         <ul>
           <li>
-            <%= link_to host_user_path(current_host_user.id) do %>
+            <%= link_to user_path(current_user.id) do %>
               <i class="fas fa-user-circle"></i>マイページ
             <% end %>
           </li>
           <li>
-            <%= link_to edit_host_user_registration_path do %>
+            <%= link_to edit_user_registration_path do %>
               <i class="fas fa-user-edit"></i>ユーザー編集
             <% end %>
           </li>
@@ -36,7 +36,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_host_user_session_path, :method => :delete do %>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
               <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>
           </li>
@@ -92,7 +92,7 @@
   </li>
 <% else %>
   <li>
-    <%= link_to "ホスト企業 | 新規登録orログイン", new_host_user_session_path, class:"btn-border" %>
+    <%= link_to "ホスト企業 | 新規登録orログイン", new_user_session_path, class:"btn-border" %>
   </li>
   <li>
     <%= link_to "コールセンター | 新規登録orログイン", new_call_center_user_session_path, class:"btn-border" %>

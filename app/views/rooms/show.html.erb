@@ -3,16 +3,16 @@
 <div class="post_index">
   <div class="room_show_box">
     <% @entries.each do |e| %>
-      <% if e.host_user.id != current_host_user.id %>
-        <%= link_to host_user_path(e.host_user.id) do %>
+      <% if e.user.id != current_user.id %>
+        <%= link_to user_path(e.user.id) do %>
           <div class="company_room">
-            <% if e.host_user.image.attached? %>
-              <%= image_tag e.host_user.image, class:"message_user_image" %>
+            <% if e.user.image.attached? %>
+              <%= image_tag e.user.image, class:"message_user_image" %>
             <% else %>
               <%= image_tag "user_default.png", class:"message_user_image" %>
             <% end %>
             <span>
-              <%= e.host_user.name %>さん
+              <%= e.user.name %>さん
             </span>
           </div>
         <% end %>

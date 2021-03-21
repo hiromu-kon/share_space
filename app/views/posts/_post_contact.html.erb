@@ -1,4 +1,4 @@
-<% unless @post.host_user.id == current_host_user.id %>
+<% unless @post.user.id == current_user.id %>
   <% if @haveRoom == true %>
     <%= link_to  room_path(@roomId) do %>
       <div class="btn-border">
@@ -8,7 +8,7 @@
   <% else %>
     <%= form_with(model:@room, local: true, class:"form_post_contact") do |f| %>
       <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :host_user_id, value: @post.host_user.id %>
+        <%= e.hidden_field :user_id, value: @post.user.id %>
       <% end %>
       <%=  f.button :type => "submit", class:"btn-border" do %>
         <i class="far fa-envelope"></i> DMを送る

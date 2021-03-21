@@ -17,7 +17,7 @@
         <%= image_tag @post.image, class:"post_show_img" %>
       <% end %>
       <div class="post_show_btn">
-        <% if @post.host_user == current_host_user %>
+        <% if @post.user == current_user %>
           <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
         <% else %>
           <%= render "post_contact" %>
@@ -53,15 +53,15 @@
       </div>
 
       <hr class="post_separate">
-      <%= link_to @post.host_user do %>
+      <%= link_to @post.user do %>
         <div class="post_show_company">
-          <% if @post.host_user.image.attached? %>
-            <%= image_tag @post.host_user.image, class:"post_company_image" %>
+          <% if @post.user.image.attached? %>
+            <%= image_tag @post.user.image, class:"post_company_image" %>
           <% end %>
-          <div class="post_company_name"><%= @post.host_user.name %></div>
+          <div class="post_company_name"><%= @post.user.name %></div>
         </div>
       <% end %>
-      <p class="post_company_introduction"><%= @post.host_user.introduction %><p>
+      <p class="post_company_introduction"><%= @post.user.introduction %><p>
       <hr class="post_separate">
       <h3 class="">おすすめ投稿</h3>
     </div>
