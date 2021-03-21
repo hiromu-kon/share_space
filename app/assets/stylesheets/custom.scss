@@ -108,6 +108,7 @@ a {
   background-color: #009933;
   color: #FFF;
   margin-top: 10px;
+  transition: .8s;
 
   &:hover {
     border: 2px solid #009933;
@@ -159,6 +160,7 @@ a {
 	top: 3px;
 	right: 60px;
 	display: inline-block;
+  z-index: 50;
 
   & .menu {
 	  position: fixed;
@@ -444,6 +446,7 @@ a {
   background-clip: padding-box;
   border: 2px solid #ced4da;
   border-radius: .25rem;
+  transition: .5s;
 }
 
 .field, .actions {
@@ -715,7 +718,9 @@ a {
   font-weight: bold;
   padding: 20px 0;
   width: 285px;
-  background-image: linear-gradient(260deg, #30F9B2, 	#4689FF);
+  background: linear-gradient(to right,#3366FF 0%, #00BFFF 51%, #77F9C3 100%);
+  background-size: 200% auto;
+  transition: .5s;
   color: #fff;
   border-style: none;
   outline: 0;
@@ -725,19 +730,31 @@ a {
   }
 
   &:hover {
-    background-image: linear-gradient(260deg, #77F9C3, #8EB8FF);
-    transition: .9s;
     cursor: pointer;
+    background-position: right center;
+    transition: .5s;
   }
 }
 
 .mypage_edit {
-  background-image: linear-gradient(260deg, #00FF00, #008800);
+  background: linear-gradient(to right,#43FF6B 0%, #007700 51%, #00BB00 100%);
+  background-size: 200% auto;
   display: block;
   text-align: center;
+  transition: .5s;
+  margin: 40px auto 10px auto;
+  border-radius: 150px;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 20px 0;
+  width: 285px;
+  color: #fff;
+  border-style: none;
+  outline: 0;
 
   &:hover {
-    background-image: linear-gradient(260deg, #00FF66, #00AA00);
+    background-position: right center;
+    transition: .5s;
   }
 }
 
@@ -975,7 +992,7 @@ a {
 }
 
 .fa-search {
-  margin-right: 7px;
+  margin-right: 10px;
 }
 
 .post_detail {
@@ -1065,8 +1082,8 @@ a {
   text-align: center;
   border-radius: 50px;
   margin-left: 150px;
-  background: unset;
-  background-image: linear-gradient(260deg, #3399FF, #00BFFF);
+  background: linear-gradient(to right,#136FFF 0%, #5D99FF 51%, #00FFFF 100%);
+  background-size: 200% auto;
   padding: 20px 80px;
   font-weight: 600;
   font-size: 16px;
@@ -1074,11 +1091,11 @@ a {
   color: white !important;
   border: none;
   outline: none;
-  transition: all 0.2s ease;
+  transition: .4s;
 
   &:hover {
-    background-image: linear-gradient(260deg, #5D99FF, #00ECFF);
-    transition: .5s;
+    background-position: right center;
+    transition: .4s;
   }
 }
 
@@ -1128,10 +1145,31 @@ a {
   width: 90%;
   background-color: #3399FF;
   color: #fff;
+  margin-top: 15px;
 
   &:hover {
     background-color: #33CCFF;
     transition: .4s;
+  }
+}
+
+.search_reset {
+  width: 90%;
+  background-color: #999;
+  color: #fff;
+  border: 2px solid #ced4da;
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 6px 12px;
+  transition: .4s;
+
+  &:hover {
+    background-color: #BBB;
+    transition: .4s;
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
@@ -1278,6 +1316,7 @@ a {
     font-weight: bold;
     font-size: 17px;
     outline: none;
+    transition: .5s;
   }
 }
 
@@ -1297,6 +1336,7 @@ a {
   font-size: 17px;
   background-color: #fff;
   margin-top: 10px;
+  transition: .8s;
 
   &:hover {
     border: 2px solid #009933;
@@ -1707,136 +1747,6 @@ a {
 
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0 8px;
-}
-
-/*---------------------------------
-  fancy-button ボタンエフェクト
----------------------------------*/
-@mixin gradientBg($startColor, $endColor) {
-  background: $startColor;
-  background: -moz-linear-gradient(left,  $startColor 0%, $endColor 80%,$endColor 100%);
-  background: -webkit-linear-gradient(left,  $startColor 0%, $endColor 80%,$endColor 100%);
-  background: linear-gradient(to right,  $startColor 0%, $endColor 80%,$endColor 100%);
-}
-
-.bg-gradient1 span,
-.bg-gradient1:before {
-  @include gradientBg(#52A0FD, #00e2fa);
-}
-
-.bg-gradient2 span,
-.bg-gradient2:before {
-  @include gradientBg(#44ea76, #39fad7);
-}
-
-
-.button_block {
-  margin: 0 auto;
-}
-
-.g {
-  outline: none;
-  border: none;
-  background: transparent;
-  @include gradientBg(#52A0FD, #00e2fa);
-  display: inline-block;
-  margin: 30px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #fff;
-  position: relative;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.fancy-button, .fancy-button_post {
-  display: inline-block;
-  margin: 40px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #fff;
-  position: relative;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-
-
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 50px;
-    position: absolute;
-    bottom: -5px;
-    left: 30px;
-    right: 30px;
-    border-radius: 30em;
-    filter: blur(20px) brightness(0.95);
-    transform-style: preserve-3d;
-    transition: all 0.3s ease-out;
-    z-index: -2;
-  }
-  span {
-    display: inline-block;
-    padding: 18px 60px;
-    border-radius: 50em;
-    position: relative;
-    will-change: transform, filter;
-    transform-style: preserve-3d;
-    transition: all 0.3s ease-out;
-    z-index: 0;
-  }
-  &:focus,
-  &:active {
-    color: #ffffff;
-  }
-  &:hover {
-    color: #ffffff;
-
-    span {
-      filter: brightness(1.05) contrast(1.05);
-      transform: scale(0.95);
-    }
-    &:before {
-      bottom: 0;
-      filter: blur(10px) brightness(0.95);
-    }
-  }
-  &.pop-onhover {
-
-    &:before {
-      opacity: 0;
-      bottom: 10px;
-    }
-    &:hover {
-
-      &:before {
-        bottom: -7px;
-        opacity: 1;
-        filter: blur(20px);
-      }
-      span {
-        transform: scale(1.04);
-      }
-      &:active {
-
-        span {
-          filter: brightness(1) contrast(1);
-          transform: scale(1);
-          transition: all 0.15s ease-out;
-        }
-        &:before {
-          bottom: 0;
-          filter: blur(10px) brightness(0.95);
-          transition: all 0.2s ease-out;
-        }
-      }
-    }
-  }
-}
-
-.fancy-button_post {
-  margin: 0 0 0 20%;
-  font-size: 20px;
 }
 /*---------------------------------
   ページネーション

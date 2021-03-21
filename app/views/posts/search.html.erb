@@ -8,8 +8,7 @@
         <div class="select_sort">
           <%= f.select( :sorts, { '並び替え': 'id desc', '報酬の安い順': 'reward asc', '報酬の高い順': 'reward desc', '募集の古い順': 'updated_at asc', '募集の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'}) %>
         </div>
-        <%= f.text_field :title_or_content_or_host_user_name_cont, class: "form_search", placeholder: "フリーワードで検索" %>
-        <i class="fas fa-search"></i>
+        <%= f.text_field :title_or_content_or_user_name_cont, class: "form_search", placeholder: "フリーワードで検索" %>
         <h3>報酬金額</h3>
         <%= f.number_field :reward_gteq, class:"number_start", placeholder: "最小金額" %>〜<%= f.number_field :reward_lteq, class:"number_finish", placeholder: "最大金額" %>
         <h3>募集人数</h3>
@@ -18,7 +17,10 @@
         <%= render 'select_industry' %>
         <h3>募集地域(都道府県)</h3>
         <%= render 'select_prefecture' %>
-        <%= f.submit class:"form_control search_submit" %>
+        <%= f.button :type => "submit", class:"form_control search_submit" do %>
+          <i class="fas fa-search"></i>検索
+        <% end %>
+        <%= reset_tag 'クリア', id: 'js_clear_btn', class:"search_reset" %>
         <% end %>
       </div>
       <div class="post_detail">

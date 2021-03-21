@@ -21,9 +21,7 @@
       </p>
       <% if current_user.id == @user.id %>
         <div class="button_block">
-          <%= link_to edit_user_registration_path, class:"fancy-button bg-gradient2" do %>
-            <span>アカウントを編集する</span>
-          <% end %>
+          <%= link_to 'アカウントを編集する', edit_user_registration_path, class:"mypage_edit" %>
         </div>
       <% else %>
         <%= render "contact" %>
