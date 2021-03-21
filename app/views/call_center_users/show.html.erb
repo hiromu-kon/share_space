@@ -23,7 +23,7 @@
       <i class="fa fa-link"></i>
         <%= raw Rinku.auto_link(@call_center_user.home_page, :all, 'target="_blank"') if @call_center_user.home_page %>
     </p>
-    <% if current_call_center_user == @call_center_user %>
+    <% if current_call_center_user.id == @call_center_user.id %>
       <%= link_to 'アカウントを編集する', edit_call_center_user_registration_path, class:"direct_message mypage_edit" %>
     <% else %>
       <div class="direct_message fade_in">

@@ -1,16 +1,45 @@
-<% if host_user_signed_in? %>
+<% if user_signed_in? %>
   <li>
     <div class="offcm01">
       <input type="checkbox" id="toggle01" class="toggle_button">
       <label for="toggle01"><span></span></label>
       <div class="menu">
         <ul>
-          <li><%= link_to 'マイページ', host_user_path(current_host_user.id) %></li>
-          <li><%= link_to 'ユーザー編集', edit_host_user_registration_path %></li>
-          <li><%= link_to '通知', '#' %></li>
-          <li><%= link_to '募集を見る', posts_path %></li>
-          <li><%= link_to 'ブックマーク', '#' %></li>
-          <li><%= link_to 'ログアウト', destroy_host_user_session_path, :method => :delete %></li>
+          <li>
+            <%= link_to user_path(current_user.id) do %>
+              <i class="fas fa-user-circle"></i>マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fas fa-user-edit"></i>ユーザー編集
+            <% end %>
+          </li>
+          <li>
+            <%= link_to posts_path do %>
+              <%= image_tag 'post.png', class:"post_header_img" %>募集を見る
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#' do %>
+              <i class="fas fa-bell"></i>通知
+            <% end %>
+          </li>
+          <li>
+            <%= link_to rooms_path do %>
+              <i class="fas fa-envelope"></i>メッセージボックス
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#' do %>
+              <i class="fas fa-bookmark"></i>ブックマーク
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
@@ -22,19 +51,48 @@
       <label for="cp_toggle01"><span></span></label>
       <div class="cp_menu">
         <ul>
-          <li><%= link_to 'マイページ', call_center_user_path(current_call_center_user.id) %></li>
-          <li><%= link_to 'ユーザー編集', edit_call_center_user_registration_path %></li>
-          <li><%= link_to '通知', '#' %></li>
-          <li><%= link_to '募集を見る', posts_path %></li>
-          <li><%= link_to 'ブックマーク', '#' %></li>
-          <li><%= link_to 'ログアウト', destroy_call_center_user_session_path, :method => :delete %></li>
+          <li>
+            <%= link_to call_center_user_path(current_call_center_user.id) do %>
+              <i class="far fa-user-circle"></i>マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_call_center_user_registration_path do %>
+              <i class="fas fa-user-edit"></i>ユーザー編集
+            <% end %>
+          </li>
+          <li>
+            <%= link_to posts_path do %>
+              <%= image_tag 'post.png', class:"post_header_img" %>募集を見る
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#' do %>
+              <i class="far fa-bell"></i>通知
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#' do %>
+              <i class="far fa-envelope"></i>メッセージボックス
+            <% end %>
+          </li>
+          <li>
+            <%= link_to '#' do %>
+              <i class="far fa-bookmark"></i>ブックマーク
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_call_center_user_session_path, :method => :delete do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
   </li>
 <% else %>
   <li>
-    <%= link_to "ホスト企業 | 新規登録orログイン", new_host_user_session_path, class:"btn-border" %>
+    <%= link_to "ホスト企業 | 新規登録orログイン", new_user_session_path, class:"btn-border" %>
   </li>
   <li>
     <%= link_to "コールセンター | 新規登録orログイン", new_call_center_user_session_path, class:"btn-border" %>

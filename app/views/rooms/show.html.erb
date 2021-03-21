@@ -1,0 +1,30 @@
+<% provide(:title, "メッセージ") %>
+
+<div class="post_index">
+  <div class="room_show_box">
+    <% @entries.each do |e| %>
+      <% if e.user.id != current_user.id %>
+        <%= link_to user_path(e.user.id) do %>
+          <div class="company_room">
+            <% if e.user.image.attached? %>
+              <%= image_tag e.user.image, class:"message_user_image" %>
+            <% else %>
+              <%= image_tag "user_default.png", class:"message_user_image" %>
+            <% end %>
+            <span>
+              <%= e.user.name %>さん
+            </span>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <hr class="company_chat">
+    <div id="messages" class="row">
+      <% @messages.each do |message| %>
+  <%= render partial: 'messages/message', locals: {message: message} %>
+<% end %>
+    </div>
+  </div>
+  <div id="message_error"></div>
+  <%= render "chat_form" %>
+</div>
