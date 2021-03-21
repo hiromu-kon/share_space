@@ -17,10 +17,14 @@
         <%= @host_user.name %>
       </p>
       <p class="company_homepage">
-          <%= raw Rinku.auto_link(@host_user.home_page, :all, 'target="_blank"') if @host_user.home_page %>
+        <%= raw Rinku.auto_link(@host_user.home_page, :all, 'target="_blank"') if @host_user.home_page %>
       </p>
       <% if current_host_user.id == @host_user.id %>
-        <%= link_to 'アカウントを編集する', edit_host_user_registration_path, class:"direct_message mypage_edit" %>
+        <div class="button_block">
+          <%= link_to edit_host_user_registration_path, class:"fancy-button bg-gradient2" do %>
+            <span>アカウントを編集する</span>
+          <% end %>
+        </div>
       <% else %>
         <%= render "contact" %>
       <% end %>

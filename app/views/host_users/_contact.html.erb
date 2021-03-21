@@ -1,8 +1,10 @@
 <% unless @host_user.id == current_host_user.id %>
   <% if @haveRoom == true %>
     <%= link_to  room_path(@roomId) do %>
-      <div class="direct_message">
-        ダイレクトメッセージを送る
+      <div class="button_block">
+        <div class="fancy-button bg-gradient1">
+          <span><i class="far fa-envelope"></i> メッセージを送る</span>
+        </div>
       </div>
     <% end %>
   <% else %>
@@ -10,7 +12,9 @@
       <%= fields_for @entry do |e| %>
         <%= e.hidden_field :host_user_id, value: @host_user.id %>
       <% end %>
-      <%= f.submit "ダイレクトメッセージを送る", class:"direct_message"%>
+        <%=  f.button :type => "submit", class:"fancy-button bg-gradient1 g" do %>
+          <i class="far fa-envelope"></i> メッセージを送る
+        <% end %>
     <% end %>
   <% end %>
 <% end %>

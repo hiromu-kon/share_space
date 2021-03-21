@@ -26,7 +26,9 @@
         <div class="recruit_title">
           <span class="title_name">募集一覧</span>
           <span><%= @posts.count %>件表示</span>
-          <%= link_to "募集する", new_post_path, class:"recruit_link"%>
+          <%= link_to new_post_path, class:"fancy-button_post bg-gradient1" do %>
+            <span>募集する</span>
+          <% end %>
         </div>
 
         <% @posts.each do |post| %>
