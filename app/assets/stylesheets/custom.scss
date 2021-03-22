@@ -29,27 +29,21 @@ a {
  .notice, .success {
    background-color: #38AEF0;
    color: #fff;
-   font-size: 20px;
+   font-size: 18px;
    font-weight: bold;
    text-align: center;
+   z-index: 20;
  }
- .alert {
+ .alert, .danger {
    background-color: #F35500;
    color: #fff;
-   font-size: 20px;
+   font-size: 18px;
    font-weight: bold;
    text-align: center;
-   margin-top: 72px;
-   margin-bottom: -80px;
- }
-
- .danger {
-   background-color: #F35500;
-   color: #fff;
-   font-size: 20px;
-   font-weight: bold;
-   text-align: center;
-   margin-bottom: -80px;
+   margin-top: -25px;
+   position: absolute;
+   width: 100%;
+   z-index: 20;
  }
 }
 /*---------------------------------
@@ -145,6 +139,7 @@ a {
   width: 100%;
   background: none;
   transition: all 0.5s ease;
+  z-index: 10;
 }
 
 .hidden {
@@ -263,6 +258,8 @@ a {
   background-repeat: no-repeat;
   background-position: right top;
   background-size: cover;
+  z-index: 2;
+  position: relative;
 }
 
 .main_title_box {
@@ -294,11 +291,13 @@ a {
   background-color: #F35500;
   color: #fff;
   text-align: center;
-  margin-top: 72px;
-  margin-bottom: -80px;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+  margin-top: -25px;
 
   h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 

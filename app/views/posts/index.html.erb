@@ -27,7 +27,9 @@
         <div class="recruit_title">
           <span class="title_name">募集一覧</span>
           <span><%= @posts.count %>件表示</span>
-          <%= link_to "募集する", new_post_path, class:"recruit_link"%>
+          <% if user_signed_in? %>
+            <%= link_to "募集する", new_post_path, class:"recruit_link"%>
+          <% end %>
         </div>
         <%= render @posts %>
         <%= paginate @posts %>

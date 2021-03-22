@@ -1,16 +1,18 @@
-<% unless @user.id == current_user.id %>
-  <% if @haveRoom == true %>
-    <%= link_to  room_path(@roomId) do %>
-      <div class="direct_message">
-        ダイレクトメッセージを送る
-      </div>
-    <% end %>
-  <% else %>
-    <%= form_with(model:@room, local: true) do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
+<% if user_signed_in? %>
+  <% unless @user == current_user %>
+    <% if @haveRoom == true %>
+      <%= link_to  room_path(@roomId) do %>
+        <div class="direct_message">
+          メッセージを送る
+        </div>
       <% end %>
-        <%= f.submit "メッセージを送る", class:"direct_message"%>
+    <% else %>
+      <%= form_with(model:@room, local: true) do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @user.id %>
+        <% end %>
+          <%= f.submit "メッセージを送る", class:"direct_message"%>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

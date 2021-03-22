@@ -1,17 +1,19 @@
-<% unless @post.user.id == current_user.id %>
-  <% if @haveRoom == true %>
-    <%= link_to  room_path(@roomId) do %>
-      <div class="btn-border">
-        <i class="far fa-envelope"></i> DMを送る
-      </div>
-    <% end %>
-  <% else %>
-    <%= form_with(model:@room, local: true, class:"form_post_contact") do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @post.user.id %>
+<% if user_signed_in? %>
+  <% unless @post.user == current_user %>
+    <% if @haveRoom == true %>
+      <%= link_to  room_path(@roomId) do %>
+        <div class="btn-border">
+          <i class="far fa-envelope"></i> DMを送る
+        </div>
       <% end %>
-      <%=  f.button :type => "submit", class:"btn-border" do %>
-        <i class="far fa-envelope"></i> DMを送る
+    <% else %>
+      <%= form_with(model:@room, local: true, class:"form_post_contact") do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @post.user.id %>
+        <% end %>
+        <%=  f.button :type => "submit", class:"btn-border" do %>
+          <i class="far fa-envelope"></i> DMを送る
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
