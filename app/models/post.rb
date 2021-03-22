@@ -6,4 +6,10 @@ class Post < ApplicationRecord
   validates :reward, presence: true, numericality: true
   validates :recruit_people, presence: true, numericality: true
   has_one_attached :image
+
+  has_many :bookmarks, dependent: :destroy
+
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
+  end
 end
