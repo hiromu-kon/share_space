@@ -47,21 +47,21 @@
       </div>
     </div>
     <h2 class="user_post_index"><%= @user.name %>さんのスペース投稿(<%= @user.posts.count %>件)</h2>
-      <% @user.posts.each do |post| %>
-        <%= link_to post do %>
-        <div class="user_post_area">
-          <div>
-            <%= image_tag post.image, class:"post_index_image" %>
-          </div>
-          <h1 class="post_title"><%= post.title %></h1>
-          <p class="post_content"><%= truncate(post.content, length: 90) %></p>
-          <div class="group"><h3>報酬(月単価)<span>約<%= number_to_currency(post.reward)%></span></h3></div>
-          <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
-          <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
-          <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
+    <% @user.posts.each do |post| %>
+      <%= link_to post do %>
+      <div class="user_post_area">
+        <div>
+          <%= image_tag post.image, class:"post_index_image" %>
         </div>
-        <% end %>
-        <hr class="post_separate">
+        <h1 class="post_title"><%= post.title %></h1>
+        <p class="post_content"><%= truncate(post.content, length: 90) %></p>
+        <div class="group"><h3>報酬(月単価)<span>約<%= number_to_currency(post.reward)%></span></h3></div>
+        <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
+        <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
+        <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
+      </div>
       <% end %>
+      <hr class="post_separate">
+    <% end %>
   </div>
 </div>
