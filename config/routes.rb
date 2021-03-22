@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/create'
-  get 'messages/edit'
-  get 'messages/update'
-  get 'messages/destroy'
-  get 'rooms/index'
-  get 'rooms/create'
-  get 'rooms/show'
   devise_for :call_center_users, controllers: {
     sessions: 'call_center_users/sessions',
     registrations: 'call_center_users/registrations',
@@ -18,8 +11,11 @@ Rails.application.routes.draw do
   get '/terms', to: 'static_pages#terms'
   get '/privacy', to: 'static_pages#privacy'
   resources :call_center_users, only: :show
-  resources :users, only: :show
+  resources :users, only: :show do
+    resources :bookmarks, only: [:index]
+  end
   resources :posts do
+    resources :bookmarks, only: [:create, :destroy]
     collection do
       get 'search'
     end
