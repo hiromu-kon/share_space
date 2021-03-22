@@ -21,9 +21,7 @@
           <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
         <% else %>
           <%= render "post_contact" %>
-          <%= link_to "#", class:"btn-border_reverse" do %>
-            <i class="far fa-bookmark"></i> ブックマークに追加
-          <% end %>
+          <%= render 'bookmarks/bookmark' , post: @post %>
         <% end %>
       </div>
       <div class="require_area">

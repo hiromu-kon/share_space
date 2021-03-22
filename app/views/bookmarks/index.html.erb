@@ -1,0 +1,15 @@
+<%= provide(:title,"ブックマーク一覧") %>
+<div class="post_index">
+  <div class="row">
+    <div class="">
+      <% if @posts.any? %>
+      <h5 class="center">ブックマーク一覧</h5>
+        <%= render @posts %>
+        <%= paginate @posts %>
+      <% else %>
+        <h5 class="empty_bookmark">ブックマークした募集はありません</h5>
+        <%= link_to "スペース募集を探す", posts_path, class:"mypage_edit" %>
+      <% end %>
+    </div>
+  </div>
+</div>
