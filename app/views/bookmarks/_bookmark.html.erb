@@ -1,7 +1,9 @@
 <span id="bookmark_form_<%= post.id %>" class="bookmark_form">
-  <% if post.bookmarked_by?(current_user) %>
-    <%= render 'bookmarks/unbookmark_button', post: post %>
-  <% else %>
-    <%= render 'bookmarks/bookmark_button', post: post %>
+  <% if user_signed_in? %>
+    <% if post.bookmarked_by?(current_user) %>
+      <%= render 'bookmarks/unbookmark_button', post: post %>
+    <% else %>
+      <%= render 'bookmarks/bookmark_button', post: post %>
+    <% end %>
   <% end %>
 </span>
