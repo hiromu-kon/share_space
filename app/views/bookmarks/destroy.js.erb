@@ -1,0 +1,3 @@
+var bookmark = document.getElementById('bookmark_<%= @post.id %>');
+var bookmark_form = document.getElementById("bookmark_form_<%= @post.id %>");
+bookmark_form.innerHTML="<%= j(render 'bookmark_button', post: @post) %>";

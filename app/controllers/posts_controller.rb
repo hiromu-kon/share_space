@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
 
   def index
     if params[:q].present?
@@ -56,7 +57,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿しました"
       redirect_to posts_path
     else
-      flash.now[:danger] = "投稿できませんでした。入力内容を見直してください。"
+      flash.now[:alert] = "投稿できませんでした。入力内容を見直してください。"
       render 'new'
     end
   end
@@ -67,7 +68,7 @@ class PostsController < ApplicationController
       flash[:success] = "投稿を編集しました"
       redirect_to post_path
     else
-      flash[:danger] = "投稿を編集できませんでした"
+      flash[:alert] = "投稿を編集できませんでした"
       redirect_to edit_post_path
     end
   end

@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <span id="bookmark_<%= post.id %>">
+    <%= link_to post_bookmarks_path(post.id),
+      method: :post, remote: true do %>
+      <i class="fas fa-bookmark"></i>
+    <% end %>
+  </span>
+<% end %>

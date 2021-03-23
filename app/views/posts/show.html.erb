@@ -16,16 +16,16 @@
       <% if @post.image.attached? %>
         <%= image_tag @post.image, class:"post_show_img" %>
       <% end %>
-      <div class="post_show_btn">
         <% if @post.user == current_user %>
-          <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
+          <div class="post_show_btn">
+            <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
+          </div>
         <% else %>
-          <%= render "post_contact" %>
-          <%= link_to "#", class:"btn-border_reverse" do %>
-            <i class="far fa-bookmark"></i> ブックマークに追加
-          <% end %>
+          <div class="post_show_btn">
+            <%= render "post_contact" %>
+            <span class="bookmark_show"><%= render 'bookmarks/bookmark' , post: @post %></span>
+          </div>
         <% end %>
-      </div>
       <div class="require_area">
         <h2>募集要件</h2>
         <div class="require_area_item">

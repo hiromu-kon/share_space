@@ -29,18 +29,21 @@ a {
  .notice, .success {
    background-color: #38AEF0;
    color: #fff;
-   font-size: 20px;
+   font-size: 18px;
    font-weight: bold;
    text-align: center;
+   z-index: 20;
  }
  .alert, .danger {
    background-color: #F35500;
    color: #fff;
-   font-size: 20px;
+   font-size: 18px;
    font-weight: bold;
    text-align: center;
-   margin-top: 72px;
-   margin-bottom: -80px;
+   margin-top: -25px;
+   position: absolute;
+   width: 100%;
+   z-index: 20;
  }
 }
 /*---------------------------------
@@ -136,6 +139,7 @@ a {
   width: 100%;
   background: none;
   transition: all 0.5s ease;
+  z-index: 10;
 }
 
 .hidden {
@@ -254,6 +258,7 @@ a {
   background-repeat: no-repeat;
   background-position: right top;
   background-size: cover;
+  position: relative;
 }
 
 .main_title_box {
@@ -285,11 +290,13 @@ a {
   background-color: #F35500;
   color: #fff;
   text-align: center;
-  margin-top: 72px;
-  margin-bottom: -80px;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+  margin-top: -25px;
 
   h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -1491,6 +1498,12 @@ a {
 .form_post_contact {
   display: inline-block;
 }
+
+.bookmark_show {
+  font-size: 45px;
+  float: right;
+  line-height: 50px;
+}
 /*---------------------------------
   投稿編集ページ
 ---------------------------------*/
@@ -1706,6 +1719,24 @@ a {
 .room_index_content_message {
   color: #686f71;
 }
+/*---------------------------------
+  ブックマーク一覧
+---------------------------------*/
+.empty_bookmark {
+  margin: 50px 0 70px 0;
+  font-size: 28px;
+  text-align: center;
+}
+
+.bookmark_title {
+  font-size: 28px;
+}
+
+.bookmark_index {
+  width: 800px;
+  margin: 0 auto;
+}
+
 /*---------------------------------
   Swiper
 ---------------------------------*/
