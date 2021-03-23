@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_092834) do
+ActiveRecord::Schema.define(version: 2021_03_23_130527) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
     t.integer "employee"
     t.string "prefectures"
     t.string "home_page"
+    t.integer "user_type", limit: 1, default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
