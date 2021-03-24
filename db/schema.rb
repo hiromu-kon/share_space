@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_092834) do
+ActiveRecord::Schema.define(version: 2021_03_24_130416) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -113,23 +113,20 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "taggings", id: :integer, charset: "utf8", force: :cascade do |t|
-    t.integer "tag_id"
-    t.string "taggable_type"
-    t.integer "taggable_id"
-    t.string "tagger_type"
-    t.integer "tagger_id"
-    t.string "context", limit: 128
-    t.datetime "created_at"
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+  create_table "tag_relationships", charset: "utf8", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "tag_id"], name: "index_tag_relationships_on_post_id_and_tag_id", unique: true
+    t.index ["post_id"], name: "index_tag_relationships_on_post_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
   end
 
-  create_table "tags", id: :integer, charset: "utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["name"], name: "index_tags_on_name", unique: true
+  create_table "tags", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -147,7 +144,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
     t.integer "employee"
     t.string "prefectures"
     t.string "home_page"
-    t.integer "user_type", limit: 1, default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -162,5 +158,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "call_center_users"
   add_foreign_key "posts", "users"
-  add_foreign_key "taggings", "tags"
+  add_foreign_key "tag_relationships", "posts"
+  add_foreign_key "tag_relationships", "tags"
 end
