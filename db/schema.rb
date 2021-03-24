@@ -113,6 +113,25 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "taggings", id: :integer, charset: "utf8", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+  end
+
+  create_table "tags", id: :integer, charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -128,6 +147,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
     t.integer "employee"
     t.string "prefectures"
     t.string "home_page"
+    t.integer "user_type", limit: 1, default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -142,4 +162,5 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "call_center_users"
   add_foreign_key "posts", "users"
+  add_foreign_key "taggings", "tags"
 end
