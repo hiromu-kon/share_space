@@ -53,7 +53,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
+    tag_list = params[:post][:tag_ids].split(',')
     if @post.save
+      @post.save_tags(tag_list)
       flash[:success] = "投稿しました"
       redirect_to posts_path
     else
@@ -87,7 +89,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image, :tag_ids).merge(user_id: current_user.id)
   end
 
   def call_center_post_params

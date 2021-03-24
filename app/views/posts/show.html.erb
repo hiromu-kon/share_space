@@ -51,12 +51,17 @@
         <h3>募集詳細</h3>
         <p class="post_show_content"><%= @post.content %></p>
       </div>
+      <% @post.tags.each do |tag| %>
+        <%= tag.name %>
+      <% end %>
 
       <hr class="post_separate">
       <%= link_to @post.user do %>
         <div class="post_show_company">
           <% if @post.user.image.attached? %>
             <%= image_tag @post.user.image, class:"post_company_image" %>
+          <% else %>
+            <%= image_tag 'user_default.png', class:"post_company_image" %>
           <% end %>
           <div class="post_company_name"><%= @post.user.name %></div>
         </div>

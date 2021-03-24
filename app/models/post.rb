@@ -10,7 +10,16 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
+  has_many  :tag_relationships, dependent: :destroy
+  has_many  :tags, through: :tag_relationships
+
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
+  end
+
+  def save_tags(savepost_tags)
+    savepost_tags.each do |new_name|
+    post_tag = Tag.find_or_create_by(name: new_name)
+    self.tags << post_tag
   end
 end
