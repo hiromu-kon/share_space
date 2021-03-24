@@ -50,11 +50,13 @@
         </div>
         <h3>募集詳細</h3>
         <p class="post_show_content"><%= @post.content %></p>
+        <div class="tag_show">
+          <h3>タグ</h3>
+          <% @post.tags.each do |tag| %>
+            <span><%= tag.name %></span>
+          <% end %>
+        </div>
       </div>
-      <% @post.tags.each do |tag| %>
-        <%= tag.name %>
-      <% end %>
-
       <hr class="post_separate">
       <%= link_to @post.user do %>
         <div class="post_show_company">

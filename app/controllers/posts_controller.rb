@@ -49,6 +49,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(",")
   end
 
   def create
@@ -66,7 +67,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
+      @post.save_tags(tag_list)
       flash[:success] = "投稿を編集しました"
       redirect_to post_path
     else
@@ -89,7 +92,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image, :tag_ids).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(user_id: current_user.id)
   end
 
   def call_center_post_params

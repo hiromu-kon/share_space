@@ -1197,6 +1197,28 @@ a {
     border-color:	#2eb9e6;
   }
 }
+
+.post_index_tag {
+  margin-top: 15px;
+
+  span {
+    border-radius: 3px;
+    border: 2px solid #228B22;
+    background-color: #228B22;
+    padding: 2px 12px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: .6s;
+  }
+
+  span:hover {
+    border: 2px solid #3CB371;
+    background-color: #3CB371;
+    transition: .6s;
+  }
+}
 /*---------------------------------
   Post 新規投稿ページ
 ---------------------------------*/
@@ -1506,6 +1528,31 @@ a {
   font-size: 45px;
   float: right;
   line-height: 50px;
+}
+
+.tag_show {
+  margin-top: 50px;
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  span {
+    border-radius: 3px;
+    border: 2px solid #228B22;
+    background-color: #228B22;
+    padding: 5px 15px;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: .6s;
+  }
+
+  span:hover {
+    border: 2px solid #3CB371;
+    background-color: #3CB371;
+    transition: .6s;
+  }
 }
 /*---------------------------------
   投稿編集ページ
