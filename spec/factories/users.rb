@@ -10,4 +10,10 @@ FactoryBot.define do
     employee { 20 }
     prefectures { "北海道" }
   end
+
+  factory :another_user, class: User do
+    name { "another" }
+    email { "another@gmail.com" }
+    password { "password" }
+  end
 end

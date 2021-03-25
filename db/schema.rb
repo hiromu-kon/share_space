@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_092834) do
+ActiveRecord::Schema.define(version: 2021_03_24_130416) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -113,6 +113,22 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "tag_relationships", charset: "utf8", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "tag_id"], name: "index_tag_relationships_on_post_id_and_tag_id", unique: true
+    t.index ["post_id"], name: "index_tag_relationships_on_post_id"
+    t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
+  end
+
+  create_table "tags", charset: "utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -142,4 +158,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_092834) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "call_center_users"
   add_foreign_key "posts", "users"
+  add_foreign_key "tag_relationships", "posts"
+  add_foreign_key "tag_relationships", "tags"
 end

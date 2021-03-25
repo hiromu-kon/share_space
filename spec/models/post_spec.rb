@@ -3,77 +3,73 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   let(:post) { create :post }
 
-  describe 'Postの作成ページ' do
+  describe '#create' do
     it "正しくPostが保存できるか" do
       expect(build(:post)).to be_valid
     end
   end
 
-  it "post is success" do
-    expect(post).to be_valid
-  end
-
-  it "title is nil" do
+  it "タイトルがnilの場合無効である" do
     post.title = nil
     expect(post).not_to be_valid
   end
 
-  it "title is present" do
+  it "タイトルが空白の場合無効である" do
     post.title = " "
     expect(post).not_to be_valid
   end
 
-  it "user is nil" do
-    post.host_user = nil
+  it "Userがnilの場合無効である" do
+    post.user = nil
     expect(post).not_to be_valid
   end
 
-  it "content is nil" do
+  it "Contentがnilの場合無効である" do
     post.content = nil
     expect(post).not_to be_valid
   end
 
-  it "content is present" do
+  it "Contentが空白の場合無効である" do
     post.content = " "
     expect(post).not_to be_valid
   end
 
-  it "reward is nil" do
+  it "報酬がnilの場合無効である" do
     post.reward = nil
     expect(post).not_to be_valid
   end
 
-  it "reward is present" do
+  it "報酬が空白の場合無効である" do
     post.reward = " "
     expect(post).not_to be_valid
   end
 
-  it "recruit_people is nil" do
+  it "募集人数がnilの場合無効である" do
     post.recruit_people = nil
     expect(post).not_to be_valid
   end
 
-  it "recruit_people is present" do
+  it "募集人数が空白の場合無効である" do
     post.recruit_people = " "
     expect(post).not_to be_valid
   end
 
-  it "title is 81 characters" do
+  it "タイトルが81文字の場合無効である" do
     post.title = "a" * 81
     expect(post).not_to be_valid
   end
 
-  it "title is 79 characters" do
+  it "タイトルが79文字の場合有効である" do
     post.title = "a" * 79
     expect(post).to be_valid
   end
 
-  it "content is 601 characters" do
+  it "Contentが601文字の場合無効である" do
     post.content = "a" * 601
     expect(post).not_to be_valid
   end
 
-  it "content is 599 characters" do
+  it "Contentが599文字の場合有効である" do
     post.content = "a" * 599
     expect(post).to be_valid
   end

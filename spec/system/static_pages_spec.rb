@@ -7,14 +7,9 @@ RSpec.describe "StaticPages", type: :system do
         visit root_path
       end
 
-      it "ホスト企業のログインリンクのテスト" do
+      it "ログインリンクのテスト" do
         click_on "ホスト企業 | 新規登録orログイン"
-        expect(current_path).to eq new_host_user_session_path
-      end
-
-      it "コールセンターのログインリンクのテスト" do
-        click_on "コールセンター | 新規登録orログイン"
-        expect(current_path).to eq new_call_center_user_session_path
+        expect(current_path).to eq new_user_session_path
       end
 
       it "ロゴをクリックするとHomeへ遷移" do

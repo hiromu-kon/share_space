@@ -46,6 +46,28 @@ a {
    z-index: 20;
  }
 }
+
+.Notification {
+ #notice, #success {
+   background-color: #38AEF0;
+   color: #fff;
+   font-size: 18px;
+   font-weight: bold;
+   text-align: center;
+   z-index: 20;
+ }
+ #alert, #danger {
+   background-color: #F35500;
+   color: #fff;
+   font-size: 18px;
+   font-weight: bold;
+   text-align: center;
+   margin-top: -25px;
+   position: absolute;
+   width: 100%;
+   z-index: 20;
+ }
+}
 /*---------------------------------
 
   トップページ
@@ -112,6 +134,7 @@ a {
   color: #FFF;
   margin-top: 10px;
   transition: .8s;
+  outline: none;
 
   &:hover {
     border: 2px solid #009933;
@@ -784,6 +807,7 @@ a {
   box-shadow: 4px 4px 4px rgba(0,0,0,0.03);
   transform:rotate(1deg);
   word-break: break-all;
+  font-weight: bold;
 
   p {
     margin: 0;
@@ -867,7 +891,7 @@ a {
 }
 
 .post_separate {
-  border-top: 2px solid #BBB;
+  border-top: 1px solid #BBB;
   margin: 45px 0;
 }
 
@@ -1027,8 +1051,10 @@ a {
 .post_title {
   font-size: 20px;
   margin: 10px 0 20px 0;
+}
 
-  &:hover {
+.post_area:hover {
+  .post_title {
     text-decoration: underline;
   }
 }
@@ -1070,8 +1096,10 @@ a {
   margin-bottom: 15px;
   font-weight: bold;
 
-  span:hover {
-    text-decoration: underline;
+  &:hover {
+    span {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -1193,6 +1221,28 @@ a {
   &:focus {
     outline: 0;
     border-color:	#2eb9e6;
+  }
+}
+
+.post_index_tag {
+  margin-top: 15px;
+
+  span {
+    border-radius: 3px;
+    border: 2px solid #228B22;
+    background-color: #228B22;
+    padding: 2px 12px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: .6s;
+  }
+
+  span:hover {
+    border: 2px solid #3CB371;
+    background-color: #3CB371;
+    transition: .6s;
   }
 }
 /*---------------------------------
@@ -1344,6 +1394,7 @@ a {
   background-color: #fff;
   margin-top: 10px;
   transition: .8s;
+  outline: none;
 
   &:hover {
     border: 2px solid #009933;
@@ -1391,6 +1442,12 @@ a {
 .post_show_company {
   display: flex;
   margin-bottom: 25px;
+
+ &:hover {
+   .post_company_name {
+     text-decoration: underline;
+   }
+ }
 }
 
 .post_show_company .post_company_image {
@@ -1416,10 +1473,6 @@ a {
   margin: 30px 0 0 10px;
   font-weight: bold;
   color: #333;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .post_company_introduction {
@@ -1504,6 +1557,79 @@ a {
   float: right;
   line-height: 50px;
 }
+
+.tag_show {
+  margin-top: 50px;
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  span {
+    border-radius: 3px;
+    border: 2px solid #228B22;
+    background-color: #228B22;
+    padding: 5px 15px;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: .6s;
+  }
+
+  span:hover {
+    border: 2px solid #3CB371;
+    background-color: #3CB371;
+    transition: .6s;
+  }
+}
+
+.recommend_post {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.recommend_post_item {
+  width: 380px;
+  border: 1px solid #000;
+
+  img {
+    height: 210px;
+    width: 380px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px;
+  }
+}
+
+.recommend_post_item_detail {
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+
+  span {
+    padding-left: 10px;
+    font-weight: normal;
+    font-size: 10px;
+  }
+}
+
+.recommend_post_item:hover {
+  width: 380px;
+  border: 1px solid #000;
+
+  img {
+
+  }
+
+  p {
+    text-decoration: underline;
+  }
+}
+
 /*---------------------------------
   投稿編集ページ
 ---------------------------------*/
@@ -1747,12 +1873,11 @@ a {
   padding: 20px 0 130px 0;
   height: 40vw;
   max-height: 500px; //最大の高さ
-  min-height: 300px;
   width: 800px;
 }
 
 .swiper-wrapper {
-  min-height: 500px;
+  height: 500px;
 }
 /* 全スライド共通スタイル */
 .swiper-slide {
@@ -1763,12 +1888,28 @@ a {
     height: 300px;
     display: block;
     margin: 0 auto;
+    border: 1px solid #000;
+    border-bottom: 0;
   }
 }
 
 .swiper_item_width {
   margin: 0 auto;
   width: 600px;
+  border: 1px solid #000;
+  border-top: 0;
+
+  .post_title {
+    margin-top: 0;
+    padding: 10px;
+  }
+
+  .post_address {
+    padding: 0 0 10px 10px;
+  }
+}
+.group_start {
+  padding-left: 10px;
 }
 
 .swiper-pagination-bullet {

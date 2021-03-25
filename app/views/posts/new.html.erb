@@ -25,6 +25,9 @@
       <%= f.number_field :reward, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
       <h4 class="heading_title">募集オペレーター人数</h4>
       <%= f.number_field :recruit_people, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
+      <h4 class="heading_title">タグ　※コンマ区切りで記入してください</h4>
+      <%= f.text_field :tag_ids, class: "post_form_title number_input", id:'tag_ids',\
+          placeholder: "例)　エンジニア,コールセンター,営業" %>
       <h4 class="heading_title">オフィス画像</h4>
       <div class="file">
         ファイルを選択

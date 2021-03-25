@@ -50,13 +50,20 @@
         </div>
         <h3>募集詳細</h3>
         <p class="post_show_content"><%= @post.content %></p>
+        <div class="tag_show">
+          <h3>タグ</h3>
+          <% @post.tags.each do |tag| %>
+            <span><%= tag.name %></span>
+          <% end %>
+        </div>
       </div>
-
       <hr class="post_separate">
       <%= link_to @post.user do %>
         <div class="post_show_company">
           <% if @post.user.image.attached? %>
             <%= image_tag @post.user.image, class:"post_company_image" %>
+          <% else %>
+            <%= image_tag 'user_default.png', class:"post_company_image" %>
           <% end %>
           <div class="post_company_name"><%= @post.user.name %></div>
         </div>
@@ -64,6 +71,20 @@
       <p class="post_company_introduction"><%= @post.user.introduction %><p>
       <hr class="post_separate">
       <h3 class="">おすすめ投稿</h3>
+      <div class="recommend_post">
+        <div class="recommend_post_item">
+          <%= image_tag 'header_default.jpg' %>
+          <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
+          <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
+          <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
+        </div>
+        <div class="recommend_post_item">
+          <%= image_tag 'header_default.jpg' %>
+          <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
+          <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
+          <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

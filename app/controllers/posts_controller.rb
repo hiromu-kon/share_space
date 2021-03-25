@@ -4,10 +4,12 @@ class PostsController < ApplicationController
   def index
     if params[:q].present?
       @q = Post.ransack(params[:q])
+      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
       @posts = @q.result.includes(:user).page(params[:page]).per(10)
     else
       params[:q] = { sorts: 'id desc' }
       @q = Post.ransack(params[:q])
+      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
       @posts = @q.result.includes(:user).page(params[:page]).per(10)
     end
   end
@@ -49,12 +51,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(",")
   end
 
   def create
     @post = current_user.posts.create(post_params)
+    tag_list = params[:post][:tag_ids].split(',')
     if @post.save
-      flash[:success] = "投稿しました"
+      @post.save_tags(tag_list)
+      flash[:notice] = "投稿しました"
       redirect_to posts_path
     else
       flash.now[:alert] = "投稿できませんでした。入力内容を見直してください。"
@@ -64,8 +69,10 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
-      flash[:success] = "投稿を編集しました"
+      @post.save_tags(tag_list)
+      flash[:notice] = "投稿を編集しました"
       redirect_to post_path
     else
       flash[:alert] = "投稿を編集できませんでした"
@@ -75,12 +82,13 @@ class PostsController < ApplicationController
 
   def destroy
     Post.find(params[:id]).destroy
-    flash[:success] = "投稿を削除しました"
+    flash[:notice] = "投稿を削除しました"
     redirect_to posts_path
   end
 
   def search
     @q = Post.search(search_params)
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
     @posts = @q.result.includes(:user).page(params[:page]).per(10)
   end
 
