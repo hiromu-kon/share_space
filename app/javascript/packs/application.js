@@ -15,6 +15,7 @@ require('./header_follow')
 require('./image_preview')
 require('./fade_in')
 require('./swiper.js')
+require('./flash_remove.js')
 
 
 Rails.start()

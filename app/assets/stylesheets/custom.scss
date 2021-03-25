@@ -46,6 +46,28 @@ a {
    z-index: 20;
  }
 }
+
+.Notification {
+ #notice, #success {
+   background-color: #38AEF0;
+   color: #fff;
+   font-size: 18px;
+   font-weight: bold;
+   text-align: center;
+   z-index: 20;
+ }
+ #alert, #danger {
+   background-color: #F35500;
+   color: #fff;
+   font-size: 18px;
+   font-weight: bold;
+   text-align: center;
+   margin-top: -25px;
+   position: absolute;
+   width: 100%;
+   z-index: 20;
+ }
+}
 /*---------------------------------
 
   トップページ
