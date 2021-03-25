@@ -26,7 +26,7 @@ RSpec.describe "Users", type: :system do
         fill_in "パスワード(確認用)", with: "hogehoge"
         click_button "新しいアカウントを作成"
         expect(page).to have_content "アカウント登録が完了しました。"
-        visit host_user_path(host_user)
+        visit user_path(user)
       end
 
       it "無効なユーザーで登録すると登録が失敗すること" do
