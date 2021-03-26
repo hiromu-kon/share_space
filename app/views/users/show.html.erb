@@ -15,6 +15,7 @@
       <% end %>
       <p class="company_name">
         <%= @user.name %>
+        <span class="skill_company"><i class="far fa-check-circle"></i>スキル企業</span>
       </p>
       <p class="company_homepage">
         <%= raw Rinku.auto_link(@user.home_page, :all, 'target="_blank"') if @user.home_page %>
