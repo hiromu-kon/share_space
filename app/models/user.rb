@@ -9,6 +9,12 @@ class User < ApplicationRecord
   has_many :rooms, through: :entries
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
+
+  enum user_type:
+  {
+    host: 0,
+    skill: 1
+  }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

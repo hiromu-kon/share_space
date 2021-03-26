@@ -25,6 +25,10 @@
           <%= f.label :password_confirmation, class:"label_name" %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form_control" %>
         </div>
+        <div class="field cp_ipcheck">
+          <%= f.check_box :user_type, {class: "option-input05"}, :skill, :host %>
+          <%= f.label :user_type %>
+        </div>
         <div class="actions">
           <%= f.submit "新しいアカウントを作成", class:"form_control btn_primary" %>
         </div>
