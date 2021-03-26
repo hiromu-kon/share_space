@@ -275,13 +275,28 @@ a {
 /*---------------------------------
   メインタイトル
 ---------------------------------*/
+/* じわっと画像が表示される */
+@keyframes fadeIn { /*上のbody内で呼び出しているアニメーションと名前をそろえる*/
+  0% {opacity: 0} /* 始め */
+  100% {opacity: 1} /* 終わり */
+}
+
+/*古いブラウザ用 */
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+
 .main_title {
   height: 85vh;
-  background-image: url('top_page.jpg');
+  background-image: url('top1.jpg');
   background-repeat: no-repeat;
   background-position: right top;
   background-size: cover;
   position: relative;
+  animation: fadeIn 3s ease 0s 1 normal;
+  -webkit-animation: fadeIn 3s ease 0s 1 normal;
 }
 
 .main_title_box {
@@ -1591,7 +1606,7 @@ a {
 
 .recommend_post_item {
   width: 380px;
-  border: 1px solid #000;
+  border: 1px solid #999;
 
   img {
     height: 210px;
@@ -1619,7 +1634,6 @@ a {
 
 .recommend_post_item:hover {
   width: 380px;
-  border: 1px solid #000;
 
   img {
 
@@ -1888,7 +1902,7 @@ a {
     height: 300px;
     display: block;
     margin: 0 auto;
-    border: 1px solid #000;
+    border: 1px solid #999;
     border-bottom: 0;
   }
 }
@@ -1896,20 +1910,20 @@ a {
 .swiper_item_width {
   margin: 0 auto;
   width: 600px;
-  border: 1px solid #000;
+  border: 1px solid #999;
   border-top: 0;
 
   .post_title {
     margin-top: 0;
-    padding: 10px;
+    padding: 15px;
   }
 
   .post_address {
-    padding: 0 0 10px 10px;
+    padding: 0 0 15px 15px;
   }
 }
 .group_start {
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .swiper-pagination-bullet {
