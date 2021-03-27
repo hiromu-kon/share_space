@@ -2,17 +2,9 @@
 
 <div class="user_show">
   <div class="detail_frame">
-    <% if @user.header_image.attached? %>
-      <%= image_tag @user.header_image, class:"header_detail" %>
-    <% else %>
-      <%= image_tag 'header_default.jpg', class:"header_detail" %>
-    <% end %>
+    <%= render 'shared/header_default' %>
     <div class="company_block">
-      <% if @user.image.attached? %>
-        <%= image_tag  @user.image, class:"user_icon" %>
-      <% else %>
-        <%= image_tag 'user_default.png', class:"user_icon" %>
-      <% end %>
+      <%= render 'shared/icon_default' %>
       <p class="company_name">
         <%= @user.name %>
       </p>
