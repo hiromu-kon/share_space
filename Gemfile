@@ -30,6 +30,8 @@ gem 'mini_magick'
 gem 'rinku'
 gem 'ransack'
 gem 'kaminari'
+gem 'redcarpet', '~> 2.3.0'
+gem 'coderay'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

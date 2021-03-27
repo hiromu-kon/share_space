@@ -172,6 +172,26 @@ a {
   z-index: 2;
 }
 
+.fa-arrow-alt-circle-left {
+  margin-right: 5px;
+}
+
+.require {
+  background-color: #ff0000a8;
+  margin-left: 10px;
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.company_pr {
+  text-align: center;
+}
+
+.m-b {
+  margin-bottom: 5px;
+}
 /*---------------------------------
   ヘッダーハンバーガーメニュー
 ---------------------------------*/
@@ -856,6 +876,13 @@ a {
   font-size: 0.7em!important;
   margin-bottom: 1em!important;
 }
+
+.skill_company {
+  margin-top: 5px;
+  color: #009900;
+  font-weight: bold;
+  font-size: 20px;
+}
 /*---------------------------------
   ユーザー編集ページ
 ---------------------------------*/
@@ -1244,8 +1271,8 @@ a {
 
   span {
     border-radius: 3px;
-    border: 2px solid #228B22;
-    background-color: #228B22;
+    border: 2px solid #00AA00;
+    background-color: #00AA00;
     padding: 2px 12px;
     color: #fff;
     font-size: 13px;
@@ -1255,8 +1282,8 @@ a {
   }
 
   span:hover {
-    border: 2px solid #3CB371;
-    background-color: #3CB371;
+    border: 2px solid #00CC00;
+    background-color: #00CC00;
     transition: .6s;
   }
 }
@@ -1493,6 +1520,7 @@ a {
 .post_company_introduction {
   font-size: 14px;
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .item_box_up, .item_box_down {
@@ -1582,8 +1610,8 @@ a {
 
   span {
     border-radius: 3px;
-    border: 2px solid #228B22;
-    background-color: #228B22;
+    border: 2px solid #00AA00;
+    background-color: #00AA00;
     padding: 5px 15px;
     color: #fff;
     font-weight: bold;
@@ -1592,8 +1620,8 @@ a {
   }
 
   span:hover {
-    border: 2px solid #3CB371;
-    background-color: #3CB371;
+    border: 2px solid #00CC00;
+    background-color: #00CC00;
     transition: .6s;
   }
 }
