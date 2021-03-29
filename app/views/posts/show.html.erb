@@ -32,7 +32,7 @@
           <div class="item_box_up">
             <div>
               <h3>報酬(月単価)</h3>
-              <p class="require_item"><%= number_to_currency(@post.reward) %></p>
+              <p class="require_item"><%= number_to_currency(@post.reward) if @post.reward %></p>
             </div>
             <div class="right_column">
               <h3>募集オペレーター人数</h3>
@@ -60,11 +60,7 @@
       <hr class="post_separate">
       <%= link_to @post.user do %>
         <div class="post_show_company">
-          <% if @post.user.image.attached? %>
-            <%= image_tag @post.user.image, class:"post_company_image" %>
-          <% else %>
-            <%= image_tag 'user_default.png', class:"post_company_image" %>
-          <% end %>
+          <%= render 'shared/icon_default', user: @post.user %>
           <div class="post_company_name"><%= @post.user.name %></div>
         </div>
       <% end %>

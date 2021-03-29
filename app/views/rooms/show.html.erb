@@ -6,11 +6,7 @@
       <% if e.user.id != current_user.id %>
         <%= link_to user_path(e.user.id) do %>
           <div class="company_room">
-            <% if e.user.image.attached? %>
-              <%= image_tag e.user.image, class:"message_user_image" %>
-            <% else %>
-              <%= image_tag "user_default.png", class:"message_user_image" %>
-            <% end %>
+            <%= render 'shared/icon_default', user: e.user %>
             <span>
               <%= e.user.name %>さん
             </span>

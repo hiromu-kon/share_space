@@ -2,9 +2,10 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :title, presence: true, length: { maximum: 80 }
   validates :content, presence: true, length: { maximum: 600 }
-  validates :reward, presence: true, numericality: true
-  validates :recruit_people, presence: true, numericality: true
+  validates :reward, presence: true, numericality: true, if: :user_skill?
+  validates :recruit_people, presence: true, numericality: true, if: :user_skill?
   has_one_attached :image
+  validate :image_valid?
 
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
@@ -28,6 +29,17 @@ class Post < ApplicationRecord
     new_tags.each do |new_name|
       post_tag = Tag.find_or_create_by(name: new_name)
       self.tags << post_tag
+    end
+  end
+
+  def user_skill?
+    user.skill == "false"
+
+  end
+
+  def image_valid?
+    unless image.attached?
+      errors.add(:image)
     end
   end
 end

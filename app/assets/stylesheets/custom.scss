@@ -655,6 +655,22 @@ a {
   margin: 0 auto;
 }
 
+.user_show .user_icon {
+  height: 250px;
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 0 0 0 10px #fff;
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  will-change: transform;
+
+  &:hover {
+    animation: bounceOut 0.4s linear;
+  }
+}
+
 .header_detail {
   width: 100%;
   height: 400px;
@@ -667,21 +683,7 @@ a {
  margin-bottom: 350px;
 }
 
-.user_icon {
- height: 250px;
- width: 250px;
- background-color: #fff;
- box-shadow: 0 0 0 10px #fff;
- border-radius: 50%;
 
- object-fit: cover;
-
- will-change: transform;
-
- &:hover {
-   animation: bounceOut 0.4s linear;
- }
-}
 
 @keyframes bounceOut {
  0% {
@@ -1123,7 +1125,7 @@ a {
   }
 }
 
-.post_company_image {
+.post_company .user_icon {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -1492,9 +1494,13 @@ a {
  }
 }
 
-.post_show_company .post_company_image {
+.post_show_company .user_icon {
   width: 80px;
   height: 80px;
+  border-radius: 50%;
+  vertical-align: bottom;
+  margin-right: 10px;
+  border: 1px solid #DDD;
 }
 
 #textcount1, #textcount2 {
@@ -1690,7 +1696,7 @@ a {
 /*---------------------------------
   ダイレクトメッセージ 詳細ページ
 ---------------------------------*/
-.message_user_image {
+.room_show_box .user_icon {
   width: 50px;
   height: 50px;
   border: 1px solid #DDD;
@@ -1861,10 +1867,11 @@ a {
   }
 }
 
-.room_index_box .message_user_image {
+.room_index_box .user_icon {
   margin: 20px;
   width: 65px;
   height: 65px;
+  border-radius: 50%;
 }
 
 .room_index_item_content {
@@ -2066,4 +2073,48 @@ a {
   text-align: center;
   line-height: 55px;
   padding: 0;
+}
+
+
+@media screen and (max-width: 959px) {
+	/* 959px以下に適用されるCSS（タブレット用） */
+}
+@media screen and (max-width: 480px) {
+
+  .offcm01 .menu {
+    right: -130vw;
+  }
+
+  .header .container {
+    height: 120px;
+  }
+
+  .area_logo_header .logo img {
+    width: 330px;
+  }
+
+  .offcm01 {
+    top: 35px;
+  }
+
+  .offcm01 #toggle01:checked ~ label {
+    transform: translateX(-300px);
+  }
+
+  .offcm01 .menu li a {
+    padding: 60px 0 60px 50px;
+    font-size: 30px;
+  }
+
+  .form_control {
+    height: 40px;
+  }
+
+  .footer .container {
+    max-width: 100%;
+  }
+
+  .footer {
+    height: auto;
+  }
 }
