@@ -1,0 +1,44 @@
+<div class="left_box">
+  <h3>検索条件</h3>
+  <%= search_form_for(@q, url:search_posts_path) do |f| %>
+    <div class="select_sort">
+      <%= f.select( :sorts, { '並び替え': 'id desc', '募集の古い順': 'updated_at asc', '募集の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} ) %>
+    </div>
+  <% end %>
+</div>
+<div class="post_detail">
+  <div class="recruit_title">
+    <span class="title_name">スキル企業PR一覧</span>
+  </div>
+  <% @posts.each do |post| %>
+    <% if post.user.skill == true %>
+      <hr class="post_separate">
+      <div class="post_user_area">
+        <%= link_to post.user do %>
+          <div class="post_company">
+            <%= render 'shared/icon_default', user: post.user %>
+            <span><%= post.user.name %></span>
+          </div>
+        <% end %>
+      </div>
+      <div class="post_area">
+        <%= link_to post do %>
+          <div>
+            <% if post.image.attached? %>
+              <%= image_tag post.image, class:"skill_post_index_image" %>
+            <% end %>
+          </div>
+          <h1 class="post_title"><%= post.title %></h1>
+          <span><div class="grad_item"><%= markdown(post.content) %></div></span>
+          <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
+          <div class="post_index_tag">
+            <% post.tags.each do |tag| %>
+              <span><%= tag.name %></span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= paginate @posts %>
+</div>

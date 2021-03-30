@@ -1,101 +1,100 @@
 <% if user_signed_in? %>
-  <li>
-    <div class="offcm01">
-      <input type="checkbox" id="toggle01" class="toggle_button">
-      <label for="toggle01"><span></span></label>
-      <div class="menu">
-        <ul>
-          <li>
-            <%= link_to user_path(current_user.id) do %>
-              <i class="fas fa-user-circle"></i>マイページ
-            <% end %>
-          </li>
-          <li>
-            <%= link_to edit_user_registration_path do %>
-              <i class="fas fa-user-edit"></i>ユーザー編集
-            <% end %>
-          </li>
-          <li>
-
-            <%= link_to posts_path do %>
-              <%= image_tag 'post.png', class:"post_header_img" %>投稿を探す
-            <% end %>
-          </li>
-          <li>
-            <%= link_to '#' do %>
-              <i class="fas fa-bell"></i>通知
-            <% end %>
-          </li>
-          <li>
-            <%= link_to rooms_path do %>
-              <i class="fas fa-envelope"></i>メッセージ
-            <% end %>
-          </li>
-          <li>
-            <%= link_to user_bookmarks_path(current_user) do %>
-              <i class="fas fa-bookmark"></i>ブックマーク一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, :method => :delete do %>
-              <i class="fas fa-sign-out-alt"></i>ログアウト
-            <% end %>
-          </li>
+  <div class="pc_list_nav_header">
+    <li class="pc_list <%= "current_page" if current_page?(posts_path) %>">
+      <%= link_to posts_path do %>
+        <i class="fas fa-search"></i>投稿を探す
+      <% end %>
+    </li>
+    <li class="pc_list">
+      <%= link_to '#' do %>
+        <i class="fas fa-bell"></i>通知
+      <% end %>
+    </li>
+    <li class="pc_list <%= "current_page" if current_page?(rooms_path) %>">
+      <%= link_to rooms_path do %>
+        <i class="fas fa-envelope"></i>メッセージ
+      <% end %>
+    </li>
+    <li class="mymenu">
+      <span>
+        マイメニュー
+        <%= render "shared/icon_default", user: current_user %>
+      </span>
+      <nav>
+        <ul class="my_menu_nav">
+          <%= link_to user_path(current_user.id) do %>
+            <li>
+                <i class="fas fa-user-circle"></i>マイページ
+            </li>
+          <% end %>
+          <%= link_to edit_user_registration_path do %>
+            <li>
+                <i class="fas fa-user-edit"></i>ユーザー編集
+            </li>
+          <% end %>
+          <%= link_to user_bookmarks_path(current_user) do %>
+            <li>
+                <i class="fas fa-bookmark"></i>ブックマーク
+            </li>
+          <% end %>
+          <%= link_to destroy_user_session_path, :method => :delete do %>
+            <li>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+            </li>
+          <% end %>
         </ul>
+      </nav>
+    </li>
+  </div>
+  <div class="phone_list_nav_header">
+    <li>
+      <div class="offcm01">
+        <input type="checkbox" id="toggle01" class="toggle_button">
+        <label for="toggle01"><span></span></label>
+        <div class="menu">
+          <ul>
+            <li>
+              <%= link_to user_path(current_user.id) do %>
+                <i class="fas fa-user-circle"></i>マイページ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <i class="fas fa-user-edit"></i>ユーザー編集
+              <% end %>
+            </li>
+            <li>
+              <%= link_to posts_path do %>
+                <%= image_tag 'post.png', class:"post_header_img" %>投稿を探す
+              <% end %>
+            </li>
+            <li>
+              <%= link_to '#' do %>
+                <i class="fas fa-bell"></i>通知
+              <% end %>
+            </li>
+            <li>
+              <%= link_to rooms_path do %>
+                <i class="fas fa-envelope"></i>メッセージ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_bookmarks_path(current_user) do %>
+                <i class="fas fa-bookmark"></i>ブックマーク一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </li>
-<% elsif call_center_user_signed_in? %>
-  <li>
-    <div class="cp_offcm01">
-      <input type="checkbox" id="cp_toggle01" class="toggle_button">
-      <label for="cp_toggle01"><span></span></label>
-      <div class="cp_menu">
-        <ul>
-          <li>
-            <%= link_to call_center_user_path(current_call_center_user.id) do %>
-              <i class="far fa-user-circle"></i>マイページ
-            <% end %>
-          </li>
-          <li>
-            <%= link_to edit_call_center_user_registration_path do %>
-              <i class="fas fa-user-edit"></i>ユーザー編集
-            <% end %>
-          </li>
-          <li>
-            <%= link_to posts_path do %>
-              <%= image_tag 'post.png', class:"post_header_img" %>募集を探す
-            <% end %>
-          </li>
-          <li>
-            <%= link_to '#' do %>
-              <i class="far fa-bell"></i>通知
-            <% end %>
-          </li>
-          <li>
-            <%= link_to '#' do %>
-              <i class="far fa-envelope"></i>メッセージ
-            <% end %>
-          </li>
-          <li>
-            <%= link_to '#' do %>
-              <i class="far fa-bookmark"></i>ブックマーク
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_call_center_user_session_path, :method => :delete do %>
-              <i class="fas fa-sign-out-alt"></i>ログアウト
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </li>
+    </li>
+  </div>
 <% else %>
   <li>
     <%= link_to "ホスト企業 | 新規登録orログイン", new_user_session_path, class:"btn-border" %>
-  </li>
-  <li>
-    <%= link_to "コールセンター | 新規登録orログイン", new_call_center_user_session_path, class:"btn-border" %>
   </li>
 <% end %>
