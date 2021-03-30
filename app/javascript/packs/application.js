@@ -18,6 +18,7 @@ require('./swiper.js')
 require('./flash_remove.js')
 
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

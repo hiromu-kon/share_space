@@ -66,7 +66,13 @@
           ファイルを選択
           <%= f.file_field :header_image, onChange: "imgPreView(event, 'preview1')", class:"file_input" %>
         </div>
-        <div id="preview1" class="header_img"><%= image_tag @user.header_image, id:"previewImage-preview1" if @user.header_image.present? %></div>
+        <div id="preview1" class="header_img">
+          <% if @user.header_image.present? %>
+            <%= image_tag @user.header_image, id:"previewImage-preview1" %>
+          <% else %>
+            <%= image_tag "header_default.jpg", id:"previewImage-preview1" %>
+          <% end %>
+        </div>
       </div>
       <div id="preview"></div>
 
@@ -76,7 +82,13 @@
           ファイルを選択
           <%= f.file_field :image, onChange: "imgPreView(event, 'preview2')", class:"file_input" %>
         </div>
-        <div id="preview2" class="edit_user_icon"><%= image_tag @user.image, id:"previewImage-preview2" if @user.image.present? %></div>
+        <div id="preview2" class="edit_user_icon">
+          <% if @user.image.present? %>
+            <%= image_tag @user.image, id:"previewImage-preview2" %>
+          <% else %>
+            <%= image_tag 'user_default', id:"previewImage-preview2" %>
+          <% end %>
+        </div>
       </div>
       <div class="field cp_ipcheck">
         <%= f.check_box :skill, {class: "option-input05"} %>
