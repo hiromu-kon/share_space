@@ -12,7 +12,12 @@
           <% end %>
           <%= link_to room, class: 'room_index_item_content' do %>
             <div class="room_index_content">
-              <strong class=""><%= user.name %></strong>
+              <strong class="">
+                <%= user.name %>
+                <% if user.skill == true %>
+                  <p class="skill_company"><i class="far fa-check-circle"></i>スキル企業</p>
+                <% end %>
+              </strong>
               <% message = get_most_new_message(room) %>
               <% if message.present? %>
                 <div class="room_index_content_message">

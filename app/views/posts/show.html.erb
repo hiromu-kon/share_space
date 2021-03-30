@@ -1,7 +1,13 @@
 <%= provide(:title, @post.title) %>
 
-<% if @post.user.skill == true %>
-  <%= render 'skill_post_show'%>
-<% else %>
-  <%= render 'host_post_show'%>
-<% end %>
+<div class="post_show_container">
+  <div class="device">
+    <div class="post_show">
+      <% if @post.user.skill == true %>
+        <%= render 'skill_post_show'%>
+      <% else %>
+        <%= render 'host_post_show'%>
+      <% end %>
+    </div>
+  </div>
+</div>

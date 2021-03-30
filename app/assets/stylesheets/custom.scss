@@ -1400,12 +1400,71 @@ a {
   width: 70%;
   object-fit: cover;
   object-position: center;
-  border: solid thin lightgray;
   margin-top: 10px;
 }
 /*---------------------------------
   Post 詳細ページ
 ---------------------------------*/
+.markdown_area {
+  line-height: 1.9;
+
+  blockquote {
+    border-left: 5px solid #ddd;
+    color: #777;
+    padding: 1em;
+    padding-right: 0;
+    margin: 1.5em 0;
+  }
+
+  ul, li {
+    list-style: inherit;
+  }
+
+  table {
+    display: block;
+    overflow: auto;
+    margin: 1.5em 0;
+    border-left: 1px solid #ddd;
+    border-collapse: collapse;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #eee;
+  }
+
+  th {
+    font-weight: bold;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 8px 10px;
+  }
+
+  td {
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 8px 10px;
+    max-width: 600px;
+  }
+
+  hr {
+    margin: 3em 0;
+    border: 0;
+    height: 2px;
+    background-color: #ddd;
+  }
+
+  a {
+    color: #4aac00;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
 .post_show_container .device {
   padding-top: 80px;
 }
@@ -1414,7 +1473,7 @@ a {
   width: 800px;
   margin: 0px auto 100px;
 
-  h1 {
+  .post_show_h1 {
     font-size: 20px;
   }
 
@@ -1721,6 +1780,12 @@ a {
     font-weight: bold;
     font-size: 24px;
   }
+
+  .skill_company {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 5px;
+  }
 }
 
 .room_item_right {
@@ -1840,6 +1905,14 @@ a {
     background: linear-gradient(#447fff, #77a2ff);
   }
 }
+
+.message_user_image {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #DDD;
+  border-radius: 50%;
+}
+
 /*---------------------------------
    ダイレクトメッセージ一覧
 ---------------------------------*/
@@ -1892,6 +1965,12 @@ a {
 
 .room_index_content {
   padding: 20px;
+
+  .skill_company {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 5px;
+  }
 }
 
 .room_index_message {
@@ -2311,10 +2390,16 @@ a {
 
   .company_room {
     margin-top: 15px;
+
+    .skill_company {
+      font-size: 10px;
+      margin-left: 3px;
+    }
   }
 
   .row {
     padding-right: 0;
+    padding-left: 0;
   }
 
   .room_item_right {
@@ -2341,6 +2426,22 @@ a {
 
   .reset {
     margin-top: 20px;
+  }
+
+  .room_item {
+    .user_icon {
+      height: 40px;
+      width: 40px;
+    }
+
+    .chat_message {
+      font-size: 12px;
+    }
+  }
+  .room_item_left {
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-top: 10px;
   }
   /* ダイレクトメッセージ一覧（スマホ用） */
   .post_index {

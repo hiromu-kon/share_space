@@ -9,6 +9,9 @@
             <%= render 'shared/icon_default', user: e.user %>
             <span>
               <%= e.user.name %>さん
+              <% if e.user.skill == true %>
+                <p class="skill_company"><i class="far fa-check-circle"></i>スキル企業</p>
+              <% end %>
             </span>
           </div>
         <% end %>
@@ -17,8 +20,8 @@
     <hr class="company_chat">
     <div id="messages" class="row">
       <% @messages.each do |message| %>
-  <%= render partial: 'messages/message', locals: {message: message} %>
-<% end %>
+        <%= render partial: 'messages/message', locals: {message: message} %>
+      <% end %>
     </div>
   </div>
   <div id="message_error"></div>
