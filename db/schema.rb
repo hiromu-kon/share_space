@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_082516) do
+ActiveRecord::Schema.define(version: 2021_03_31_044831) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -49,25 +49,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_082516) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "call_center_users", charset: "utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "industry"
-    t.integer "average_age"
-    t.text "introduction"
-    t.integer "employee"
-    t.string "prefectures"
-    t.string "home_page"
-    t.index ["email"], name: "index_call_center_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_call_center_users_on_reset_password_token", unique: true
-  end
-
   create_table "entries", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
@@ -97,8 +78,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_082516) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.bigint "call_center_user_id"
-    t.index ["call_center_user_id"], name: "index_posts_on_call_center_user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -158,7 +137,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_082516) do
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "posts", "call_center_users"
   add_foreign_key "posts", "users"
   add_foreign_key "tag_relationships", "posts"
   add_foreign_key "tag_relationships", "tags"

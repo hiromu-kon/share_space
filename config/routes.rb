@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :call_center_users, controllers: {
-    sessions: 'call_center_users/sessions',
-    registrations: 'call_center_users/registrations',
-  }
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
