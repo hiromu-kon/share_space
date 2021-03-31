@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     if params[:q].present?
@@ -98,11 +99,15 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(user_id: current_user.id)
   end
 
-  def call_center_post_params
-    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(call_center_user_id: current_call_center_user.id)
-  end
-
   def search_params
     params.require(:q).permit(:sorts)
+  end
+
+  def correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user || current_user.admin?
+      flash[:alert] = "権限がありません"
+      redirect_to root_url
+    end
   end
 end

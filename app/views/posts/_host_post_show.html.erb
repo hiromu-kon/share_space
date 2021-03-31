@@ -16,6 +16,10 @@
   <div class="post_show_btn">
     <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
   </div>
+<% elsif current_user && current_user.admin? %>
+  <div class="post_show_btn">
+    <%= link_to "投稿を削除する", @post, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class:"btn-border_reverse" %>
+  </div>
 <% else %>
   <div class="post_show_btn">
     <%= render "post_contact" %>
