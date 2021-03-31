@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
   has_many :bookmarks, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
   enum user_type:
