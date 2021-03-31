@@ -1,8 +1,8 @@
-<%= form_with(model: [@post,@comment]) do |f| %>
+<%= form_for [@post,@comment], remote: true do |f| %>
   <div id="comment_error">
   </div>
   <div class="input_filed">
-    <%= f.text_field :content, class:'form_control', placeholder:"コメント" %>
+    <%= f.text_field :content, id:"comment_content", class:'form_control', placeholder:"コメント" %>
   </div>
   <% if user_signed_in? %>
     <%= f.submit "投稿", class:"comment_button", id:"comment_button" %>

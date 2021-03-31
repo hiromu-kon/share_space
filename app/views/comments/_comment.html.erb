@@ -1,22 +1,23 @@
-<li id="comment_<%= comment.id %>"　class="comment-<%= comment.id %>">
+<li id="comment_<%= comment.id %>">
   <div class="comment_box">
     <div class="comment_user_area">
-      <%= render 'shared/icon_default',user: comment.user %>
-      <span><%= comment.user.name %></span>
+      <%= link_to comment.user, class:"comment_user_link" do %>
+        <%= render 'shared/icon_default',user: comment.user %>
+      <% end %>
+      <%= link_to comment.user, class:"comment_user_link" do %>
+        <span><%= comment.user.name %></span>
+      <% end %>
     </div>
-    <div>
-      <div class="comment">
-        <%= comment.content %>
-      </div>
-      <div class="divider"></div>
-      <div class="comment_delete">
-        <% if user_signed_in? %>
-          <% if current_user == (comment.user) || current_user.admin? %>
-            <%= link_to "削除", post_comment_path(@post,comment), method: :delete, data:{ confirm:"本当に削除しますか？" }, remote: true %>
-          <% end %>
+    <div class="comment">
+      <%= comment.content %>
+    </div>
+    <div class="comment_delete">
+      <% if user_signed_in? %>
+        <% if current_user == (comment.user) || current_user.admin? %>
+        <%= link_to "削除", post_comment_path(@post,comment), method: :delete, data:{ confirm:"本当に削除しますか？" }, remote: true %>
         <% end %>
-      </div>
-      <hr class="comment_separate">
+      <% end %>
     </div>
+    <hr class="comment_separate">
   </div>
 </li>

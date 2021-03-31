@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'コメントしました！'
-      # respond_to do |format|
-      #   format.html { redirect_to post_url(@post) }
-      #   format.js
-      # end
+      respond_to do |format|
+        format.html { redirect_to post_url(@post) }
+        format.js
+      end
     end
   end
 
