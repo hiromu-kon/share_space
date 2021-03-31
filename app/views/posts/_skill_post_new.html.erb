@@ -1,0 +1,38 @@
+<h1 class="company_pr">企業PR</h1>
+<h4 class="m-b">タイトル<span class="require">必須</span></h4>
+<%= form_with model: @post, local: true do |f| %>
+  <%= f.text_field :title, placeholder:"タイトルを入力してください(60文字以内)", class:"post_form_title", id:"text1", onkeyup:"StringCount('text1', 'textcount1')" %>
+  <p id="textcount1">0文字</p>
+  <h4 class="heading_title">本文<span class="require">必須</span></h4>
+  <div id='editor'>
+  <%= f.text_area :content, placeholder:"本文を入力してください(マークダウン対応)", class:"post_form_text", id:"text2 post_content", rows:"20", "v-model" => "input", name: "post[content]", onkeyup:"StringCount('text2', 'textcount2')" %>
+  <p id="textcount2">0文字</p>
+  <div v-html='input | marked'></div>
+  </div>
+  <h4 class="heading_title">タグ　※コンマ区切りで記入してください</h4>
+  <%= f.text_field :tag_ids, class: "post_form_title number_input", id:'tag_ids',\
+    placeholder: "例)　エンジニア,コールセンター,営業" %>
+  <h4 class="heading_title">オフィス画像<span class="require">必須</span></h4>
+  <div class="file">
+    ファイルを選択
+  <%= f.file_field :image, onChange: "imgPreView(event, 'preview1')", class:"file_input" %>
+  </div>
+  <div>
+    <div id="preview1" class="post_img"><%= image_tag @post.image, id:"previewImage-preview1" if @post.image.attached? %></div>
+  </div>
+  <%= f.submit '投稿', class:"form_control btn_primary" %>
+<% end %>
+
+<script type="text/javascript">
+  window.onload = function() {
+    new Vue({
+      el: '#editor',
+      data: {
+        input: '<%== j @post.content %>',
+      },
+      filters: {
+        marked: marked,
+      },
+    });
+  };
+</script>

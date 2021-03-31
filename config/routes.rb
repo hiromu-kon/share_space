@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :call_center_users, controllers: {
-    sessions: 'call_center_users/sessions',
-    registrations: 'call_center_users/registrations',
-  }
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -10,7 +6,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/terms', to: 'static_pages#terms'
   get '/privacy', to: 'static_pages#privacy'
-  resources :call_center_users, only: :show
   resources :users, only: :show do
     resources :bookmarks, only: [:index]
   end

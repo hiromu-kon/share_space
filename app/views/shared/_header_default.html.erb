@@ -1,0 +1,5 @@
+<% if @user.header_image.attached? %>
+  <%= image_tag @user.header_image, class:"header_detail" %>
+<% else %>
+  <%= image_tag 'header_default.jpg', class:"header_detail" %>
+<% end %>

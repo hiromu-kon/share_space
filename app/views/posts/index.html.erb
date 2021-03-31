@@ -1,46 +1,13 @@
-<%= provide(:title, "募集一覧") %>
+<%= provide(:title, "投稿一覧") %>
+
 <div class="container">
   <div class="post_index">
     <div class="post_device">
-      <div class="left_box">
-        <h3>検索条件</h3>
-        <%= search_form_for(@q, url:search_posts_path) do |f| %>
-          <div class="select_sort">
-            <%= f.select( :sorts, { '並び替え': 'id desc', '報酬の安い順': 'reward asc', '報酬の高い順': 'reward desc', '募集の古い順': 'updated_at asc', '募集の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} ) %>
-          </div>
-          <%= f.text_field :title_or_content_or_user_name_cont, class: "form_search", placeholder: "フリーワードで検索" %>
-          <h3>報酬金額</h3>
-          <%= f.number_field :reward_gteq, class:"number_start", placeholder: "最小金額" %>〜<%= f.number_field :reward_lteq, class:"number_finish", placeholder: "最大金額" %>
-          <h3>募集人数</h3>
-          <%= f.number_field :recruit_people_gteq, class:"number_start", placeholder: "最小人数" %>〜<%= f.number_field :recruit_people_lteq, class:"number_finish", placeholder: "最大人数" %>
-          <h3>職種</h3>
-          <%= render 'select_industry' %>
-          <h3>募集地域(都道府県)</h3>
-          <%= render 'select_prefecture' %>
-          <h3>タグ検索</h3>
-          <%= select_tag :tag_id,
-            options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-            {
-              prompt: 'タグで絞り込み',
-              class: 'industry_more'
-            } %>
-          <%= f.button :type => "submit", class:"form_control search_submit" do %>
-            <i class="fas fa-search"></i>検索
-          <% end %>
-          <%= reset_tag 'クリア', id: 'js_clear_btn', class:"search_reset" %>
-        <% end %>
-      </div>
-      <div class="post_detail">
-        <div class="recruit_title">
-          <span class="title_name">募集一覧</span>
-          <span><%= @posts.count %>件表示</span>
-          <% if user_signed_in? %>
-            <%= link_to "募集する", new_post_path, class:"recruit_link"%>
-          <% end %>
-        </div>
-        <%= render @posts %>
-        <%= paginate @posts %>
-      </div>
+      <% if current_user && current_user.skill == true %>
+        <%= render 'skill_post_index' %>
+      <% else %>
+       <%= render 'host_post_index'%>
+      <% end %>
     </div>
   </div>
 </div>

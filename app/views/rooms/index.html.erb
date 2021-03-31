@@ -8,15 +8,16 @@
         <li class="room_index_item">
           <% user = opened_user(room) %>
           <%= link_to user do %>
-            <% if user.image.attached? %>
-            <%= image_tag user.image, class:"message_user_image" %>
-            <% else %>
-              <%= image_tag "user_default.png", class:"message_user_image" %>
-            <% end %>
+            <%= render 'shared/icon_default', user: opened_user(room) %>
           <% end %>
           <%= link_to room, class: 'room_index_item_content' do %>
             <div class="room_index_content">
-              <strong class=""><%= user.name %></strong>
+              <strong class="">
+                <%= user.name %>
+                <% if user.skill == true %>
+                  <p class="skill_company"><i class="far fa-check-circle"></i>スキル企業</p>
+                <% end %>
+              </strong>
               <% message = get_most_new_message(room) %>
               <% if message.present? %>
                 <div class="room_index_content_message">

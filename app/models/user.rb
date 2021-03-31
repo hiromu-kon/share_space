@@ -4,11 +4,17 @@ class User < ApplicationRecord
   has_one_attached :image
   has_one_attached :header_image
   has_many :posts, dependent: :destroy
-  has_many :messages
-  has_many :entries
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
+
+  enum user_type:
+  {
+    host: 0,
+    skill: 1
+  }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

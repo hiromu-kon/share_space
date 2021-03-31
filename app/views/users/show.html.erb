@@ -2,20 +2,15 @@
 
 <div class="user_show">
   <div class="detail_frame">
-    <% if @user.header_image.attached? %>
-      <%= image_tag @user.header_image, class:"header_detail" %>
-    <% else %>
-      <%= image_tag 'header_default.jpg', class:"header_detail" %>
-    <% end %>
+    <%= render 'shared/header_default' %>
     <div class="company_block">
-      <% if @user.image.attached? %>
-        <%= image_tag  @user.image, class:"user_icon" %>
-      <% else %>
-        <%= image_tag 'user_default.png', class:"user_icon" %>
-      <% end %>
+      <%= render 'shared/icon_default', user: @user %>
       <p class="company_name">
         <%= @user.name %>
       </p>
+      <% if @user.skill == true %>
+        <p class="skill_company"><i class="far fa-check-circle"></i>スキル企業</p>
+      <% end %>
       <p class="company_homepage">
         <%= raw Rinku.auto_link(@user.home_page, :all, 'target="_blank"') if @user.home_page %>
       </p>
@@ -47,26 +42,6 @@
       </div>
     </div>
     <h2 class="user_post_index"><%= @user.name %>さんのスペース投稿(<%= @user.posts.count %>件)</h2>
-    <% @user.posts.each do |post| %>
-      <%= link_to post do %>
-      <div class="user_post_area">
-        <div>
-          <%= image_tag post.image, class:"post_index_image" %>
-        </div>
-        <h1 class="post_title"><%= post.title %></h1>
-        <p class="post_content"><%= truncate(post.content, length: 90) %></p>
-        <div class="group"><h3>報酬(月単価)<span>約<%= number_to_currency(post.reward)%></span></h3></div>
-        <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
-        <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
-        <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
-        <div class="post_index_tag">
-          <% post.tags.each do |tag| %>
-            <span><%= tag.name %></span>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
-      <hr class="post_separate">
-    <% end %>
+    <%= render 'host_post_area', post: @user.posts %>
   </div>
 </div>

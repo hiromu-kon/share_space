@@ -1,0 +1,65 @@
+<%= link_to posts_path, class:"index_link" do%>
+  <i class="far fa-arrow-alt-circle-left"></i>募集一覧に戻る
+<% end %>
+<div class="pv_count">
+  <span><%= Pv.count %></span>
+  <span>views</span>
+</div>
+<div class="created_time">
+  <%= l(@post.created_at, format: :long) %>
+</div>
+<h1 class="post_show_h1"><%= @post.title %></h1>
+<% if @post.image.attached? %>
+  <%= image_tag @post.image, class:"post_show_img" %>
+<% end %>
+<div class="markdown_area">
+  <%= markdown(@post.content) %>
+</div>
+<div class="require_area">
+  <h3 class="recruit">オフィス住所</h3>
+  <p>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</p>
+  <div class="tag_show">
+    <h3>タグ</h3>
+    <% @post.tags.each do |tag| %>
+      <span><%= tag.name %></span>
+    <% end %>
+  </div>
+  <% if @post.user == current_user %>
+    <div class="post_show_btn">
+      <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
+    </div>
+  <% elsif current_user && current_user.admin? %>
+    <div class="post_show_btn">
+      <%= link_to "投稿を削除する", @post, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class:"btn-border_reverse" %>
+    </div>
+  <% else %>
+    <div class="post_show_btn">
+      <%= render "post_contact" %>
+      <span class="bookmark_show"><%= render 'bookmarks/bookmark' , post: @post %></span>
+    </div>
+  <% end %>
+  <hr class="post_separate">
+  <%= link_to @post.user do %>
+    <div class="post_show_company">
+      <%= render 'shared/icon_default', user: @post.user %>
+      <div class="post_company_name"><%= @post.user.name %></div>
+    </div>
+  <% end %>
+  <p class="post_company_introduction"><%= @post.user.introduction %><p>
+  <hr class="post_separate">
+  <h3 class="">おすすめ投稿</h3>
+  <div class="recommend_post">
+    <div class="recommend_post_item">
+      <%= image_tag 'header_default.jpg' %>
+      <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
+      <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
+      <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
+    </div>
+    <div class="recommend_post_item">
+      <%= image_tag 'header_default.jpg' %>
+      <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
+      <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
+      <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
+    </div>
+  </div>
+</div>

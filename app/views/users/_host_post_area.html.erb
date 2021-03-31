@@ -1,0 +1,21 @@
+<% @user.posts.each do |post| %>
+  <%= link_to post do %>
+  <div class="user_post_area">
+    <div>
+        <%= image_tag post.image, class:"post_index_image" if post.image.attached? %>
+    </div>
+    <h1 class="post_title"><%= post.title %></h1>
+    <p class="post_content"><%= truncate(post.content, length: 90) %></p>
+    <div class="group"><h3>報酬(月単価)<span>約<%= number_to_currency(post.reward) if post.reward.present? %></span></h3></div>
+    <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
+    <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
+    <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
+    <div class="post_index_tag">
+      <% post.tags.each do |tag| %>
+        <span><%= tag.name %></span>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <hr class="post_separate">
+<% end %>

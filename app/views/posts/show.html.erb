@@ -1,90 +1,13 @@
 <%= provide(:title, @post.title) %>
+
 <div class="post_show_container">
   <div class="device">
     <div class="post_show">
-      <%= link_to posts_path, class:"index_link" do%>
-        <i class="far fa-arrow-alt-circle-left"></i>募集一覧に戻る
+      <% if @post.user.skill == true %>
+        <%= render 'skill_post_show'%>
+      <% else %>
+        <%= render 'host_post_show'%>
       <% end %>
-      <div class="pv_count">
-        <span><%= Pv.count %></span>
-        <span>views</span>
-      </div>
-      <div class="created_time">
-        <%= l(@post.created_at, format: :long) %>
-      </div>
-      <h1><%= @post.title %></h1>
-      <% if @post.image.attached? %>
-        <%= image_tag @post.image, class:"post_show_img" %>
-      <% end %>
-        <% if @post.user == current_user %>
-          <div class="post_show_btn">
-            <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
-          </div>
-        <% else %>
-          <div class="post_show_btn">
-            <%= render "post_contact" %>
-            <span class="bookmark_show"><%= render 'bookmarks/bookmark' , post: @post %></span>
-          </div>
-        <% end %>
-      <div class="require_area">
-        <h2>募集要件</h2>
-        <div class="require_area_item">
-          <div class="item_box_up">
-            <div>
-              <h3>報酬(月単価)</h3>
-              <p class="require_item"><%= number_to_currency(@post.reward) %></p>
-            </div>
-            <div class="right_column">
-              <h3>募集オペレーター人数</h3>
-              <p class="require_item"><%= @post.recruit_people %>人</p>
-            </div>
-          </div>
-          <h3 class="recruit">オフィス住所</h3>
-          <p>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</p>
-          <h3 class="recruit">募集期間</h3>
-          <div class="item_box_down">
-            <p><%= @post.start_date %></p>
-            <p class="right_column">〜</p>
-            <p class="right_column"><%= @post.finish_date %></p>
-          </div>
-        </div>
-        <h3>募集詳細</h3>
-        <p class="post_show_content"><%= @post.content %></p>
-        <div class="tag_show">
-          <h3>タグ</h3>
-          <% @post.tags.each do |tag| %>
-            <span><%= tag.name %></span>
-          <% end %>
-        </div>
-      </div>
-      <hr class="post_separate">
-      <%= link_to @post.user do %>
-        <div class="post_show_company">
-          <% if @post.user.image.attached? %>
-            <%= image_tag @post.user.image, class:"post_company_image" %>
-          <% else %>
-            <%= image_tag 'user_default.png', class:"post_company_image" %>
-          <% end %>
-          <div class="post_company_name"><%= @post.user.name %></div>
-        </div>
-      <% end %>
-      <p class="post_company_introduction"><%= @post.user.introduction %><p>
-      <hr class="post_separate">
-      <h3 class="">おすすめ投稿</h3>
-      <div class="recommend_post">
-        <div class="recommend_post_item">
-          <%= image_tag 'header_default.jpg' %>
-          <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-          <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-          <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
-        </div>
-        <div class="recommend_post_item">
-          <%= image_tag 'header_default.jpg' %>
-          <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-          <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-          <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
