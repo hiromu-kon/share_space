@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resources :bookmarks, only: [:create, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
     collection do
       get 'search'
     end
