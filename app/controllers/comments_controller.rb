@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      flash[:success] = 'コメントしました！'
+      @post.create_notification_comment!(current_user, @comment.id)
       respond_to do |format|
         format.html { redirect_to post_url(@post) }
         format.js

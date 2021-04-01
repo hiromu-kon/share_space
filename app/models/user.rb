@@ -11,11 +11,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
-  enum user_type:
-  {
-    host: 0,
-    skill: 1
-  }
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

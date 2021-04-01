@@ -16,7 +16,6 @@ require('./swiper.js')
 require('./flash_remove.js')
 require('./header_dropdown.js')
 require('./comment.js')
-require('./curtain.js')
 
 
 Rails.start()

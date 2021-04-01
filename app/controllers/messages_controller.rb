@@ -10,7 +10,8 @@ class MessagesController < ApplicationController
     @message.room_id = params[:room_id]
 
     if @message.save
-      @message = Message.new
+      @room = @message.room
+      @message.create_message_notification(@user)
 
     end
     gets_entries_all_messages
