@@ -39,6 +39,14 @@
     </div>
   <% end %>
   <hr class="post_separate">
+  <div class="card_content">
+    <h3>コメント</h3>
+    <div id="comments">
+      <%= render @comments %>
+    </div>
+    <%= render 'comments/comment_form' %>
+  </div>
+  <hr class="post_separate">
   <%= link_to @post.user do %>
     <div class="post_show_company">
       <%= render 'shared/icon_default', user: @post.user %>
