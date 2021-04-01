@@ -7,8 +7,10 @@
       <% end %>
       <% if current_user.skill == true %>
         <%= render 'skill_post_new' %>
+        <%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class:"form_control post_delete" %>
     　<% else %>
         <%= render 'host_post_new' %>
+        <%= link_to '投稿を削除する', @post, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class:"form_control post_delete" %>
       <% end %>
     </div>
   </div>

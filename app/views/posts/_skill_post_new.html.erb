@@ -10,7 +10,7 @@
   <div v-html='input | marked'></div>
   </div>
   <h4 class="heading_title">タグ　※コンマ区切りで記入してください</h4>
-  <%= f.text_field :tag_ids, class: "post_form_title number_input", id:'tag_ids',\
+  <%= f.text_field :tag_ids, class: "post_form_title number_input", value: @tag_list,\
     placeholder: "例)　エンジニア,コールセンター,営業" %>
   <h4 class="heading_title">オフィス画像<span class="require">必須</span></h4>
   <div class="file">

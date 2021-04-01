@@ -1795,6 +1795,94 @@ a {
   }
 }
 
+.input_filed .form_control {
+  width: 95%;
+  margin: 30px 0 20px 0;
+  padding: 14px 14px;
+
+  &::placeholder {
+    color: #BBB;
+  }
+}
+
+.comment_button {
+  color: rgba(0, 0, 0, 0.26);
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.12);
+  width: 200px;
+  height: 40px;
+  font-size: 14px;
+  border: none;
+　outline: none;
+  border-radius: 5px;
+}
+
+.comment_box {
+  padding: 10px 20px 20px 20px;
+
+  .user_icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
+
+#comments {
+  margin-top: 20px;
+  box-shadow: 0px 0px 12px -6px rgba(0,0,0,0.6);
+  border-radius: 10px;
+
+  li:first-child {
+    padding-top: 10px;
+  }
+  li:last-child {
+    hr {
+      display: none;
+    }
+  }
+}
+
+.comment_user_area {
+  display: flex;
+
+  span {
+    line-height: 40px;
+    margin-left: 10px;
+    color: #808080;
+  }
+}
+
+.comment {
+  margin: 10px 0 0 40px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.comment_separate {
+  border: none;
+  height: 1px;
+  margin: 0;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+.comment_delete {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+
+  &:hover {
+    color: #555;
+  }
+}
+
+.card_content h3 {
+  font-size: 16px;
+  color: #333;
+}
+
+.comment_user_link {
+  display: flex;
+}
 /*---------------------------------
   投稿編集ページ
 ---------------------------------*/
