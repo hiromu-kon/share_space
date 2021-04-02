@@ -15,10 +15,6 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  def bookmarked_by?(user)
-    bookmarks.where(user_id: user).exists?
-  end
-
   def save_tags(savepost_tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - savepost_tags
@@ -47,7 +43,7 @@ class Post < ApplicationRecord
 
   def create_notification_comment!(current_user, comment_id)
     # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
-    temp_ids = Comment.select(:user_id).where(tweet_id: id).where.not(user_id: current_user.id).distinct
+    temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
@@ -58,7 +54,6 @@ class Post < ApplicationRecord
   def save_notification_comment!(current_user, comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
-      tweet_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
       action: 'comment'

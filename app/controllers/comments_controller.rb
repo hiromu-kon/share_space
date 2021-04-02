@@ -7,10 +7,9 @@ class CommentsController < ApplicationController
 
     if @comment.save
       @post.create_notification_comment!(current_user, @comment.id)
-      respond_to do |format|
-        format.html { redirect_to post_url(@post) }
-        format.js
-      end
+    else
+      flash[:alert] = '送信に失敗しました'
+      render 'error'
     end
   end
 

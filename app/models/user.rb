@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :rooms, through: :entries
   has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
@@ -29,5 +30,9 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+
+  def bookmarked_by?(post)
+    bookmarks.where(post_id: post.id).exists?
   end
 end
