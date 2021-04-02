@@ -5,8 +5,8 @@
         <i class="fas fa-search"></i>投稿を探す
       <% end %>
     </li>
-    <li class="pc_list">
-      <%= link_to '#' do %>
+    <li class="pc_list <%= "current_page" if current_page?(notifications_path) %>">
+      <%= link_to notifications_path do %>
         <i class="fas fa-bell"></i>通知
       <% end %>
     </li>

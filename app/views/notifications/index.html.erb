@@ -1,0 +1,16 @@
+<%= provide(:title,"通知") %>
+
+<div class="post_index">
+  <div class="room_index_box">
+    <div class="message_box">通知</div>
+      <% if @notifications.exists? %>
+        <a rel="nofollow" data-method="delete" href="/notifications/destroy_all">
+          <i class="fas fa-trash"></i>全削除
+        </a>
+        <%= render @notifications %>
+        <%= paginate @notifications %>
+      <% else %>
+        通知はありません
+      <% end %>
+  </div>
+</div>

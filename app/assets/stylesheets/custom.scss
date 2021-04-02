@@ -1330,21 +1330,19 @@ a {
   margin-top: 15px;
 
   span {
-    border-radius: 3px;
-    border: 2px solid #00AA00;
-    background-color: #00AA00;
-    padding: 2px 12px;
-    color: #fff;
+    padding: 6px 12px;
+    margin: 5px 5px 5px 0;
+    border-radius: 50px;
+    color: #777;
+    border: 1px solid #777;
     font-size: 13px;
-    font-weight: bold;
-    margin-right: 10px;
-    transition: .6s;
+    transition: .5s;
   }
 
   span:hover {
-    border: 2px solid #00CC00;
-    background-color: #00CC00;
-    transition: .6s;
+    color: #fff;
+    background-color: #777;
+    transition: .5s;
   }
 }
 /*---------------------------------
@@ -1732,20 +1730,18 @@ a {
   }
 
   span {
-    border-radius: 3px;
-    border: 2px solid #00AA00;
-    background-color: #00AA00;
-    padding: 5px 15px;
-    color: #fff;
-    font-weight: bold;
-    margin-right: 10px;
-    transition: .6s;
+    padding: 6px 12px;
+    margin: 5px 5px 5px 0;
+    border-radius: 50px;
+    color: #777;
+    border: 1px solid #777;
+    transition: .5s;
   }
 
   span:hover {
-    border: 2px solid #00CC00;
-    background-color: #00CC00;
-    transition: .6s;
+    background-color: #777;
+    transition: .5s;
+    color: #fff;
   }
 }
 

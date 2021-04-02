@@ -7,7 +7,7 @@ class Message < ApplicationRecord
 
   def create_message_notification(user)
     message_notification = user.passive_notifications.build(
-      visiter_id: user_id,
+      visitor_id: user_id,
       message_id: id,
       action: 'message'
     )
