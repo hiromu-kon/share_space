@@ -68,6 +68,10 @@ a {
    z-index: 20;
  }
 }
+
+.disabled{
+  pointer-events: none;
+}
 /*---------------------------------
 
   トップページ
@@ -1811,6 +1815,7 @@ a {
   border: none;
 　outline: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .comment_box {
@@ -2295,8 +2300,67 @@ a {
   line-height: 55px;
   padding: 0;
 }
+/*---------------------------------
+   通知一覧
+---------------------------------*/
+.notification_index {
+  .message_box {
+    border-bottom: 0px;
+    height: 40px;
+    font-size: 26px;
+  }
 
+  .room_index_item:hover {
+    background-color: #fff;
+  }
 
+  .fa-envelope, .fa-comment-dots {
+    margin-left: 20px;
+    vertical-align: bottom;
+  }
+
+  .pagination {
+    text-align: center;
+    margin-top: 50px;
+  }
+}
+
+.delete_link {
+  margin-left: 30px;
+  font-size: 18px;
+  line-height: 50px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.profile-link {
+  padding-top: 30px;
+
+  .notification {
+    font-weight: bold;
+    font-size: 18px;
+    color: #009688;
+
+    &:hover {
+      text-decoration: underline;
+      color: #004a43;
+    }
+  }
+}
+
+.no_notification {
+  max-height: 300px;
+  line-height: 300px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/*---------------------------------
+   タブレット用レイアウト
+---------------------------------*/
 @media screen and (max-width: 959px) {
   .pc_list_nav_header {
     display: none;

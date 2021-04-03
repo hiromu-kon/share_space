@@ -1,0 +1,18 @@
+<div class="">
+  <li class="room_index_item">
+    <%= render 'shared/icon_default', user: notification.visitor %>
+    <span class="profile-link">
+      <%= link_to notification.visitor.name, user_path(notification.visitor), class:"notification" %>さんが
+      <% if notification.action == "comment" %>
+        <%= link_to 'あなたの投稿', '#', class:"notification" %>
+        にコメントしました
+        <i class="far fa-comment-dots fa-2x right"></i>
+      <% elsif notification.action == "message" %>
+        あなたに
+        <%= link_to "メッセージ", room_path(notification.message.room), class:"notification" %>
+        を送信しました
+        <i class="far fa-envelope fa-2x right"></i>
+      <% end %>
+    </span>
+  </li>
+</div>
