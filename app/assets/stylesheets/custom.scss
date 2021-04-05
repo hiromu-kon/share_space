@@ -68,6 +68,10 @@ a {
    z-index: 20;
  }
 }
+
+.disabled{
+  pointer-events: none;
+}
 /*---------------------------------
 
   トップページ
@@ -1330,21 +1334,19 @@ a {
   margin-top: 15px;
 
   span {
-    border-radius: 3px;
-    border: 2px solid #00AA00;
-    background-color: #00AA00;
-    padding: 2px 12px;
-    color: #fff;
+    padding: 6px 12px;
+    margin: 5px 5px 5px 0;
+    border-radius: 50px;
+    color: #777;
+    border: 1px solid #777;
     font-size: 13px;
-    font-weight: bold;
-    margin-right: 10px;
-    transition: .6s;
+    transition: .5s;
   }
 
   span:hover {
-    border: 2px solid #00CC00;
-    background-color: #00CC00;
-    transition: .6s;
+    color: #fff;
+    background-color: #777;
+    transition: .5s;
   }
 }
 /*---------------------------------
@@ -1732,20 +1734,18 @@ a {
   }
 
   span {
-    border-radius: 3px;
-    border: 2px solid #00AA00;
-    background-color: #00AA00;
-    padding: 5px 15px;
-    color: #fff;
-    font-weight: bold;
-    margin-right: 10px;
-    transition: .6s;
+    padding: 6px 12px;
+    margin: 5px 5px 5px 0;
+    border-radius: 50px;
+    color: #777;
+    border: 1px solid #777;
+    transition: .5s;
   }
 
   span:hover {
-    border: 2px solid #00CC00;
-    background-color: #00CC00;
-    transition: .6s;
+    background-color: #777;
+    transition: .5s;
+    color: #fff;
   }
 }
 
@@ -1815,6 +1815,7 @@ a {
   border: none;
 　outline: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .comment_box {
@@ -2299,8 +2300,73 @@ a {
   line-height: 55px;
   padding: 0;
 }
+/*---------------------------------
+   通知一覧
+---------------------------------*/
+.notification_index {
+  .message_box {
+    border-bottom: 0px;
+    height: 40px;
+    font-size: 26px;
+  }
+
+  .room_index_item:hover {
+    background-color: #fff;
+  }
+
+  .fa-envelope, .fa-comment-dots {
+    margin-left: 20px;
+    vertical-align: bottom;
+  }
+
+  .pagination {
+    text-align: center;
+    margin-top: 50px;
+  }
+}
+
+.delete_link {
+  margin-left: 30px;
+  font-size: 18px;
+  line-height: 50px;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.profile-link {
+  padding: 30px 20px 0 0;
+  width: 100%;
+
+  .notification {
+    font-weight: bold;
+    font-size: 18px;
+    color: #009688;
+
+    &:hover {
+      text-decoration: underline;
+      color: #004a43;
+    }
+  }
+  .room_index_date {
+    width: 100%;
+    color: #686F71;
+  }
+}
+
+.no_notification {
+  max-height: 300px;
+  line-height: 300px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
 
 
+/*---------------------------------
+   タブレット用レイアウト
+---------------------------------*/
 @media screen and (max-width: 959px) {
   .pc_list_nav_header {
     display: none;
@@ -2424,16 +2490,16 @@ a {
   }
 
   .main_title_box {
-    padding-top: 120px;
+    padding-top: 130px;
   }
 
   .main_title {
-    height: 65vh;
+    height: 60vh;
     background-position: center center;
   }
 
   .main_title_top {
-    font-size: 28px;
+    font-size: 38px;
   }
 
   .section_title {
@@ -2441,8 +2507,8 @@ a {
   }
 
   .main_title_sub {
-    margin-top: 40px;
-    font-size: 8px;
+    margin-top: 50px;
+    font-size: 12px;
     display: flex;
     width: 90%;
     justify-content: center;
@@ -2489,6 +2555,25 @@ a {
 
   .static_page {
     padding-right: 15px;
+  }
+
+  .container_new {
+    max-width: 520px;
+  }
+
+  .swiper-container {
+    max-width: 520px;
+    padding-top: 0;
+    height: 30vw;
+  }
+
+  .swiper-slide img {
+    max-width: 400px;
+    max-height: 200px;
+  }
+
+  .swiper_item_width {
+    width: 480px;
   }
   /* ヘッダー（スマホ用） */
   .offcm01 {

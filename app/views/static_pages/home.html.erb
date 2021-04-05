@@ -1,18 +1,18 @@
 <div class="main_title">
   <div class="main_title_box">
-    <div class="curtain main_title_top">
-      <span>“オフィスのすきまを<br>
-      &nbsp;新たな価値に変える”</span>
+    <div class="main_title_top">
+      “オフィスのすきまを<br>
+      &nbsp;新たな価値に変える”
     </div>
-    <div class="curtain main_title_sub">
-      <span>空きリソースを利用して自社で足りないスキルを他社にオンサイトで依頼できる。<br>
-      空きスペースとスキルをシェアするマッチングサイト。</span>
+    <div class="main_title_sub">
+      空きリソースを利用して自社で足りないスキルを他社にオンサイトで依頼できる。<br>
+      空きスペースとスキルをシェアするマッチングサイト。
     </div>
   </div>
 </div>
 <h3 class="section_title">
   <span class="en">About</span>
-  <span class="ja curtain"><span>SHARE SPACEとは?</span></span>
+  <span class="ja">SHARE SPACEとは?</span>
 </h3>
 <h4 class="intro_top fade_in"><span class="blue">「スペースを提供しオンサイトで仕事を依頼したい企業」</span>と<br>
 <span class="orange">「スキルを提供したい企業」</span>を繋ぐマッチングサイトです。</h4>
@@ -35,7 +35,9 @@
     </li>
   </ul>
 </div>
+
 <div class="container_new">
+  <% if @new_post.present? %>
   <h3 class="section_title fade_in">
     <span class="en">New</span>
     <span class="ja">最新のスペース募集</span>
@@ -44,28 +46,27 @@
     <!-- メイン表示部分 -->
     <div class="swiper-wrapper">
       <!-- 各スライド -->
-      <% if @new_post.present? %>
-        <% @new_post.each do |post| %>
-          <div class="swiper-slide">
-            <%= link_to post do %>
-              <% if post.image.attached? %>
-                <%= image_tag post.image, class:"image_swiper" %>
-              <% end %>
-              <div class="swiper_item_width">
-                <h1 class="post_title"><%= truncate(post.title, length: 60) %></h1>
-                <p class="post_content"><%= truncate(post.content, length: 90) %></p>
-                <div class="group group_start"><h3>報酬(月単価)<span><%= number_to_currency(post.reward) if post.reward.present? %>円</span></h3></div>
-                <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
-                <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
-                <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
-              </div>
+      <% @new_post.each do |post| %>
+        <div class="swiper-slide">
+          <%= link_to post do %>
+            <% if post.image.attached? %>
+              <%= image_tag post.image, class:"image_swiper" %>
             <% end %>
-          </div>
-        <% end %>
+            <div class="swiper_item_width">
+              <h1 class="post_title"><%= truncate(post.title, length: 60) %></h1>
+              <p class="post_content"><%= truncate(post.content, length: 90) %></p>
+              <div class="group group_start"><h3>報酬(月単価)<span><%= number_to_currency(post.reward) if post.reward.present? %>円</span></h3></div>
+              <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
+              <div class="group"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
+              <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <div class="swiper-button-prev"></div>
-  	 <div class="swiper-button-next"></div>
-    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+   <div class="swiper-pagination"></div>
   </div>
+  <% end %>
 </div>
