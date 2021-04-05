@@ -2336,7 +2336,8 @@ a {
 }
 
 .profile-link {
-  padding-top: 30px;
+  padding: 30px 20px 0 0;
+  width: 100%;
 
   .notification {
     font-weight: bold;
@@ -2347,6 +2348,10 @@ a {
       text-decoration: underline;
       color: #004a43;
     }
+  }
+  .room_index_date {
+    width: 100%;
+    color: #686F71;
   }
 }
 
@@ -2485,16 +2490,16 @@ a {
   }
 
   .main_title_box {
-    padding-top: 120px;
+    padding-top: 130px;
   }
 
   .main_title {
-    height: 65vh;
+    height: 60vh;
     background-position: center center;
   }
 
   .main_title_top {
-    font-size: 28px;
+    font-size: 38px;
   }
 
   .section_title {
@@ -2502,8 +2507,8 @@ a {
   }
 
   .main_title_sub {
-    margin-top: 40px;
-    font-size: 8px;
+    margin-top: 50px;
+    font-size: 12px;
     display: flex;
     width: 90%;
     justify-content: center;
@@ -2550,6 +2555,25 @@ a {
 
   .static_page {
     padding-right: 15px;
+  }
+
+  .container_new {
+    max-width: 520px;
+  }
+
+  .swiper-container {
+    max-width: 520px;
+    padding-top: 0;
+    height: 30vw;
+  }
+
+  .swiper-slide img {
+    max-width: 400px;
+    max-height: 200px;
+  }
+
+  .swiper_item_width {
+    width: 480px;
   }
   /* ヘッダー（スマホ用） */
   .offcm01 {

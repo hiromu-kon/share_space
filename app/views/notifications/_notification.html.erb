@@ -4,14 +4,16 @@
     <span class="profile-link">
       <%= link_to notification.visitor.name, user_path(notification.visitor), class:"notification" %>さんが
       <% if notification.action == "comment" %>
-        <%= link_to 'あなたの投稿', '#', class:"notification" %>
+        <%= link_to 'あなたの投稿', post_path(notification.post), class:"notification" %>
         にコメントしました
         <i class="far fa-comment-dots fa-2x right"></i>
+        <div class="room_index_date"><%= time_ago_in_words(notification.created_at).upcase %></div>
       <% elsif notification.action == "message" %>
         あなたに
         <%= link_to "メッセージ", room_path(notification.message.room), class:"notification" %>
         を送信しました
         <i class="far fa-envelope fa-2x right"></i>
+        <div class="room_index_date"><%= time_ago_in_words(notification.created_at).upcase %></div>
       <% end %>
     </span>
   </li>
