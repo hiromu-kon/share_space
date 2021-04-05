@@ -35,4 +35,11 @@ class User < ApplicationRecord
   def bookmarked_by?(post)
     bookmarks.where(post_id: post.id).exists?
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザー"
+    end
+  end
 end
