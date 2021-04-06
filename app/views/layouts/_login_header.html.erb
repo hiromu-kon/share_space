@@ -54,37 +54,37 @@
         <div class="menu">
           <ul>
             <li>
-              <%= link_to user_path(current_user.id) do %>
+              <%= link_to user_path(current_user.id), class:"mypage_link" do %>
                 <i class="fas fa-user-circle"></i>マイページ
               <% end %>
             </li>
             <li>
-              <%= link_to edit_user_registration_path do %>
+              <%= link_to edit_user_registration_path, class:"user_edit_link" do %>
                 <i class="fas fa-user-edit"></i>ユーザー編集
               <% end %>
             </li>
             <li>
-              <%= link_to posts_path do %>
+              <%= link_to posts_path, class:"post_link" do %>
                 <%= image_tag 'post.png', class:"post_header_img" %>投稿を探す
               <% end %>
             </li>
             <li>
-              <%= link_to notifications_path do %>
+              <%= link_to notifications_path, class:"notification_link" do %>
                 <i class="fas fa-bell"></i>通知
               <% end %>
             </li>
             <li>
-              <%= link_to rooms_path do %>
+              <%= link_to rooms_path, class:"room_link" do %>
                 <i class="fas fa-envelope"></i>メッセージ
               <% end %>
             </li>
             <li>
-              <%= link_to user_bookmarks_path(current_user) do %>
+              <%= link_to user_bookmarks_path(current_user), class:"bookmark_link" do %>
                 <i class="fas fa-bookmark"></i>ブックマーク一覧
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, :method => :delete do %>
+              <%= link_to destroy_user_session_path, :method => :delete, class:"logout_link" do %>
                 <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>

@@ -10,8 +10,7 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it "新規登録で表示されているタイトルのテスト" do
-      expect(response.body).to include "ホスト企業専用"
+    it "新規登録タイトルのテスト" do
       expect(response.body).to include "新規登録"
     end
 
@@ -34,8 +33,7 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it "ログインページで表示されている見出しのテスト" do
-      expect(response.body).to include "ホスト企業専用"
+    it "ログインページタイトルのテスト" do
       expect(response.body).to include "ログイン"
     end
 
@@ -70,11 +68,11 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "ユーザー編集" do
-    let!(:user) { create :user }
+    let(:user) { create :user }
 
     before do
       sign_in_as user
-      get edit_user_registration_path
+      get edit_user_registration_path(user.id)
     end
 
     it "正常なレスポンスを返すこと" do
