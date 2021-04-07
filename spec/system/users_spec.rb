@@ -42,7 +42,7 @@ RSpec.describe "Users", type: :system do
   end
 
   describe "ユーザーログインページ" do
-    let(:host_user) { create :host_user }
+    let(:user) { create :user }
 
     before do
       visit new_user_session_path
@@ -66,6 +66,25 @@ RSpec.describe "Users", type: :system do
       log_in_as user
       delete destroy_user_session_path
       expect(cookies[:remember_token]).to be_nil
+    end
+  end
+
+  describe "ユーザー削除" do
+    let!(:user) { create :user }
+    let!(:admin) { create :admin }
+
+    it "ユーザー削除が成功する" do
+      log_in_as user
+      visit edit_user_registration_path
+      find(".user_destroy_btn").click
+      expect(page).to have_content "アカウントを削除しました。またのご利用をお待ちしております。"
+    end
+
+    it "管理者ユーザーは削除できない" do
+      log_in_as admin
+      visit edit_user_registration_path
+      find(".user_destroy_btn").click
+      expect(page).to have_content "ゲストユーザーの更新・削除はできません"
     end
   end
 end

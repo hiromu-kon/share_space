@@ -2,7 +2,13 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
+  before_action :ensure_normal_user, only: %i[update destroy]
 
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, flash: {danger: "ゲストユーザーの更新・削除はできません。"}
+    end
+  end
   # GET /resource/sign_up
   # def new
   #   super
@@ -26,7 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # DELETE /resource
   def destroy
     if current_user == resource && current_user.admin?
-      flash[:danger] == "管理者ユーザーは削除できません"
+      flash[:alert] == "管理者ユーザーは削除できません"
       redirect_to user_path(resource)
     else
       super

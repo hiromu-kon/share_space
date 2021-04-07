@@ -2,7 +2,6 @@
 <div class="device">
   <div class="device_frame">
     <div class="form_title">
-      <p>ホスト企業専用</p>
       <p>ログイン</p>
     </div>
     <div class="device_inner">
@@ -23,7 +22,7 @@
         <% end %>
         <div class="actions">
           <%= f.submit "ログイン", class:"form_control btn_primary" %>
-          <%= link_to "ゲストとしてログイン(ホスト企業用)", '#', class:"form_control gest_button" %>
+          <%= link_to "ゲストとしてログイン(ホスト企業用)", users_guest_sign_in_path, method: :post, class:"form_control gest_button" %>
         </div>
       <% end %>
       <div class="link_blue">
