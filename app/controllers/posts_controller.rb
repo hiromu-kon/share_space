@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.new
+    @post.build_map
   end
 
   def show
@@ -57,6 +58,11 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(",")
+    @map = Map.find_by(post_id: @post.id)
+    return if @map.nil?
+
+    gon.latitude = @map.latitude
+    gon.longitude = @map.longitude
   end
 
   def create
@@ -64,6 +70,21 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_ids].split(',')
     if @post.save
       @post.save_tags(tag_list)
+
+      latitude = params[:post][:map][:latitude]
+      longitude = params[:post][:map][:longitude]
+      address = params[:post][:map][:address]
+
+      unless latitude.empty?
+        @map = @post.build_map(
+          latitude: latitude,
+          longitude: longitude,
+          address: address.slice(3, 30)
+        )
+        # @map.address = @map.address_search(latitude, longitude)
+        @map.save
+      end
+
       flash[:notice] = "投稿しました"
       redirect_to posts_path
     else
@@ -77,6 +98,19 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
       @post.save_tags(tag_list)
+
+      latitude = params[:post][:map][:latitude]
+      longitude = params[:post][:map][:longitude]
+      address = params[:post][:map][:address]
+      unless latitude.empty?
+        @map = @article.build_map(
+          latitude: latitude,
+          longitude: longitude,
+          address: address.slice(3, 50)
+        )
+        @map.save
+      end
+
       flash[:notice] = "投稿を編集しました"
       redirect_to post_path
     else
