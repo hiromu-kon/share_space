@@ -302,6 +302,7 @@ a {
 
   a {
     color: #009900;
+    pointer-events: none;
   }
 
   &:hover {
@@ -1381,7 +1382,7 @@ a {
   Post 新規投稿ページ
 ---------------------------------*/
 .post_form {
-  width: 800px;
+  max-width: 800px;
   margin: 0px auto 100px;
 
   h1 {
@@ -2206,7 +2207,7 @@ a {
 }
 
 .bookmark_index {
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -2218,9 +2219,8 @@ a {
   position: relative;
   overflow: hidden;
   padding: 20px 0 130px 0;
-  height: 40vw;
-  max-height: 500px; //最大の高さ
-  width: 800px;
+  height: 500px; //最大の高さ
+  max-width: 800px;
 }
 
 .swiper-wrapper {
@@ -2231,19 +2231,19 @@ a {
 
   img {
     object-fit: cover; /* IE: not support */
-    width: 600px;
-    height: 300px;
+    width: 700px;
+    height: 400px;
     display: block;
     margin: 0 auto;
-    border: 1px solid #999;
+    border: 1px solid #DDD;
     border-bottom: 0;
   }
 }
 
 .swiper_item_width {
   margin: 0 auto;
-  width: 600px;
-  border: 1px solid #999;
+  max-width: 700px;
+  border: 1px solid #DDD;
   border-top: 0;
 
   .post_title {
@@ -2259,13 +2259,17 @@ a {
   padding-left: 15px;
 }
 
+.swiper-pagination {
+  border: none;
+}
+
 .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
 }
 
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
-    margin: 0 8px;
+  margin: 0 8px;
 }
 /*---------------------------------
   ページネーション
@@ -2554,11 +2558,11 @@ a {
     font-size: 16px;
   }
 }
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 540px) {
   /* トップページ（スマホ用） */
   .wrapper {
     overflow: hidden;
-    max-width: 520px;
+    max-width: 540px;
   }
 
   .main_title_box {
@@ -2631,22 +2635,62 @@ a {
   }
 
   .container_new {
-    max-width: 520px;
+    max-width: 540px;
+    margin-bottom: 60px;
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 80px;
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    top: 18%;
+  }
+
+  .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+    left: 0px;
+  }
+  .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    right: 0px;
   }
 
   .swiper-container {
-    max-width: 520px;
+    border: 0;
+    max-width: 100%;
     padding-top: 0;
-    height: 30vw;
+    padding-bottom: 45px;
+  }
+  .swiper_item_width {
+    border: 0;
   }
 
   .swiper-slide img {
-    max-width: 400px;
+    max-width: 100%;
     max-height: 200px;
+    border: 0;
+    background-color: #fff;
+    max-width: 400px;
+  }
+  .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after {
+    content: 'prev';
+    font-size: 30px;
+  }
+
+  .swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after {
+    content: 'next';
+    font-size: 30px;
   }
 
   .swiper_item_width {
-    width: 480px;
+    max-width: 480px;
+  }
+  .phone_recruit_date {
+    padding-left: 15px;
+  }
+  .post_content {
+    margin-top: 5px;
+  }
+  .swiper_item_width .post_title {
+    padding-bottom: 0px;
   }
   /* ヘッダー（スマホ用） */
   .offcm01 {
@@ -2754,7 +2798,7 @@ a {
   }
 
   .user_post_area {
-    width: auto;
+    max-width: 90%;
   }
 
   .post_index_image {
@@ -2771,7 +2815,136 @@ a {
   .post_index_tag span {
     font-size: 10px;
   }
+  .user_show .post_separate {
+    width: 85%;
+  }
+  .post_title {
+    font-size: 16px;
+  }
+  .company_name {
+    margin-top: 10px;
 
+  }
+  .mypage_edit {
+    margin: 20px auto 10px auto;
+    font-size: 12px;
+    max-width: 200px;
+    padding: 15px 0;
+  }
+  /* Post詳細（スマホ用） */
+  .post_show {
+    width: 95%;
+  }
+  .post_show .post_show_h1 {
+    font-size: 16px;
+  }
+  .created_time {
+    float: none;
+    font-size: 10px;
+    text-align: right;
+    line-height: 0;
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  .pv_count {
+    font-size: 12px;
+    margin-right: 0;
+
+    span:last-child {
+      font-size: 10px;
+    }
+  }
+  .btn-border_reverse {
+    font-size: 14px;
+    padding: 7px 25px;
+  }
+  .require_area h2 {
+    font-size: 16px;
+  }
+  .require_area h3 {
+    font-size: 14px;
+  }
+  .require_item {
+    font-size: 14px;
+  }
+  .item_box_down p {
+    font-size: 14px;
+  }
+  .right_column {
+    margin-left: 20%;
+  }
+  .address {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  #map {
+    height: 300px;
+  }
+  .tag_show {
+    margin-top: 30px;
+
+    span {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+  .input_filed .form_control {
+    width: 85%;
+  }
+  #comments li:first-child {
+    padding-top: 5px;
+  }
+  .comment {
+    margin: 10px 0 0 20px;
+    margin-bottom: 8px;
+  }
+  .comment_delete {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .comment_box {
+    padding: 5px 20px 5px 20px;
+  }
+  .recommend_post {
+    display: block;
+  }
+  .recommend_post_item {
+    width: 100%;
+    margin-bottom: 30px;
+
+    img {
+      width: 100%;
+    }
+  }
+  /* Post一覧（スマホ用） */
+  /* Post編集（スマホ用） */
+  .post_form {
+    max-width: none;
+    width: none;
+    text-align: center;
+  }
+  .post_form_title {
+    width: 90%;
+    padding-left: 0;
+  }
+  .post_form_text {
+    width: 90%;
+  }
+  .number_input {
+    width: 45%;
+  }
+  .post_date_field {
+    width: 100%;
+  }
+
+  .map_form::placeholder {
+    font-size: 8px;
+  }
+  #previewImage-preview1, #previewImage-preview2  {
+    height: 200px;
+  }
+  /* Post投稿（スマホ用） */
+  /* ブックマーク一覧 */
   /* ダイレクトメッセージ詳細（スマホ用） */
   .company_room span {
     font-size: 18px;
@@ -2846,10 +3019,15 @@ a {
   }
 
   .room_index_date {
-    font-size: 12px;
+    font-size: 10px;
     margin-top: 5px;
   }
-
+  .room_index_message {
+    margin: 5px 0 0 10px;
+  }
+  .room_index_box .user_icon {
+    margin: 20px 10px;
+  }
   /* （スマホ用） */
   /* （スマホ用） */
   /* （スマホ用） */
