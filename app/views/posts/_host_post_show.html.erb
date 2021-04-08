@@ -39,8 +39,6 @@
         <p class="require_item"><%= @post.recruit_people %>人</p>
       </div>
     </div>
-    <h3 class="recruit">オフィス住所</h3>
-    <p>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</p>
     <h3 class="recruit">募集期間</h3>
     <div class="item_box_down">
       <p><%= @post.start_date %></p>
@@ -50,6 +48,12 @@
   </div>
   <h3>募集詳細</h3>
   <p class="post_show_content"><%= @post.content %></p>
+  <% unless @map.nil? %>
+    <div class="address_map">
+    <h3>オフィス住所</h3>
+    <div class="address"><%= @map.address %></div>
+    <div id="map"></div>
+  <% end %>
   <div class="tag_show">
     <h3>タグ</h3>
     <% @post.tags.each do |tag| %>
@@ -89,3 +93,6 @@
     <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'map/map_show' %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>

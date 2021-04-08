@@ -23,6 +23,12 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @pv = Pv.find_by(ip: request.remote_ip)
+    @map = Map.find_by(post_id: @post.id)
+    unless @map.nil?
+      gon.latitude = @map.latitude
+      gon.longitude = @map.longitude
+    end
+
     if @pv
       @post = Post.find(params[:id])
     else
@@ -103,7 +109,7 @@ class PostsController < ApplicationController
       longitude = params[:post][:map][:longitude]
       address = params[:post][:map][:address]
       unless latitude.empty?
-        @map = @article.build_map(
+        @map = @post.build_map(
           latitude: latitude,
           longitude: longitude,
           address: address.slice(3, 50)
@@ -134,7 +140,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image, map_attributes: [:id, :address, :latitude, :longitude]).merge(user_id: current_user.id)
   end
 
   def search_params

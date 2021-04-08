@@ -61,6 +61,10 @@ a {
 .disabled{
   pointer-events: none;
 }
+
+#map{
+  height: 350px;
+}
 /*---------------------------------
 
   トップページ
@@ -1908,6 +1912,50 @@ a {
 .comment_user_link {
   display: flex;
 }
+
+.map_search_btn, .map_delete_btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: background-color .2s ease-out;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  margin: 15px 0;
+  transition: .5s;
+
+  &:hover {
+    opacity: 0.5;
+    transition: .5s;
+  }
+
+  .fa-map-marker-alt {
+    padding-right: 0px;
+  }
+}
+
+.map_delete_btn {
+  background-color: lightblue;
+  color: #000;
+}
+
+.map_search_btn {
+  margin-right: 30px;
+}
+
+.address_map {
+  margin-top: 30px;
+}
+
+.address {
+  margin: 10px 0;
+}
 /*---------------------------------
   投稿編集ページ
 ---------------------------------*/
@@ -2523,7 +2571,7 @@ a {
   }
 
   .main_title_top {
-    font-size: 38px;
+    font-size: 26px;
   }
 
   .section_title {
@@ -2579,6 +2627,7 @@ a {
 
   .static_page {
     padding-right: 15px;
+    padding-left: 15px;
   }
 
   .container_new {
