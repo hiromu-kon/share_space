@@ -55,10 +55,11 @@ class PostsController < ApplicationController
         end
       end
     end
-
-    @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments
+
+    @host_post = Post.left_joins(:user).where(user: { skill: false })
+    @new_post = @host_post.order(created_at: :desc).where.not(id: @post.id).limit(2)
   end
 
   def edit

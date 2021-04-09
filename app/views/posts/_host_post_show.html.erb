@@ -80,18 +80,16 @@
 <hr class="post_separate">
 <h3 class="">おすすめ投稿</h3>
 <div class="recommend_post">
-  <div class="recommend_post_item">
-    <%= image_tag 'header_default.jpg' %>
-    <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-    <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-    <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
-  </div>
-  <div class="recommend_post_item">
-    <%= image_tag 'header_default.jpg' %>
-    <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-    <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-    <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
-  </div>
+  <% @new_post.each do |new_post| %>
+  <%= link_to new_post do%>
+    <div class="recommend_post_item">
+      <%= image_tag new_post.image %>
+      <p><%= truncate(new_post.title, length: 50) %></p>
+      <div class="recommend_post_item_detail">報酬(月単価)<span><%= number_to_currency(new_post.reward) if new_post.reward %></span></div>
+      <div class="recommend_post_item_detail">オフィス住所<span><%= new_post.map&.address %></span></div>
+    </div>
+    <% end %>
+  <% end %>
 </div>
 
 <%= javascript_pack_tag 'map/map_show' %>

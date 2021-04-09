@@ -1796,11 +1796,14 @@ a {
 
 .recommend_post_item {
   width: 380px;
+  height: 340px;
   border: 1px solid #999;
 
   img {
     height: 210px;
     width: 380px;
+    object-fit: cover;
+    object-position: center;
   }
 
   p {
@@ -2241,7 +2244,7 @@ a {
 
   img {
     object-fit: cover; /* IE: not support */
-    width: 700px;
+    width: 800px;
     height: 400px;
     display: block;
     margin: 0 auto;
@@ -2250,9 +2253,13 @@ a {
   }
 }
 
+.swiper-button-next, .swiper-button-prev {
+  top: 35%;
+}
+
 .swiper_item_width {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
   border: 1px solid #DDD;
   border-top: 0;
 
