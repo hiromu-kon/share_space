@@ -65,6 +65,16 @@ a {
 #map{
   height: 350px;
 }
+
+.unchecked::after {
+    content: "●";
+    color: #efa04c;
+    position: relative;
+    top: 2px;
+    right: 7px;
+    font-size: 1px;
+    text-shadow: 0px 0px 2px #efa04c;
+}
 /*---------------------------------
 
   トップページ
