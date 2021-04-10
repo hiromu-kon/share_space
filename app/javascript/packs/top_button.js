@@ -1,5 +1,5 @@
 // トップへ戻るボタンのイベント
-document.addEventListener("turbolinks:load", function () {
+document.addEventListener("DOMContentLoaded", function(){
   const PageTopBtn = document.getElementById('js_button');
   PageTopBtn.addEventListener('click', () =>{
     window.scrollTo({
@@ -7,4 +7,4 @@ document.addEventListener("turbolinks:load", function () {
       behavior: 'smooth'
     });
   });
-});
+}, false);
