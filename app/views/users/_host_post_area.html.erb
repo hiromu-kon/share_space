@@ -1,5 +1,5 @@
 <% @user.posts.each do |post| %>
-  <%= link_to post do %>
+  <%= link_to post, class:"post_hover" do %>
   <div class="user_post_area">
     <div>
         <%= image_tag post.image, class:"post_index_image" if post.image.attached? %>

@@ -30,7 +30,7 @@
           </div>
           <h1 class="post_title"><%= post.title %></h1>
           <span><div class="grad_item"><%= markdown(post.content) %></div></span>
-          <h3 class="post_address">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></h3>
+          <h3 class="post_address">オフィス住所<span><%= post.map&.address %></span></h3>
           <div class="post_index_tag">
             <% post.tags.each do |tag| %>
               <span><%= tag.name %></span>
