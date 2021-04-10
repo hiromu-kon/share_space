@@ -6,14 +6,10 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.create(message_params)
-    @message.user_id = current_user.id
-    @message.room_id = params[:room_id]
 
     if @message.save
       @room.create_notification_message!(current_user, @message.id)
-
     end
-    gets_entries_all_messages
   end
 
   def destroy

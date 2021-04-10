@@ -51,7 +51,7 @@
 
       <div class="field post_date_field">
         <%= f.number_field :employee, autofocus: true, class:"form_control number_input left_column", placeholder:"数字で入力してください" %>
-        <%= f.number_field :average_age, autofocus: true, class:"form_control number_input", placeholder:"数字で入力してください" %>
+        <%= f.select :average_age, ['sample1', 'sample2', 'sample3'], {include_blank:'選択ボックス'}, class:'number_input' %>
       </div>
 
       <div class="field">

@@ -17,11 +17,18 @@ class PostsController < ApplicationController
 
   def new
     @post = current_user.posts.new
+    @post.build_map
   end
 
   def show
     @post = Post.find(params[:id])
     @pv = Pv.find_by(ip: request.remote_ip)
+    @map = Map.find_by(post_id: @post.id)
+    unless @map.nil?
+      gon.latitude = @map.latitude
+      gon.longitude = @map.longitude
+    end
+
     if @pv
       @post = Post.find(params[:id])
     else
@@ -48,15 +55,21 @@ class PostsController < ApplicationController
         end
       end
     end
-
-    @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments
+
+    @host_post = Post.left_joins(:user).where(user: { skill: false })
+    @new_post = @host_post.order(created_at: :desc).where.not(id: @post.id).limit(2)
   end
 
   def edit
     @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join(",")
+    @map = Map.find_by(post_id: @post.id)
+    return if @map.nil?
+
+    gon.latitude = @map.latitude
+    gon.longitude = @map.longitude
   end
 
   def create
@@ -64,6 +77,21 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_ids].split(',')
     if @post.save
       @post.save_tags(tag_list)
+
+      latitude = params[:post][:map][:latitude]
+      longitude = params[:post][:map][:longitude]
+      address = params[:post][:map][:address]
+
+      unless latitude.empty?
+        @map = @post.build_map(
+          latitude: latitude,
+          longitude: longitude,
+          address: address.slice(3, 30)
+        )
+        # @map.address = @map.address_search(latitude, longitude)
+        @map.save
+      end
+
       flash[:notice] = "投稿しました"
       redirect_to posts_path
     else
@@ -77,6 +105,19 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_ids].split(',')
     if @post.update(post_params)
       @post.save_tags(tag_list)
+
+      latitude = params[:post][:map][:latitude]
+      longitude = params[:post][:map][:longitude]
+      address = params[:post][:map][:address]
+      unless latitude.empty?
+        @map = @post.build_map(
+          latitude: latitude,
+          longitude: longitude,
+          address: address.slice(3, 50)
+        )
+        @map.save
+      end
+
       flash[:notice] = "投稿を編集しました"
       redirect_to post_path
     else
@@ -100,7 +141,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image, map_attributes: [:id, :address, :latitude, :longitude]).merge(user_id: current_user.id)
   end
 
   def search_params

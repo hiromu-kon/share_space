@@ -35,12 +35,10 @@
         <p class="require_item"><%= number_to_currency(@post.reward) if @post.reward %></p>
       </div>
       <div class="right_column">
-        <h3>募集オペレーター人数</h3>
+        <h3>募集人数</h3>
         <p class="require_item"><%= @post.recruit_people %>人</p>
       </div>
     </div>
-    <h3 class="recruit">オフィス住所</h3>
-    <p>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</p>
     <h3 class="recruit">募集期間</h3>
     <div class="item_box_down">
       <p><%= @post.start_date %></p>
@@ -50,6 +48,12 @@
   </div>
   <h3>募集詳細</h3>
   <p class="post_show_content"><%= @post.content %></p>
+  <% unless @map.nil? %>
+    <div class="address_map">
+    <h3>オフィス住所</h3>
+    <div class="address"><%= @map.address %></div>
+    <div id="map"></div>
+  <% end %>
   <div class="tag_show">
     <h3>タグ</h3>
     <% @post.tags.each do |tag| %>
@@ -76,16 +80,14 @@
 <hr class="post_separate">
 <h3 class="">おすすめ投稿</h3>
 <div class="recommend_post">
-  <div class="recommend_post_item">
-    <%= image_tag 'header_default.jpg' %>
-    <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-    <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-    <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
-  </div>
-  <div class="recommend_post_item">
-    <%= image_tag 'header_default.jpg' %>
-    <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-    <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-    <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
-  </div>
+  <% @new_post.each do |new_post| %>
+  <%= link_to new_post do%>
+    <div class="recommend_post_item">
+      <%= image_tag new_post.image %>
+      <p><%= truncate(new_post.title, length: 50) %></p>
+      <div class="recommend_post_item_detail">報酬(月単価)<span><%= number_to_currency(new_post.reward) if new_post.reward %></span></div>
+      <div class="recommend_post_item_detail">オフィス住所<span><%= new_post.map&.address %></span></div>
+    </div>
+    <% end %>
+  <% end %>
 </div>

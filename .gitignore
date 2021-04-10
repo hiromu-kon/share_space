@@ -35,4 +35,4 @@
 yarn-debug.log*
 .yarn-integrity
 /environments/db.env
-/db/seeds.rb
+/.env

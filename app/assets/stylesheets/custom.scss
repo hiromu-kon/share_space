@@ -61,6 +61,39 @@ a {
 .disabled{
   pointer-events: none;
 }
+
+#map{
+  height: 350px;
+}
+
+.unchecked::after {
+    content: "●";
+    color: #efa04c;
+    position: relative;
+    top: 2px;
+    right: 7px;
+    font-size: 1px;
+    text-shadow: 0px 0px 2px #efa04c;
+}
+
+.before_login_list {
+  .phone_list_nav_header {
+    display: flex;
+  }
+
+  .toggle_button {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+  }
+
+  .fa-users, .fa-sign-in-alt, .fa-user {
+    padding-right: 5px;
+  }
+}
+
 /*---------------------------------
 
   トップページ
@@ -269,13 +302,13 @@ a {
       cursor: pointer;
     }
   }
+
 }
 
 .my_menu_nav {
   position: absolute;
   background-color: #fff;
   border: 1px solid #BBB;
-  display: none;
 
   li {
     padding: 14px 16px;
@@ -298,6 +331,7 @@ a {
 
   a {
     color: #009900;
+    pointer-events: none;
   }
 
   &:hover {
@@ -726,7 +760,7 @@ a {
 .company_block {
  text-align: center;
  margin-top: -150px;
- margin-bottom: 350px;
+ margin-bottom: 80px;
 }
 
 
@@ -768,18 +802,6 @@ a {
   color: #444;
 }
 
-.company_description {
-  margin: 45px 0 0 10%;
-  width: 50%;
-  font-size: 18px;
-  text-align: left;
-  float: left;
-  color: #555;
-
-  p {
-    word-wrap: break-word;
-  }
-}
 
 .company_homepage {
   a {
@@ -791,46 +813,19 @@ a {
   }
 }
 
-.fa-map-marker-alt, .fa-link {
+.fa-link {
   padding-right: 8px;
 }
 
-.company_info {
-  float: left;
-  margin: 5px 10% 0 5%;
-  width: 25%;
-}
 
-.info_box {
-  margin-top: 10px;
-  text-align: left;
-  padding-left: 0;
-
-  li:first-child {
-    margin-top: 20px;
-  }
-
-  li {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #AAA;
-  }
-}
-
-.sub_category {
-  float: right;
-  margin-right: 40px;
-  font-size: 22px;
-  color: #2ecc71;
-}
 
 .direct_message {
   margin: 40px auto 10px auto;
   border-radius: 150px;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
-  padding: 20px 0;
-  width: 285px;
+  padding: 18px 0;
+  width: 250px;
   background: linear-gradient(to right,#3366FF 0%, #00BFFF 51%, #77F9C3 100%);
   background-size: 200% auto;
   transition: .5s;
@@ -857,10 +852,10 @@ a {
   transition: .5s;
   margin: 40px auto 10px auto;
   border-radius: 150px;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
-  padding: 20px 0;
-  width: 285px;
+  padding: 18px 0;
+  width: 250px;
   color: #fff;
   border-style: none;
   outline: 0;
@@ -878,58 +873,6 @@ a {
 .user_post_area {
   width: 800px;
   margin: 50px auto;
-}
-
-
-.label_box {
-  width: 260px;
-  padding: 15px;
-  margin: 2em auto;
-  background: #f7f092;
-  color: #000;
-  box-shadow: 4px 4px 4px rgba(0,0,0,0.03);
-  transform:rotate(1deg);
-  word-break: break-all;
-  font-weight: bold;
-
-  p {
-    margin: 0;
-    padding: 0;
-    font-size: 0.9em;
-    font-family: "HanziPen SC";
-  }
-
-  li {
-    font-family: "HanziPen SC";
-  }
-}
-
-.label_box_tape {
-  width: 50%;
-  height: 35px;
-  margin: -25px auto 0;
-  background: #989898;
-  transform: rotate(-3deg);
-  opacity: 0.1;
-}
-
-.label_box_title {
-  text-align: center;
-  font-size: 1.3em!important;
-  margin-top: 10px!important;
-}
-
-.label_box_subtitle {
-  text-align: center;
-  font-size: 0.7em!important;
-  margin-bottom: 1em!important;
-}
-
-.skill_company {
-  margin-top: 5px;
-  color: #009900;
-  font-weight: bold;
-  font-size: 20px;
 }
 /*---------------------------------
   ユーザー編集ページ
@@ -1155,6 +1098,12 @@ a {
   }
 }
 
+.post_hover:hover {
+  .post_title {
+    text-decoration: underline;
+  }
+}
+
 .post_content {
   color: #686f71;
   font-size: 15px;
@@ -1366,18 +1315,18 @@ a {
     font-size: 13px;
     transition: .5s;
   }
+}
 
-  span:hover {
-    color: #fff;
-    background-color: #777;
-    transition: .5s;
-  }
+.post_index_bookmark {
+  text-align: right;
+  font-size: 40px;
+  line-height: 40px;
 }
 /*---------------------------------
   Post 新規投稿ページ
 ---------------------------------*/
 .post_form {
-  width: 800px;
+  max-width: 800px;
   margin: 0px auto 100px;
 
   h1 {
@@ -1652,7 +1601,11 @@ a {
 }
 
 .post_show_content, .company_show_content {
-  white-space: pre-wrap;
+  max-width: 700px;
+  font-size: 18px;
+  color: #555;
+  margin: 80px auto 0 auto;
+  text-align: left;
 }
 
 .post_show_content {
@@ -1765,12 +1718,6 @@ a {
     border: 1px solid #777;
     transition: .5s;
   }
-
-  span:hover {
-    background-color: #777;
-    transition: .5s;
-    color: #fff;
-  }
 }
 
 .recommend_post {
@@ -1781,11 +1728,14 @@ a {
 
 .recommend_post_item {
   width: 380px;
+  height: 340px;
   border: 1px solid #999;
 
   img {
     height: 210px;
     width: 380px;
+    object-fit: cover;
+    object-position: center;
   }
 
   p {
@@ -1830,7 +1780,8 @@ a {
 }
 
 .comment_button {
-  color: rgba(0, 0, 0, 0.26);
+  color: #666;
+  font-weight: bold;
   box-shadow: none;
   background-color: rgba(0, 0, 0, 0.12);
   width: 200px;
@@ -1840,6 +1791,12 @@ a {
 　outline: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.comment_create {
+  font-size: 14px;
+  color: #666;
+  margin: 10px 0 0 10px;
+  float: right;
 }
 
 .comment_box {
@@ -1878,7 +1835,7 @@ a {
 }
 
 .comment {
-  margin: 10px 0 0 40px;
+  margin: 10px 0 10px 50px;
   color: #333;
   margin-bottom: 10px;
 }
@@ -1907,6 +1864,50 @@ a {
 
 .comment_user_link {
   display: flex;
+}
+
+.map_search_btn, .map_delete_btn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: .5px;
+  transition: background-color .2s ease-out;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  margin: 15px 0;
+  transition: .5s;
+
+  &:hover {
+    opacity: 0.5;
+    transition: .5s;
+  }
+
+  .fa-map-marker-alt {
+    padding-right: 0px;
+  }
+}
+
+.map_delete_btn {
+  background-color: lightblue;
+  color: #000;
+}
+
+.map_search_btn {
+  margin-right: 30px;
+}
+
+.address_map {
+  margin-top: 30px;
+}
+
+.address {
+  margin: 10px 0;
 }
 /*---------------------------------
   投稿編集ページ
@@ -2158,7 +2159,7 @@ a {
 }
 
 .bookmark_index {
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -2170,9 +2171,8 @@ a {
   position: relative;
   overflow: hidden;
   padding: 20px 0 130px 0;
-  height: 40vw;
-  max-height: 500px; //最大の高さ
-  width: 800px;
+  height: 500px; //最大の高さ
+  max-width: 800px;
 }
 
 .swiper-wrapper {
@@ -2183,19 +2183,29 @@ a {
 
   img {
     object-fit: cover; /* IE: not support */
-    width: 600px;
-    height: 300px;
+    width: 800px;
+    height: 400px;
     display: block;
     margin: 0 auto;
-    border: 1px solid #999;
+    border: 1px solid #DDD;
     border-bottom: 0;
   }
+
+  &:hover {
+    .post_title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.swiper-button-next, .swiper-button-prev {
+  top: 35%;
 }
 
 .swiper_item_width {
   margin: 0 auto;
-  width: 600px;
-  border: 1px solid #999;
+  max-width: 800px;
+  border: 1px solid #DDD;
   border-top: 0;
 
   .post_title {
@@ -2211,13 +2221,17 @@ a {
   padding-left: 15px;
 }
 
+.swiper-pagination {
+  border: none;
+}
+
 .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
 }
 
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
-    margin: 0 8px;
+  margin: 0 8px;
 }
 /*---------------------------------
   ページネーション
@@ -2506,11 +2520,11 @@ a {
     font-size: 16px;
   }
 }
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 540px) {
   /* トップページ（スマホ用） */
   .wrapper {
     overflow: hidden;
-    max-width: 520px;
+    max-width: 540px;
   }
 
   .main_title_box {
@@ -2523,7 +2537,7 @@ a {
   }
 
   .main_title_top {
-    font-size: 38px;
+    font-size: 26px;
   }
 
   .section_title {
@@ -2579,25 +2593,66 @@ a {
 
   .static_page {
     padding-right: 15px;
+    padding-left: 15px;
   }
 
   .container_new {
-    max-width: 520px;
+    max-width: 540px;
+    margin-bottom: 60px;
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 80px;
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    top: 18%;
+  }
+
+  .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+    left: 0px;
+  }
+  .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    right: 0px;
   }
 
   .swiper-container {
-    max-width: 520px;
+    border: 0;
+    max-width: 100%;
     padding-top: 0;
-    height: 30vw;
+    padding-bottom: 45px;
+  }
+  .swiper_item_width {
+    border: 0;
   }
 
   .swiper-slide img {
-    max-width: 400px;
+    max-width: 100%;
     max-height: 200px;
+    border: 0;
+    background-color: #fff;
+    max-width: 400px;
+  }
+  .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after {
+    content: 'prev';
+    font-size: 30px;
+  }
+
+  .swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after {
+    content: 'next';
+    font-size: 30px;
   }
 
   .swiper_item_width {
-    width: 480px;
+    max-width: 480px;
+  }
+  .phone_recruit_date {
+    padding-left: 15px;
+  }
+  .post_content {
+    margin-top: 5px;
+  }
+  .swiper_item_width .post_title {
+    padding-bottom: 0px;
   }
   /* ヘッダー（スマホ用） */
   .offcm01 {
@@ -2705,7 +2760,7 @@ a {
   }
 
   .user_post_area {
-    width: auto;
+    max-width: 90%;
   }
 
   .post_index_image {
@@ -2722,7 +2777,136 @@ a {
   .post_index_tag span {
     font-size: 10px;
   }
+  .user_show .post_separate {
+    width: 85%;
+  }
+  .post_title {
+    font-size: 16px;
+  }
+  .company_name {
+    margin-top: 10px;
 
+  }
+  .mypage_edit {
+    margin: 20px auto 10px auto;
+    font-size: 12px;
+    max-width: 200px;
+    padding: 15px 0;
+  }
+  /* Post詳細（スマホ用） */
+  .post_show {
+    width: 95%;
+  }
+  .post_show .post_show_h1 {
+    font-size: 16px;
+  }
+  .created_time {
+    float: none;
+    font-size: 10px;
+    text-align: right;
+    line-height: 0;
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  .pv_count {
+    font-size: 12px;
+    margin-right: 0;
+
+    span:last-child {
+      font-size: 10px;
+    }
+  }
+  .btn-border_reverse {
+    font-size: 14px;
+    padding: 7px 25px;
+  }
+  .require_area h2 {
+    font-size: 16px;
+  }
+  .require_area h3 {
+    font-size: 14px;
+  }
+  .require_item {
+    font-size: 14px;
+  }
+  .item_box_down p {
+    font-size: 14px;
+  }
+  .right_column {
+    margin-left: 20%;
+  }
+  .address {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  #map {
+    height: 300px;
+  }
+  .tag_show {
+    margin-top: 30px;
+
+    span {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+  }
+  .input_filed .form_control {
+    width: 85%;
+  }
+  #comments li:first-child {
+    padding-top: 5px;
+  }
+  .comment {
+    margin: 10px 0 0 20px;
+    margin-bottom: 8px;
+  }
+  .comment_delete {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  .comment_box {
+    padding: 5px 20px 5px 20px;
+  }
+  .recommend_post {
+    display: block;
+  }
+  .recommend_post_item {
+    width: 100%;
+    margin-bottom: 30px;
+
+    img {
+      width: 100%;
+    }
+  }
+  /* Post一覧（スマホ用） */
+  /* Post編集（スマホ用） */
+  .post_form {
+    max-width: none;
+    width: none;
+    text-align: center;
+  }
+  .post_form_title {
+    width: 90%;
+    padding-left: 0;
+  }
+  .post_form_text {
+    width: 90%;
+  }
+  .number_input {
+    width: 45%;
+  }
+  .post_date_field {
+    width: 100%;
+  }
+
+  .map_form::placeholder {
+    font-size: 8px;
+  }
+  #previewImage-preview1, #previewImage-preview2  {
+    height: 200px;
+  }
+  /* Post投稿（スマホ用） */
+  /* ブックマーク一覧 */
   /* ダイレクトメッセージ詳細（スマホ用） */
   .company_room span {
     font-size: 18px;
@@ -2797,10 +2981,15 @@ a {
   }
 
   .room_index_date {
-    font-size: 12px;
+    font-size: 10px;
     margin-top: 5px;
   }
-
+  .room_index_message {
+    margin: 5px 0 0 10px;
+  }
+  .room_index_box .user_icon {
+    margin: 20px 10px;
+  }
   /* （スマホ用） */
   /* （スマホ用） */
   /* （スマホ用） */
@@ -2852,5 +3041,40 @@ a {
     line-height: 30px;
     background-color: #353535;
     color: #707070;
+  }
+
+  .offcm01 .menu {
+    right: -150vw;
+  }
+
+  .offcm01 .menu li a {
+    display: block;
+    padding: 25px 0 25px 30px;
+    font-size: 16px;
+  }
+
+  .offcm01 .menu {
+    width: 400px;
+  }
+
+  .offcm01 #toggle01:checked ~ label {
+    -webkit-transform: translateX(-230px);
+    transform: translateX(-230px);
+  }
+
+  .phone_list_nav_header {
+    .btn-border {
+      background-color: #111;
+      color: #000;
+      border: none;
+      border-radius: 0px;
+    }
+  }
+
+  .before_login_list {
+
+    ul {
+      display: initial;
+    }
   }
 }

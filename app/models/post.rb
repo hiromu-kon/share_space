@@ -17,6 +17,8 @@ class Post < ApplicationRecord
 
   has_many :notifications, dependent: :destroy
 
+  has_one :map, dependent: :destroy
+
   def save_tags(savepost_tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - savepost_tags

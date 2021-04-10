@@ -16,8 +16,12 @@
   <%= markdown(@post.content) %>
 </div>
 <div class="require_area">
-  <h3 class="recruit">オフィス住所</h3>
-  <p>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</p>
+  <% unless @map.nil? %>
+    <div class="address_map">
+    <h3>オフィス住所</h3>
+    <div class="address"><%= @map.address %></div>
+    <div id="map"></div>
+  <% end %>
   <div class="tag_show">
     <h3>タグ</h3>
     <% @post.tags.each do |tag| %>
