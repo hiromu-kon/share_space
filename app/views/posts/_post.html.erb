@@ -29,7 +29,7 @@
       </div>
     <% end %>
     <div class="post_index_bookmark">
-      <%= render 'bookmarks/bookmark' , post: post %>
+      <%= render 'bookmarks/bookmark' , post: post if post.user != current_user %>
     </div>
   </div>
 <% end %>

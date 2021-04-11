@@ -94,6 +94,77 @@ a {
   }
 }
 
+
+/*---------------------------------
+  カーテンエフェクト
+---------------------------------*/
+.curtain {
+  position: relative;
+	display:inline-block;
+  font-size: 30px;
+}
+/* span要素 最初は非表示 */
+.curtain span {
+  transition: all 0s .8s ease;
+  opacity: 0;
+  padding: 0 0.2em;
+}
+/* .curtainに.activeがついたらspanを表示（1s後に0sかけて透明度を0→1に） */
+.curtain.active span {
+  opacity: 1;
+  color:#333;
+}
+/* .curtainに擬似要素(カーテン部分)を追加して、transformで横幅を0にしておく scaleX(0) */
+.curtain:after {
+  display: inline;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  background: #333;
+}
+/* .curtainに.activeがついたら擬似要素のアニメーションを開始させる */
+/* アニメーション名,アニメーション完了までの所要時間,変化の度合い,遅延時間,回数,再生方向,アニメーション前後のスタイル,アニメーションの再生・停止 */
+.curtain.active:after {
+  animation: curtainEffect 1s ease-in-out 0.3s 1 normal both running;
+}
+
+.curtain.slow.active:after {
+  animation: curtainEffect 1.2s ease-in-out 1s 1 normal both running;
+}
+.curtain.slow span {
+  transition: all 0s 1.5s ease;
+  opacity: 0;
+  padding: 0 0.2em;
+}
+
+.curtain.slow.active span {
+  opacity: 1;
+  color:#333;
+}
+
+
+@keyframes curtainEffect {
+  0% {
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+  49.999% {
+    transform-origin: left center;
+    transform: scaleX(1);
+  }
+  50% {
+    transform-origin: right center;
+    transform: scaleX(1);
+  }
+  100% {
+    transform-origin: right center;
+    transform: scaleX(0);
+  }
+}
 /*---------------------------------
 
   トップページ
@@ -309,6 +380,7 @@ a {
   position: absolute;
   background-color: #fff;
   border: 1px solid #BBB;
+  display: none;
 
   li {
     padding: 14px 16px;
@@ -372,20 +444,20 @@ a {
 /*---------------------------------
   メインタイトル
 ---------------------------------*/
-/* じわっと画像が表示される */
-@keyframes fadeIn { /*上のbody内で呼び出しているアニメーションと名前をそろえる*/
-  0% {opacity: 0} /* 始め */
-  100% {opacity: 1} /* 終わり */
-}
-
-/*古いブラウザ用 */
-@-webkit-keyframes fadeIn {
-  0% {opacity: 0}
-  100% {opacity: 1}
-}
-
-@-webkit-keyframes typing { from { width: 0; } }
-@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+// /* じわっと画像が表示される */
+// @keyframes fadeIn { /*上のbody内で呼び出しているアニメーションと名前をそろえる*/
+//   0% {opacity: 0} /* 始め */
+//   100% {opacity: 1} /* 終わり */
+// }
+//
+// /*古いブラウザ用 */
+// @-webkit-keyframes fadeIn {
+//   0% {opacity: 0}
+//   100% {opacity: 1}
+// }
+//
+// @-webkit-keyframes typing { from { width: 0; } }
+// @-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
 
 
 .main_title {
@@ -1001,7 +1073,7 @@ a {
 ---------------------------------*/
 .fade_in {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateX(60px);
   transition: all 1.0s;
 }
 
