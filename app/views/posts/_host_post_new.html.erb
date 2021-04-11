@@ -19,7 +19,7 @@
   <h4 class="heading_title">募集オペレーター人数</h4>
   <%= f.number_field :recruit_people, placeholder:"数字で入力してください", class:"post_form_title number_input" %>
   <h4 class="heading_title">ホスト企業の業種</h4>
-  <%= f.select :industry, Post.industries.keys, {prompt: '選択してください'}, class:"" %>
+  <%= f.select :industry, Post.industries.keys, {prompt: '選択してください'}, class:"industry_more" %>
   <h4 class="heading_title">オフィス住所</h4>
   <input type="text" id="address" class="post_form_title map_form" placeholder="地名、施設名などを入力するか、地図をクリックしてマーカーを立ててください">
   <a class="map_search_btn" onclick="codeAddress()">地図検索</a>
@@ -43,7 +43,8 @@
   <div>
     <div id="preview1" class="post_img"><%= image_tag @post.image, id:"previewImage-preview1" if @post.image.attached? %></div>
   </div>
-
+  <h4 class="heading_title">ステータス</h4>
+  <%= f.select :status, [["公開", "published"],["非公開", "draft"]], id: "status", class: "post_form_title" %>
   <%= f.submit '投稿', class:"form_control btn_primary" %>
 <% end %>
 

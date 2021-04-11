@@ -141,7 +141,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image, map_attributes: [:id, :address, :latitude, :longitude]).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content, :reward, :recruit_people, :start_date, :finish_date, :image, :industry, map_attributes: [:id, :address, :latitude, :longitude]).merge(user_id: current_user.id)
   end
 
   def search_params
