@@ -24,7 +24,7 @@
       </span></h3>
       <div class="post_index_tag">
         <% post.tags.each do |tag| %>
-          <span><%= tag.name %></span>
+          <a href="?tag_id=<%= tag.id %>&button="><span><%= tag.name %></span></a>
         <% end %>
       </div>
     <% end %>

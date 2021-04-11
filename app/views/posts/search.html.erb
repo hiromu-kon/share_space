@@ -5,9 +5,6 @@
       <div class="left_box">
         <h3>検索条件</h3>
         <%= search_form_for(@q, url:search_posts_path) do |f| %>
-        <div class="select_sort">
-          <%= f.select( :sorts, { '並び替え': 'id desc', '報酬の安い順': 'reward asc', '報酬の高い順': 'reward desc', '募集の古い順': 'updated_at asc', '募集の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'}) %>
-        </div>
         <%= f.text_field :title_or_content_or_user_name_cont, class: "form_search", placeholder: "フリーワードで検索" %>
         <h3>報酬金額</h3>
         <%= f.number_field :reward_gteq, class:"number_start", placeholder: "最小金額" %>〜<%= f.number_field :reward_lteq, class:"number_finish", placeholder: "最大金額" %>

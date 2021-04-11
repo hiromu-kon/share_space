@@ -3,16 +3,11 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    if params[:q].present?
-      @q = Post.ransack(params[:q])
-      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-      @posts = @q.result.includes(:user).page(params[:page]).per(10)
-    else
-      params[:q] = { sorts: 'id desc' }
-      @q = Post.ransack(params[:q])
-      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-      @posts = @q.result.includes(:user).page(params[:page]).per(10)
-    end
+    # @q = Post.ransack(params[:q])
+    # @posts = @q.result.includes(:user).page(params[:page]).per(10)
+    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
+    @search = @posts.ransack(params[:q])
+    @posts = @search.result.includes(:user).page(params[:page]).per(10)
   end
 
   def new
@@ -22,13 +17,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @pv = Pv.find_by(ip: request.remote_ip)
     @map = Map.find_by(post_id: @post.id)
     unless @map.nil?
       gon.latitude = @map.latitude
       gon.longitude = @map.longitude
     end
 
+    @pv = Pv.find_by(ip: request.remote_ip)
     if @pv
       @post = Post.find(params[:id])
     else

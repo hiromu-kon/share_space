@@ -69,4 +69,13 @@ class Post < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  scope :sort_posts, -> (sort) { order(sort[:sort]) }
+  scope :sort_list, -> {
+    {
+      "並び替え" => "",
+      "作成の古い順" => "updated_at ASC",
+      "作成の新しい順" => "updated_at DESC"
+    }
+  }
 end

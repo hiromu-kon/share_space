@@ -57,7 +57,9 @@
   <div class="tag_show">
     <h3>タグ</h3>
     <% @post.tags.each do |tag| %>
-      <span><%= tag.name %></span>
+      <%= link_to posts_path(@q, :tag_id=> "#{tag.id}"), method: :get do %>
+        <span><%= tag.name %></span>
+      <% end %>
     <% end %>
   </div>
 </div>

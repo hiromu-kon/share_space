@@ -403,7 +403,6 @@ a {
 
   a {
     color: #009900;
-    pointer-events: none;
   }
 
   &:hover {
@@ -1386,6 +1385,22 @@ a {
     border: 1px solid #777;
     font-size: 13px;
     transition: .5s;
+
+    a {
+      color: #777;
+      transition: .5s;
+    }
+
+    &:hover {
+      background-color: #777;
+      color: #fff;
+      transition: .5s;
+
+      a {
+        color: #fff;
+        transition: .5s;
+      }
+    }
   }
 }
 
@@ -1789,6 +1804,21 @@ a {
     color: #777;
     border: 1px solid #777;
     transition: .5s;
+
+    a {
+      color: #777;
+      transition: .5s;
+    }
+
+    &:hover {
+      background-color: #777;
+      color: #fff;
+      transition: .5s;
+
+      a {
+        color: #fff;
+      }
+    }
   }
 }
 
