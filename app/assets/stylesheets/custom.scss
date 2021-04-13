@@ -1096,16 +1096,13 @@ a {
   display: block;
   flex: 0 0 25%;
   max-width: 25%;
-
-  h3 {
-    font-size: 16px;
-    margin: 25px 0 5px 0;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
 }
+
+.index_h3 {
+  font-size: 16px;
+  margin: 25px 0 5px 0;
+}
+
 .form_search {
   border-radius: 50px;
   border: 1px solid #000;
@@ -1335,12 +1332,12 @@ a {
 
 .search_submit {
   width: 90%;
-  background-color: #3399FF;
+  background: linear-gradient(to right, #005FFF 0%, #3399FF 51%, #75A9FF 100%);
   color: #fff;
   margin-top: 15px;
 
   &:hover {
-    background-color: #33CCFF;
+    opacity: 0.5;
     transition: .4s;
   }
 }
@@ -1350,13 +1347,14 @@ a {
   background-color: #999;
   color: #fff;
   border: 2px solid #ced4da;
+  background: linear-gradient(to right, #999 0%, #777 51%, #555 100%);
   margin: 15px 0;
   font-size: 16px;
   padding: 6px 12px;
   transition: .4s;
 
   &:hover {
-    background-color: #BBB;
+    opacity: .5;
     transition: .4s;
   }
 
@@ -1416,6 +1414,10 @@ a {
   text-align: right;
   font-size: 40px;
   line-height: 40px;
+}
+
+.post_index_menu {
+  display: none;
 }
 /*---------------------------------
   Post 新規投稿ページ
@@ -2806,7 +2808,7 @@ a {
   }
 
   .form_control {
-    width: 85%;
+    width: 90%;
   }
 
   .number_input {
@@ -2818,6 +2820,9 @@ a {
   }
 
   /* ユーザー詳細（スマホ用） */
+  .company_name {
+    font-size: 24px;
+  }
 
   @keyframes bounceOut {
    0% {
@@ -2896,12 +2901,6 @@ a {
   .company_name {
     margin-top: 10px;
 
-  }
-  .mypage_edit {
-    margin: 20px auto 10px auto;
-    font-size: 12px;
-    max-width: 200px;
-    padding: 15px 0;
   }
   /* Post詳細（スマホ用） */
   .post_show {
@@ -2989,6 +2988,85 @@ a {
     }
   }
   /* Post一覧（スマホ用） */
+  .bookmark_link .fa-bookmark {
+    font-size: 16px;
+  }
+  .room_link .fa-envelope{
+    font-size: 16px;
+  }
+
+  .left_box {
+    max-width: 100%;
+  }
+  .post_device {
+    display: block;
+  }
+  .post_detail {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .post_separate {
+    border-top: 1px solid #BBB;
+    margin: 30px 0;
+  }
+  .fa-bookmark, .fa-envelope {
+    font-size: 30px;
+  }
+
+  .search_submit.form_control {
+    width: 90%;
+  }
+
+  .post_index_menu {
+    display: block;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    padding: 3px;
+  }
+
+  .fa-angle-down {
+    margin-left: 35%;
+    transform: rotate(0deg);
+    transition: transform 0.2s linear;
+  }
+
+  .angle_down {
+    .fa-angle-down {
+      transform: rotate(180deg);
+      transition: transform 0.2s linear;
+    }
+  }
+
+  .form_search {
+    width: 60%;
+    padding: 15px 20px;
+    margin-right: 10px;
+  }
+
+  .search_menu_nav.search-menu {
+    display: block;
+  }
+
+  .search_menu_nav {
+    display: none;
+  }
+
+  .search_box {
+    display: flex;
+    margin-top: 20px;
+
+    .index_h3 {
+      display: none;
+    }
+  }
+
+  .recruit_title {
+    margin-top: 30px;
+  }
   /* Post編集（スマホ用） */
   .post_form {
     max-width: none;
@@ -3083,7 +3161,7 @@ a {
   }
   /* ダイレクトメッセージ一覧（スマホ用） */
   .post_index {
-    padding: 90px 10px 30px 10px;
+    padding: 60px 10px 30px 10px;
   }
 
   .room_index_content {
@@ -3100,13 +3178,26 @@ a {
   .room_index_box .user_icon {
     margin: 20px 10px;
   }
-  /* （スマホ用） */
+  /* 通知一覧（スマホ用） */
+  .profile-link {
+    padding: 30px 0px 0 0;
+    font-size: 14px;
+
+    .notification {
+      font-size: 16px;
+    }
+  }
+  .notification_index .fa-envelope, .notification_index .fa-comment-dots {
+    margin-left: 0px;
+    font-size: 20px;
+    margin-right: 0px;
+  }
   /* （スマホ用） */
   /* （スマホ用） */
   /* （スマホ用） */
   .container {
     max-width: 480px;
-    padding-left: 20px;
+    padding-left: 10px;
   }
 
   .footer .container {

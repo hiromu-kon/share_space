@@ -7,4 +7,14 @@ document.addEventListener('DOMContentLoaded', function(){
       Nav.classList.toggle('open-menu')
     });
   }
+
+  const Searchmenu = document.querySelector('.post_index_menu');
+  const Searchnav = document.querySelector('.search_menu_nav');
+
+  if(Searchmenu != null) {
+    Searchmenu.addEventListener('click', () =>{
+      Searchnav.classList.toggle('search-menu')
+      Searchmenu.classList.toggle('angle_down')
+    });
+  }
 });
