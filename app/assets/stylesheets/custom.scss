@@ -945,6 +945,17 @@ a {
   width: 800px;
   margin: 50px auto;
 }
+
+.company_description {
+  margin-top: 50px;
+}
+.company_show_content {
+  max-width: 700px;
+  font-size: 16px;
+  color: #555;
+  margin: 10px auto 0 auto;
+  text-align: left;
+}
 /*---------------------------------
   ユーザー編集ページ
 ---------------------------------*/
@@ -1137,6 +1148,12 @@ a {
   flex: 0 0 65%;
   max-width: 65%;
   padding: 0 0 0 6%;
+}
+
+.skill_post_detail {
+  max-width: 70%;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .recruit_title {
@@ -1384,13 +1401,14 @@ a {
   margin-top: 15px;
 
   span {
-    padding: 6px 12px;
-    margin: 5px 5px 5px 0;
-    border-radius: 50px;
+    padding: 5px 12px;
+    margin: 0px 5px 10px 0;
+    border-radius: 30px;
     color: #777;
     border: 1px solid #777;
     font-size: 13px;
     transition: .5s;
+    display: inline-block;
 
     a {
       color: #777;
@@ -1697,12 +1715,33 @@ a {
   font-size: 12px;
 }
 
-.post_show_content, .company_show_content {
+.post_show_content {
   max-width: 700px;
-  font-size: 18px;
+  font-size: 16px;
   color: #555;
-  margin: 80px auto 0 auto;
+  margin: 50px auto 0 auto;
   text-align: left;
+}
+
+.company_list {
+  display: flex;
+  max-width: 700px;
+  margin: 35px auto 0 auto;
+
+  li {
+    width: calc(100% / 3);
+  }
+}
+
+.company_list_item {
+  display: flex;
+  max-width: 700px;
+  margin: 15px auto 0 auto;
+  justify-content: space-around;
+
+  li {
+    width: calc(100% / 3);
+  }
 }
 
 .post_show_content {
@@ -1808,12 +1847,13 @@ a {
   }
 
   span {
-    padding: 6px 12px;
+    padding: 5px 12px;
     margin: 5px 5px 5px 0;
     border-radius: 50px;
     color: #777;
     border: 1px solid #777;
     transition: .5s;
+    display: inline-block;
 
     a {
       color: #777;
@@ -2211,7 +2251,7 @@ a {
 
 .room_index_item {
   border-top: 1px solid #e1e1e1;
-  height: 105px;
+  height: auto;
   color: #333;
   display: flex;
 
@@ -2891,6 +2931,7 @@ a {
 
   .post_index_tag span {
     font-size: 10px;
+    padding: 3px 8px;
   }
   .user_show .post_separate {
     width: 85%;
@@ -2900,7 +2941,29 @@ a {
   }
   .company_name {
     margin-top: 10px;
+  }
 
+  .mypage_edit {
+    margin: 20px auto 10px auto;
+    font-size: 12px;
+    max-width: 180px;
+    padding: 10px 0;
+  }
+
+  .direct_message {
+    margin: 20px auto 10px auto;
+    font-size: 12px;
+    max-width: 180px;
+    padding: 10px 0;
+  }
+
+  .company_show_content {
+    max-width: 90%;
+    font-size: 16px;
+  }
+
+  .recommend_post_item {
+    height: auto;
   }
   /* Post詳細（スマホ用） */
   .post_show {
@@ -2955,7 +3018,7 @@ a {
     margin-top: 30px;
 
     span {
-      padding: 5px 10px;
+      padding: 3px 8px;
       font-size: 14px;
     }
   }
@@ -3014,8 +3077,23 @@ a {
     font-size: 30px;
   }
 
+  .industry_more, .prefecture_more {
+    width: 95%;
+  }
+
   .search_submit.form_control {
-    width: 90%;
+    width: 95%;
+  }
+
+  .search_reset {
+    width: 95%;
+  }
+  .number_start.period_start {
+    width: 80%;
+  }
+
+  .number_finish.period_finish {
+    width: 80%;
   }
 
   .post_index_menu {
@@ -3066,6 +3144,14 @@ a {
 
   .recruit_title {
     margin-top: 30px;
+  }
+
+  .btn-border_reverse .fa-envelope {
+    font-size: 14px;
+  }
+
+  .skill_post_detail {
+    max-width: 100%;
   }
   /* Post編集（スマホ用） */
   .post_form {
@@ -3180,7 +3266,7 @@ a {
   }
   /* 通知一覧（スマホ用） */
   .profile-link {
-    padding: 30px 0px 0 0;
+    padding: 30px 10px 0 0;
     font-size: 14px;
 
     .notification {
@@ -3189,8 +3275,9 @@ a {
   }
   .notification_index .fa-envelope, .notification_index .fa-comment-dots {
     margin-left: 0px;
-    font-size: 20px;
+    font-size: 14px;
     margin-right: 0px;
+    vertical-align: middle;
   }
   /* （スマホ用） */
   /* （スマホ用） */

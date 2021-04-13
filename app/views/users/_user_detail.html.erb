@@ -1,0 +1,32 @@
+<ul class="company_list">
+  <li><h4>従業員数</h4></li>
+  <li><h4>業界</h4></li>
+  <li><h4>平均年齢</h4></li>
+</ul>
+<ul class="company_list_item">
+  <li>
+    <% if user.employee.present? %>
+      <p><%= user.employee %>人</p>
+    <% else %>
+      <p>未入力</p>
+    <% end %>
+    </li>
+  <li>
+    <% if user.industry.present? %>
+      <p><%= user.industry %></p>
+    <% else %>
+      <p>未入力</p>
+    <% end %>
+  </li>
+  <li>
+    <% if user.average_age.present? %>
+      <p><%= user.average_age %>歳</p>
+    <% else%>
+      <p>未入力</p>
+    <% end %>
+  </li>
+</ul>
+<div class="company_description">
+  <h4>企業紹介</h4>
+  <p class="company_show_content"><%= safe_join(@user.introduction.split("\n"),tag(:br)) if @user.introduction.present? %></p>
+</div>
