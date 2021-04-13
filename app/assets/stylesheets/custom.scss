@@ -1099,7 +1099,7 @@ a {
 
   h3 {
     font-size: 16px;
-    margin: 25px 0;
+    margin: 25px 0 5px 0;
 
     &:first-child {
       margin-top: 0;
@@ -1320,6 +1320,15 @@ a {
   margin-right: 3%;
 }
 
+.number_start.period_start {
+  width: 75%;
+}
+.number_finish.period_finish {
+  width: 75%;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
 .number_finish {
   margin-left: 3%;
 }
@@ -1364,7 +1373,6 @@ a {
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   width: 90%;
-  margin-bottom: 20px;
 
   &:focus {
     outline: 0;

@@ -3,11 +3,25 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    # @q = Post.ransack(params[:q])
-    # @posts = @q.result.includes(:user).page(params[:page]).per(10)
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-    @search = @posts.ransack(params[:q])
-    @posts = @search.result.includes(:user).page(params[:page]).per(10)
+    @host_post = Post.left_joins(:user).where(user: { skill: false })
+    @skill_post = Post.left_joins(:user).where(user: { skill: true })
+
+    if params[:q].present?
+      @host_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @host_post
+      @search = @host_posts.ransack(params[:q])
+      @host_posts = @search.result.includes(:user).page(params[:page]).per(10)
+
+    else
+      params[:q] = { sorts: 'id desc' }
+      @host_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @host_post
+      @search = @host_posts.ransack(params[:q])
+      @host_posts = @search.result.includes(:user).page(params[:page]).per(10)
+
+      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
+      @search = @skill_posts.ransack(params[:q])
+      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
+    end
+    @sort_list = Post.sort_list
   end
 
   def new
@@ -125,12 +139,6 @@ class PostsController < ApplicationController
     Post.find(params[:id]).destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to posts_path
-  end
-
-  def search
-    @q = Post.search(search_params)
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-    @posts = @q.result.includes(:user).page(params[:page]).per(10)
   end
 
   private

@@ -70,7 +70,16 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  scope :sort_posts, -> (sort) { order(sort[:sort]) }
+  def sort_posts(sort)
+    case sort[:sort]
+    when 'updated_at_asc'
+      order("updated_at ASC")
+    when 'updated_at_desc'
+      order("updated_at DESC")
+    else
+      order("updated_at DESC")
+    end
+  end
   scope :sort_list, -> {
     {
       "並び替え" => "",
