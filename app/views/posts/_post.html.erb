@@ -24,12 +24,12 @@
       </span></h3>
       <div class="post_index_tag">
         <% post.tags.each do |tag| %>
-          <span><%= tag.name %></span>
+          <a href="?tag_id=<%= tag.id %>&button="><span><%= tag.name %></span></a>
         <% end %>
       </div>
     <% end %>
     <div class="post_index_bookmark">
-      <%= render 'bookmarks/bookmark' , post: post %>
+      <%= render 'bookmarks/bookmark' , post: post if post.user != current_user %>
     </div>
   </div>
 <% end %>

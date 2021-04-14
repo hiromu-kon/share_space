@@ -51,13 +51,15 @@
   <% unless @map.nil? %>
     <div class="address_map">
     <h3>オフィス住所</h3>
-    <div class="address"><%= @map.address %></div>
+    <div class="address"><%= @map.address if @map.address.present? %></div>
     <div id="map"></div>
   <% end %>
   <div class="tag_show">
     <h3>タグ</h3>
     <% @post.tags.each do |tag| %>
-      <span><%= tag.name %></span>
+      <%= link_to posts_path(@q, :tag_id=> "#{tag.id}"), method: :get do %>
+        <span><%= tag.name %></span>
+      <% end %>
     <% end %>
   </div>
 </div>

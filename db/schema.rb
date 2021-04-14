@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_055131) do
+ActiveRecord::Schema.define(version: 2021_04_14_084306) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -160,7 +160,6 @@ ActiveRecord::Schema.define(version: 2021_04_07_055131) do
     t.integer "average_age"
     t.text "introduction"
     t.integer "employee"
-    t.string "prefectures"
     t.string "home_page"
     t.boolean "skill", default: false, null: false
     t.boolean "admin", default: false, null: false

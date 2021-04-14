@@ -15,7 +15,7 @@ require('./fade_in')
 require('./flash_remove.js')
 require('./header_dropdown.js')
 require('./word_count.js')
-
+require('./curtain.js')
 
 
 Rails.start()

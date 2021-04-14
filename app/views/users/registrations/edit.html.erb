@@ -35,13 +35,9 @@
         <%= f.text_field :home_page, autofocus: true, class:"form_control", placeholder:"URLを入力してください" %>
       </div>
 
-      <div class="field post_date_field">
-        <h4 class="user_edit_heading left_column">活動拠点</h4>
-        <h4 class="user_edit_heading">業界</h4>
-      </div>
-      <div class="field post_date_field">
-        <%= f.text_field :prefectures, autofocus: true, class:"form_control number_input left_column", placeholder:"都道府県で入力してください" %>
-        <%= f.text_field :industry, autofocus: true, class:"form_control number_input", placeholder:"例) 通信業、金融、食品" %>
+      <div class="field">
+        <%= f.label :業界, class:"label_name" %>
+        <%= render 'users/select_industry', f: f %>
       </div>
 
       <div class="field post_date_field">
@@ -51,7 +47,7 @@
 
       <div class="field post_date_field">
         <%= f.number_field :employee, autofocus: true, class:"form_control number_input left_column", placeholder:"数字で入力してください" %>
-        <%= f.select :average_age, ['sample1', 'sample2', 'sample3'], {include_blank:'選択ボックス'}, class:'number_input' %>
+        <%= f.number_field :average_age, autofocus: true, class:"form_control number_input left_column", placeholder:"数字で入力してください" %>
       </div>
 
       <div class="field">

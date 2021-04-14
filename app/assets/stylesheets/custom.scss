@@ -94,6 +94,77 @@ a {
   }
 }
 
+
+/*---------------------------------
+  カーテンエフェクト
+---------------------------------*/
+.curtain {
+  position: relative;
+	display:inline-block;
+  font-size: 30px;
+}
+/* span要素 最初は非表示 */
+.curtain span {
+  transition: all 0s .8s ease;
+  opacity: 0;
+  padding: 0 0.2em;
+}
+/* .curtainに.activeがついたらspanを表示（1s後に0sかけて透明度を0→1に） */
+.curtain.active span {
+  opacity: 1;
+  color:#333;
+}
+/* .curtainに擬似要素(カーテン部分)を追加して、transformで横幅を0にしておく scaleX(0) */
+.curtain:after {
+  display: inline;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  background: #333;
+}
+/* .curtainに.activeがついたら擬似要素のアニメーションを開始させる */
+/* アニメーション名,アニメーション完了までの所要時間,変化の度合い,遅延時間,回数,再生方向,アニメーション前後のスタイル,アニメーションの再生・停止 */
+.curtain.active:after {
+  animation: curtainEffect 1s ease-in-out 0.3s 1 normal both running;
+}
+
+.curtain.slow.active:after {
+  animation: curtainEffect 1.2s ease-in-out 1s 1 normal both running;
+}
+.curtain.slow span {
+  transition: all 0s 1.5s ease;
+  opacity: 0;
+  padding: 0 0.2em;
+}
+
+.curtain.slow.active span {
+  opacity: 1;
+  color:#333;
+}
+
+
+@keyframes curtainEffect {
+  0% {
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+  49.999% {
+    transform-origin: left center;
+    transform: scaleX(1);
+  }
+  50% {
+    transform-origin: right center;
+    transform: scaleX(1);
+  }
+  100% {
+    transform-origin: right center;
+    transform: scaleX(0);
+  }
+}
 /*---------------------------------
 
   トップページ
@@ -309,6 +380,7 @@ a {
   position: absolute;
   background-color: #fff;
   border: 1px solid #BBB;
+  display: none;
 
   li {
     padding: 14px 16px;
@@ -331,7 +403,6 @@ a {
 
   a {
     color: #009900;
-    pointer-events: none;
   }
 
   &:hover {
@@ -372,20 +443,20 @@ a {
 /*---------------------------------
   メインタイトル
 ---------------------------------*/
-/* じわっと画像が表示される */
-@keyframes fadeIn { /*上のbody内で呼び出しているアニメーションと名前をそろえる*/
-  0% {opacity: 0} /* 始め */
-  100% {opacity: 1} /* 終わり */
-}
-
-/*古いブラウザ用 */
-@-webkit-keyframes fadeIn {
-  0% {opacity: 0}
-  100% {opacity: 1}
-}
-
-@-webkit-keyframes typing { from { width: 0; } }
-@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+// /* じわっと画像が表示される */
+// @keyframes fadeIn { /*上のbody内で呼び出しているアニメーションと名前をそろえる*/
+//   0% {opacity: 0} /* 始め */
+//   100% {opacity: 1} /* 終わり */
+// }
+//
+// /*古いブラウザ用 */
+// @-webkit-keyframes fadeIn {
+//   0% {opacity: 0}
+//   100% {opacity: 1}
+// }
+//
+// @-webkit-keyframes typing { from { width: 0; } }
+// @-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
 
 
 .main_title {
@@ -874,6 +945,17 @@ a {
   width: 800px;
   margin: 50px auto;
 }
+
+.company_description {
+  margin-top: 50px;
+}
+.company_show_content {
+  max-width: 700px;
+  font-size: 16px;
+  color: #555;
+  margin: 10px auto 0 auto;
+  text-align: left;
+}
 /*---------------------------------
   ユーザー編集ページ
 ---------------------------------*/
@@ -996,18 +1078,23 @@ a {
 .user_destroy {
   margin-top: 40px;
 }
+
+.form_select {
+  width: 104%;
+  padding: 8px 10px;
+}
 /*---------------------------------
   要素フェードイン
 ---------------------------------*/
 .fade_in {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(60px);
   transition: all 1.0s;
 }
 
 .fade_in.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 /*---------------------------------
   Post index
@@ -1025,16 +1112,13 @@ a {
   display: block;
   flex: 0 0 25%;
   max-width: 25%;
-
-  h3 {
-    font-size: 16px;
-    margin: 25px 0;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
 }
+
+.index_h3 {
+  font-size: 16px;
+  margin: 25px 0 5px 0;
+}
+
 .form_search {
   border-radius: 50px;
   border: 1px solid #000;
@@ -1069,6 +1153,12 @@ a {
   flex: 0 0 65%;
   max-width: 65%;
   padding: 0 0 0 6%;
+}
+
+.skill_post_detail {
+  max-width: 70%;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .recruit_title {
@@ -1249,18 +1339,27 @@ a {
   margin-right: 3%;
 }
 
+.number_start.period_start {
+  width: 75%;
+}
+.number_finish.period_finish {
+  width: 75%;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
 .number_finish {
   margin-left: 3%;
 }
 
 .search_submit {
   width: 90%;
-  background-color: #3399FF;
+  background: linear-gradient(to right, #005FFF 0%, #3399FF 51%, #75A9FF 100%);
   color: #fff;
   margin-top: 15px;
 
   &:hover {
-    background-color: #33CCFF;
+    opacity: 0.5;
     transition: .4s;
   }
 }
@@ -1270,13 +1369,14 @@ a {
   background-color: #999;
   color: #fff;
   border: 2px solid #ced4da;
+  background: linear-gradient(to right, #999 0%, #777 51%, #555 100%);
   margin: 15px 0;
   font-size: 16px;
   padding: 6px 12px;
   transition: .4s;
 
   &:hover {
-    background-color: #BBB;
+    opacity: .5;
     transition: .4s;
   }
 
@@ -1293,7 +1393,6 @@ a {
   line-height: 1.5;
   padding: 0.5rem 0.75rem;
   width: 90%;
-  margin-bottom: 20px;
 
   &:focus {
     outline: 0;
@@ -1307,13 +1406,30 @@ a {
   margin-top: 15px;
 
   span {
-    padding: 6px 12px;
-    margin: 5px 5px 5px 0;
-    border-radius: 50px;
+    padding: 5px 12px;
+    margin: 0px 5px 10px 0;
+    border-radius: 30px;
     color: #777;
     border: 1px solid #777;
     font-size: 13px;
     transition: .5s;
+    display: inline-block;
+
+    a {
+      color: #777;
+      transition: .5s;
+    }
+
+    &:hover {
+      background-color: #777;
+      color: #fff;
+      transition: .5s;
+
+      a {
+        color: #fff;
+        transition: .5s;
+      }
+    }
   }
 }
 
@@ -1321,6 +1437,10 @@ a {
   text-align: right;
   font-size: 40px;
   line-height: 40px;
+}
+
+.post_index_menu {
+  display: none;
 }
 /*---------------------------------
   Post 新規投稿ページ
@@ -1600,12 +1720,33 @@ a {
   font-size: 12px;
 }
 
-.post_show_content, .company_show_content {
+.post_show_content {
   max-width: 700px;
-  font-size: 18px;
+  font-size: 16px;
   color: #555;
-  margin: 80px auto 0 auto;
+  margin: 50px auto 0 auto;
   text-align: left;
+}
+
+.company_list {
+  display: flex;
+  max-width: 700px;
+  margin: 35px auto 0 auto;
+
+  li {
+    width: calc(100% / 3);
+  }
+}
+
+.company_list_item {
+  display: flex;
+  max-width: 700px;
+  margin: 15px auto 0 auto;
+  justify-content: space-around;
+
+  li {
+    width: calc(100% / 3);
+  }
 }
 
 .post_show_content {
@@ -1711,12 +1852,28 @@ a {
   }
 
   span {
-    padding: 6px 12px;
+    padding: 5px 12px;
     margin: 5px 5px 5px 0;
     border-radius: 50px;
     color: #777;
     border: 1px solid #777;
     transition: .5s;
+    display: inline-block;
+
+    a {
+      color: #777;
+      transition: .5s;
+    }
+
+    &:hover {
+      background-color: #777;
+      color: #fff;
+      transition: .5s;
+
+      a {
+        color: #fff;
+      }
+    }
   }
 }
 
@@ -2099,7 +2256,7 @@ a {
 
 .room_index_item {
   border-top: 1px solid #e1e1e1;
-  height: 105px;
+  height: auto;
   color: #333;
   display: flex;
 
@@ -2696,7 +2853,7 @@ a {
   }
 
   .form_control {
-    width: 85%;
+    width: 90%;
   }
 
   .number_input {
@@ -2708,6 +2865,9 @@ a {
   }
 
   /* ユーザー詳細（スマホ用） */
+  .company_name {
+    font-size: 24px;
+  }
 
   @keyframes bounceOut {
    0% {
@@ -2776,6 +2936,7 @@ a {
 
   .post_index_tag span {
     font-size: 10px;
+    padding: 3px 8px;
   }
   .user_show .post_separate {
     width: 85%;
@@ -2785,13 +2946,29 @@ a {
   }
   .company_name {
     margin-top: 10px;
-
   }
+
   .mypage_edit {
     margin: 20px auto 10px auto;
     font-size: 12px;
-    max-width: 200px;
-    padding: 15px 0;
+    max-width: 180px;
+    padding: 10px 0;
+  }
+
+  .direct_message {
+    margin: 20px auto 10px auto;
+    font-size: 12px;
+    max-width: 180px;
+    padding: 10px 0;
+  }
+
+  .company_show_content {
+    max-width: 90%;
+    font-size: 16px;
+  }
+
+  .recommend_post_item {
+    height: auto;
   }
   /* Post詳細（スマホ用） */
   .post_show {
@@ -2846,7 +3023,7 @@ a {
     margin-top: 30px;
 
     span {
-      padding: 5px 10px;
+      padding: 3px 8px;
       font-size: 14px;
     }
   }
@@ -2879,6 +3056,108 @@ a {
     }
   }
   /* Post一覧（スマホ用） */
+  .bookmark_link .fa-bookmark {
+    font-size: 16px;
+  }
+  .room_link .fa-envelope{
+    font-size: 16px;
+  }
+
+  .left_box {
+    max-width: 100%;
+  }
+  .post_device {
+    display: block;
+  }
+  .post_detail {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .post_separate {
+    border-top: 1px solid #BBB;
+    margin: 30px 0;
+  }
+  .fa-bookmark, .fa-envelope {
+    font-size: 30px;
+  }
+
+  .industry_more, .prefecture_more {
+    width: 95%;
+  }
+
+  .search_submit.form_control {
+    width: 95%;
+  }
+
+  .search_reset {
+    width: 95%;
+  }
+  .number_start.period_start {
+    width: 80%;
+  }
+
+  .number_finish.period_finish {
+    width: 80%;
+  }
+
+  .post_index_menu {
+    display: block;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    padding: 3px;
+  }
+
+  .fa-angle-down {
+    margin-left: 35%;
+    transform: rotate(0deg);
+    transition: transform 0.2s linear;
+  }
+
+  .angle_down {
+    .fa-angle-down {
+      transform: rotate(180deg);
+      transition: transform 0.2s linear;
+    }
+  }
+
+  .form_search {
+    width: 60%;
+    padding: 15px 20px;
+    margin-right: 10px;
+  }
+
+  .search_menu_nav.search-menu {
+    display: block;
+  }
+
+  .search_menu_nav {
+    display: none;
+  }
+
+  .search_box {
+    display: flex;
+    margin-top: 20px;
+
+    .index_h3 {
+      display: none;
+    }
+  }
+
+  .recruit_title {
+    margin-top: 30px;
+  }
+
+  .btn-border_reverse .fa-envelope {
+    font-size: 14px;
+  }
+
+  .skill_post_detail {
+    max-width: 100%;
+  }
   /* Post編集（スマホ用） */
   .post_form {
     max-width: none;
@@ -2973,7 +3252,7 @@ a {
   }
   /* ダイレクトメッセージ一覧（スマホ用） */
   .post_index {
-    padding: 90px 10px 30px 10px;
+    padding: 60px 10px 30px 10px;
   }
 
   .room_index_content {
@@ -2990,13 +3269,27 @@ a {
   .room_index_box .user_icon {
     margin: 20px 10px;
   }
-  /* （スマホ用） */
+  /* 通知一覧（スマホ用） */
+  .profile-link {
+    padding: 30px 10px 0 0;
+    font-size: 14px;
+
+    .notification {
+      font-size: 16px;
+    }
+  }
+  .notification_index .fa-envelope, .notification_index .fa-comment-dots {
+    margin-left: 0px;
+    font-size: 14px;
+    margin-right: 0px;
+    vertical-align: middle;
+  }
   /* （スマホ用） */
   /* （スマホ用） */
   /* （スマホ用） */
   .container {
     max-width: 480px;
-    padding-left: 20px;
+    padding-left: 10px;
   }
 
   .footer .container {

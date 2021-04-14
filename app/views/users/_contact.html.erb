@@ -3,7 +3,7 @@
     <% if @haveRoom == true %>
       <%= link_to  room_path(@roomId) do %>
         <div class="direct_message">
-          メッセージを送る
+          <i class="far fa-envelope"></i> メッセージを送る
         </div>
       <% end %>
     <% else %>
@@ -11,7 +11,9 @@
         <%= fields_for @entry do |e| %>
           <%= e.hidden_field :user_id, value: @user.id %>
         <% end %>
-          <%= f.submit "メッセージを送る", class:"direct_message"%>
+        <%=  f.button :type => "submit", class:"direct_message" do %>
+          <i class="far fa-envelope"></i> メッセージを送る
+        <% end%>
       <% end %>
     <% end %>
   <% end %>

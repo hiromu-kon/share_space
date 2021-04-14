@@ -3,16 +3,25 @@ class PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @host_post = Post.left_joins(:user).where(user: { skill: false })
+    @skill_post = Post.left_joins(:user).where(user: { skill: true })
+
     if params[:q].present?
-      @q = Post.ransack(params[:q])
-      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-      @posts = @q.result.includes(:user).page(params[:page]).per(10)
+      @host_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @host_post
+      @search = @host_posts.ransack(params[:q])
+      @host_posts = @search.result.includes(:user).page(params[:page]).per(10)
+
     else
       params[:q] = { sorts: 'id desc' }
-      @q = Post.ransack(params[:q])
-      @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-      @posts = @q.result.includes(:user).page(params[:page]).per(10)
+      @host_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @host_post
+      @search = @host_posts.ransack(params[:q])
+      @host_posts = @search.result.includes(:user).page(params[:page]).per(10)
+
+      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
+      @search = @skill_posts.ransack(params[:q])
+      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
     end
+    @sort_list = Post.sort_list
   end
 
   def new
@@ -22,13 +31,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @pv = Pv.find_by(ip: request.remote_ip)
     @map = Map.find_by(post_id: @post.id)
     unless @map.nil?
       gon.latitude = @map.latitude
       gon.longitude = @map.longitude
     end
 
+    @pv = Pv.find_by(ip: request.remote_ip)
     if @pv
       @post = Post.find(params[:id])
     else
@@ -93,7 +102,8 @@ class PostsController < ApplicationController
       end
 
       flash[:notice] = "投稿しました"
-      redirect_to posts_path
+      redirect_to posts_path if current_user.skill == false
+      redirect_to skill_posts_path if current_user.skill == true
     else
       flash.now[:alert] = "投稿できませんでした。入力内容を見直してください。"
       render 'new'
@@ -119,7 +129,8 @@ class PostsController < ApplicationController
       end
 
       flash[:notice] = "投稿を編集しました"
-      redirect_to post_path
+      redirect_to posts_path if current_user.skill == false
+      redirect_to skill_posts_path if current_user.skill == true
     else
       flash[:alert] = "投稿を編集できませんでした"
       redirect_to edit_post_path
@@ -132,10 +143,21 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def search
-    @q = Post.search(search_params)
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-    @posts = @q.result.includes(:user).page(params[:page]).per(10)
+  def skill
+    @skill_post = Post.left_joins(:user).where(user: { skill: true })
+
+    if params[:q].present?
+      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
+      @search = @skill_posts.ransack(params[:q])
+      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
+
+    else
+      params[:q] = { sorts: 'id desc' }
+      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
+      @search = @skill_posts.ransack(params[:q])
+      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
+    end
+    @sort_list = Post.sort_list
   end
 
   private

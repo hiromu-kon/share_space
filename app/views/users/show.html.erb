@@ -21,9 +21,7 @@
       <% else %>
         <%= render "contact" %>
       <% end %>
-      <div class="company_description">
-        <p class="company_show_content"><%= safe_join(@user.introduction.split("\n"),tag(:br)) if @user.introduction.present? %></p>
-      </div>
+      <%= render 'user_detail', user: @user %>
     </div>
     <h2 class="user_post_index"><%= @user.name %>さんのスペース投稿(<%= @user.posts.count %>件)</h2>
     <%= render 'host_post_area', post: @user.posts %>

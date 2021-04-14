@@ -1,13 +1,18 @@
-<%= provide(:title, "投稿一覧") %>
+<%= provide(:title, "募集一覧") %>
 
 <div class="container">
   <div class="post_index">
     <div class="post_device">
-      <% if current_user && current_user.skill == true %>
-        <%= render 'skill_post_index' %>
-      <% else %>
-       <%= render 'host_post_index'%>
-      <% end %>
+      <div class="left_box">
+        <%= render partial: "search_form", locals: { search: @search } %>
+      </div>
+      <div class="post_detail">
+        <div class="recruit_title">
+          <span class="title_name">募集一覧</span>
+        </div>
+        <%= render @host_posts  %>
+        <%= paginate @host_posts %>
+      </div>
     </div>
   </div>
 </div>
