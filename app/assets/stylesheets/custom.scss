@@ -950,11 +950,21 @@ a {
   margin-top: 50px;
 }
 .company_show_content {
-  max-width: 700px;
   font-size: 16px;
   color: #555;
   margin: 10px auto 0 auto;
   text-align: left;
+  word-wrap: break-word;
+}
+
+.user_detail_width {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.direct_message .fa-envelope {
+  font-size: 12px;
+  margin: 0;
 }
 /*---------------------------------
   ユーザー編集ページ
@@ -1730,8 +1740,7 @@ a {
 
 .company_list {
   display: flex;
-  max-width: 700px;
-  margin: 35px auto 0 auto;
+  margin: 40px auto 0 auto;
 
   li {
     width: calc(100% / 3);
@@ -1740,7 +1749,6 @@ a {
 
 .company_list_item {
   display: flex;
-  max-width: 700px;
   margin: 15px auto 0 auto;
   justify-content: space-around;
 

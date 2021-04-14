@@ -36,7 +36,6 @@ class Post < ApplicationRecord
 
   def user_skill?
     user.skill == "false"
-
   end
 
   def image_valid?

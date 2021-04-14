@@ -28,14 +28,13 @@ class BookmarksController < ApplicationController
   private
   def send_posts_csv(posts)
     csv_data = CSV.generate do |csv|
-      column_names = %w(投稿者名 タイトル 本文 住所)
+      column_names = %w(投稿者名 タイトル 本文)
       csv << column_names
       posts.each do |post|
         column_values = [
           post.user.name,
           post.title,
           post.content,
-          post.map.address,
         ]
         csv << column_values
       end
