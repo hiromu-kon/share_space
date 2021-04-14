@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :bookmarks, only: [:create, :destroy]
     resources :comments, only: [:index, :create, :destroy]
     collection do
-      get 'search'
+      get 'skill'
     end
   end
   resources :rooms, only: [:index, :create, :show]

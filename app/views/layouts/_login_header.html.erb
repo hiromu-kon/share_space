@@ -1,8 +1,14 @@
 <% if user_signed_in? %>
   <div class="pc_list_nav_header">
     <li class="pc_list <%= "current_page" if current_page?(posts_path) %>">
-      <%= link_to posts_path do %>
-        <i class="fas fa-search"></i>投稿を探す
+      <% if current_user.skill == true %>
+        <%= link_to skill_posts_path do %>
+          <i class="fas fa-search"></i>投稿を探す
+        <% end %>
+      <% else %>
+        <%= link_to posts_path do %>
+          <i class="fas fa-search"></i>投稿を探す
+        <% end %>
       <% end %>
     </li>
     <li class="pc_list <%= "current_page" if current_page?(notifications_path) %>">
@@ -68,8 +74,14 @@
               <% end %>
             </li>
             <li>
-              <%= link_to posts_path, class:"post_link" do %>
-                <i class="fas fa-search"></i>投稿を探す
+              <% if current_user.skill == true  %>
+                <%= link_to skill_posts_path, class:"post_link" do %>
+                  <i class="fas fa-search"></i>投稿を探す
+                <% end %>
+              <% else %>
+                <%= link_to posts_path, class:"post_link" do %>
+                  <i class="fas fa-search"></i>投稿を探す
+                <% end %>
               <% end %>
             </li>
             <li>

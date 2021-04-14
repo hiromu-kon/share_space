@@ -3,7 +3,7 @@
     <% if @haveRoom == true %>
       <%= link_to  room_path(@roomId) do %>
         <div class="btn-border_reverse">
-          <i class="far fa-envelope"></i> 募集企業にDMを送る
+          <i class="far fa-envelope"></i> 企業にDMを送る
         </div>
       <% end %>
     <% else %>
@@ -12,7 +12,7 @@
           <%= e.hidden_field :user_id, value: @post.user.id %>
         <% end %>
         <%=  f.button :type => "submit", class:"btn-border_reverse" do %>
-          <i class="far fa-envelope"></i> 募集企業にDMを送る
+          <i class="far fa-envelope"></i> 企業にDMを送る
         <% end %>
       <% end %>
     <% end %>

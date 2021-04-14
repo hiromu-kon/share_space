@@ -102,7 +102,8 @@ class PostsController < ApplicationController
       end
 
       flash[:notice] = "投稿しました"
-      redirect_to posts_path
+      redirect_to posts_path if current_user.skill == false
+      redirect_to skill_posts_path if current_user.skill == true
     else
       flash.now[:alert] = "投稿できませんでした。入力内容を見直してください。"
       render 'new'
@@ -128,7 +129,8 @@ class PostsController < ApplicationController
       end
 
       flash[:notice] = "投稿を編集しました"
-      redirect_to post_path
+      redirect_to posts_path if current_user.skill == false
+      redirect_to skill_posts_path if current_user.skill == true
     else
       flash[:alert] = "投稿を編集できませんでした"
       redirect_to edit_post_path
@@ -139,6 +141,23 @@ class PostsController < ApplicationController
     Post.find(params[:id]).destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to posts_path
+  end
+
+  def skill
+    @skill_post = Post.left_joins(:user).where(user: { skill: true })
+
+    if params[:q].present?
+      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
+      @search = @skill_posts.ransack(params[:q])
+      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
+
+    else
+      params[:q] = { sorts: 'id desc' }
+      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
+      @search = @skill_posts.ransack(params[:q])
+      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
+    end
+    @sort_list = Post.sort_list
   end
 
   private
