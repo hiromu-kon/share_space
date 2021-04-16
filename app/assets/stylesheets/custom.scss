@@ -645,7 +645,7 @@ a {
 
 
 .device_inner {
-  max-width: 360px;
+  max-width: 400px;
   margin: 0px auto;
 }
 
@@ -1211,7 +1211,7 @@ a {
 .grad_item {
   position: relative;
   overflow: hidden;
-  height: 80px;
+  height: 50px;
   margin-bottom: 15px;
 }
 
@@ -2761,10 +2761,10 @@ a {
 
   .container_new {
     max-width: 540px;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
   }
   .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
-    bottom: 80px;
+    bottom: 350px;
   }
 
   .swiper-button-next, .swiper-button-prev {
@@ -3041,6 +3041,7 @@ a {
   }
   .comment {
     margin: 10px 0 0 20px;
+    word-wrap: break-word;
     margin-bottom: 8px;
   }
   .comment_delete {
@@ -3295,7 +3296,27 @@ a {
     margin-right: 0px;
     vertical-align: middle;
   }
-  /* （スマホ用） */
+  /* ログインフォーム、新規登録フォーム（スマホ用） */
+  .device {
+    padding-top: 70px;
+  }
+
+  .device_frame {
+    box-shadow: none;
+    text-align: left;
+  }
+  .form_title {
+    text-align: center;
+  }
+
+  .btn_primary {
+    width: 100%;
+  }
+
+  .user_remember_me {
+    text-align: center;
+  }
+
   /* （スマホ用） */
   /* （スマホ用） */
   .container {
