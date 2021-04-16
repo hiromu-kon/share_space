@@ -93,8 +93,6 @@ a {
     padding-right: 5px;
   }
 }
-
-
 /*---------------------------------
   カーテンエフェクト
 ---------------------------------*/
@@ -3191,6 +3189,11 @@ a {
   }
   #previewImage-preview1, #previewImage-preview2  {
     height: 200px;
+    width: 90%;
+  }
+
+  .number_input.tag_field {
+    width: 90%;
   }
   /* Post投稿（スマホ用） */
   /* ブックマーク一覧 */
@@ -3503,5 +3506,24 @@ a {
 
   .Notification #notice, .Notification #success {
     font-size: 12px;
+  }
+
+  .after_login_list {
+    .headerNav {
+      height: 100%;
+    }
+
+    .navList {
+      text-align: left;
+    }
+
+    .navItem a {
+      padding: 3rem 0 1rem;
+      border-bottom: 1px solid #999;
+
+      &:last-child {
+        margin-bottom: 40px;
+      }
+    }
   }
 }

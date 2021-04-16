@@ -57,61 +57,64 @@
     </li>
   </div>
   <div class="phone_list_nav_header">
-    <li>
-      <div class="offcm01">
-        <input type="checkbox" id="toggle01" class="toggle_button">
-        <label for="toggle01"><span></span></label>
-        <div class="menu">
-          <ul>
-            <li>
-              <%= link_to user_path(current_user.id), class:"mypage_link" do %>
-                <i class="fas fa-user-circle"></i>マイページ
-              <% end %>
-            </li>
-            <li>
-              <%= link_to edit_user_registration_path, class:"user_edit_link" do %>
-                <i class="fas fa-user-edit"></i>ユーザー編集
-              <% end %>
-            </li>
-            <li>
-              <% if current_user.skill == true  %>
-                <%= link_to skill_posts_path, class:"post_link" do %>
-                  <i class="fas fa-search"></i>投稿を探す
-                <% end %>
-              <% else %>
-                <%= link_to posts_path, class:"post_link" do %>
-                  <i class="fas fa-search"></i>投稿を探す
-                <% end %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to notifications_path, class:"notification_link" do %>
-                <% if unchecked_notifications.any? %>
-                  <i class="fas fa-bell unchecked"></i>通知
-                <% else %>
-                  <i class="fas fa-bell"></i>通知
-                <% end %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to rooms_path, class:"room_link" do %>
-                <i class="fas fa-envelope"></i>メッセージ
-              <% end %>
-            </li>
-            <li>
-              <%= link_to user_bookmarks_path(current_user), class:"bookmark_link" do %>
-                <i class="fas fa-bookmark"></i>ブックマーク一覧
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, :method => :delete, class:"logout_link" do %>
-                <i class="fas fa-sign-out-alt"></i>ログアウト
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </li>
+    <div class="after_login_list">
+    <nav class="headerNav">
+      <ul class="navList">
+        <li class="navItem login_btn">
+          <%= link_to user_path(current_user.id), class:"mypage_link" do %>
+            <i class="fas fa-user-circle"></i>マイページ
+          <% end %>
+        </li>
+        <li class="navItem login_btn">
+          <%= link_to edit_user_registration_path, class:"user_edit_link" do %>
+            <i class="fas fa-user-edit"></i>ユーザー編集
+          <% end %>
+        </li>
+        <li class="navItem login_btn">
+          <% if current_user.skill == true  %>
+            <%= link_to skill_posts_path, class:"post_link" do %>
+              <i class="fas fa-search"></i>投稿を探す
+            <% end %>
+          <% else %>
+            <%= link_to posts_path, class:"post_link" do %>
+              <i class="fas fa-search"></i>投稿を探す
+            <% end %>
+          <% end %>
+        </li>
+        <li class="navItem login_btn">
+          <%= link_to notifications_path, class:"notification_link" do %>
+            <% if unchecked_notifications.any? %>
+              <i class="fas fa-bell unchecked"></i>通知
+            <% else %>
+              <i class="fas fa-bell"></i>通知
+            <% end %>
+          <% end %>
+        </li>
+        <li class="navItem login_btn">
+          <%= link_to rooms_path, class:"room_link" do %>
+            <i class="fas fa-envelope"></i>メッセージ
+          <% end %>
+        </li>
+        <li class="navItem login_btn">
+          <%= link_to user_bookmarks_path(current_user), class:"bookmark_link" do %>
+            <i class="fas fa-bookmark"></i>ブックマーク一覧
+          <% end %>
+        </li>
+        <li class="navItem login_btn">
+          <%= link_to destroy_user_session_path, :method => :delete, class:"logout_link" do %>
+            <i class="fas fa-sign-out-alt"></i>ログアウト
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+    <div class="hamburger_btn" id="js-hamburger">
+      <span class="hamburger_line hamburger_line_1"></span>
+      <span class="hamburger_line hamburger_line_2"></span>
+      <span class="hamburger_line hamburger_line_3"></span>
+    </div>
+    <!-- ハンバーガーメニュをクリックした後に現れる半透明の背景-->
+    <div class="black-bg" id="js-black-bg"></div>
+  </div>
   </div>
 <% else %>
   <div class="before_login_list">
