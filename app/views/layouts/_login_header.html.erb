@@ -115,32 +115,34 @@
   </div>
 <% else %>
   <div class="before_login_list">
-  <div class="phone_list_nav_header">
-    <li>
-      <div class="offcm01">
-        <input type="checkbox" id="toggle01" class="toggle_button">
-        <label for="toggle01"><span></span></label>
-        <div class="menu">
-          <ul>
-            <li class="login_btn">
-              <%= link_to users_guest_sign_in_path, method: :post, class:"btn-border gray-border" do %>
-                <i class="fas fa-users"></i>ゲストログイン
-              <% end %>
-            </li>
-            <li class="login_btn">
-              <%= link_to new_user_session_path, class:"btn-border" do %>
-                <i class="fas fa-sign-in-alt"></i>ログイン
-              <% end %>
-            </li>
-            <li class="login_btn">
-              <%= link_to new_user_registration_path, class:"btn-border" do %>
-                <i class="fas fa-user"></i>新規登録
-              <% end %>
-            </li>
-          </ul>
-        </div>
+    <div class="phone_list_nav_header">
+      <nav class="headerNav">
+        <ul class="navList">
+          <li class="navItem login_btn">
+            <%= link_to users_guest_sign_in_path, method: :post, class:"btn-border gray-border" do %>
+              <i class="fas fa-users"></i>ゲストログイン
+            <% end %>
+          </li>
+          <li class="navItem login_btn">
+            <%= link_to new_user_session_path, class:"btn-border" do %>
+              <i class="fas fa-sign-in-alt"></i>ログイン
+            <% end %>
+          </li>
+          <li class="navItem login_btn">
+            <%= link_to new_user_registration_path, class:"btn-border" do %>
+              <i class="fas fa-user"></i>新規登録
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="hamburger_btn" id="js-hamburger">
+        <span class="hamburger_line hamburger_line_1"></span>
+        <span class="hamburger_line hamburger_line_2"></span>
+        <span class="hamburger_line hamburger_line_3"></span>
       </div>
-    </li>
+      <!-- ハンバーガーメニュをクリックした後に現れる半透明の背景-->
+      <div class="black-bg" id="js-black-bg"></div>
+    </div>
   </div>
-</div>
 <% end %>
