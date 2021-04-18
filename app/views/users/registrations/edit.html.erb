@@ -1,6 +1,7 @@
 <%= provide(:title, "編集") %>
 <%= render "users/shared/error_messages_top", resource: resource %>
 <div class="edit_page">
+  <div class="device_frame">
   <div class="device_inner">
     <%= link_to user_path(current_user.id), class:"index_link" do %>
       <i class="far fa-arrow-alt-circle-left"></i>アカウント詳細に戻る
@@ -97,5 +98,6 @@
       <% end %>
       <h4 class="user_destroy">アカウントを削除する</h4>
       <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか?" }, method: :delete, class:"form_control user_destroy_btn" %>
+    </div>
   </div>
 </div>
