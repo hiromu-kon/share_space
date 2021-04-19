@@ -93,6 +93,42 @@ a {
     padding-right: 5px;
   }
 }
+
+/*---------------------------------
+  文字マーカーアニメーション
+---------------------------------*/
+.blue.js-marker {
+  background-image: linear-gradient(90deg, #4689FF, #4689FF);
+  transition: all 1.5s ease-in-out;
+  background-size: 0 30%;
+}
+
+.orange.js-marker {
+  background-image: linear-gradient(90deg, #FF6928, #FF6928);
+  transition: all 1.5s ease-in-out;
+  background-size: 0 30%;
+}
+
+.blue.js-marker.inview, .orange.js-marker.inview {
+  background-size: 100% 30%; /* '30%'の部分は上で設定した太さに合わせる */
+}
+
+
+.js-marker {
+  display: inline;
+  position: relative;
+  background-image: linear-gradient(90deg, #009900, #009900); /* 単色の場合は同じ色、グラデーションさせる場合は別々の色 */
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 0 20%; /* '30%'の部分にマーカーの太さを記入 */
+  transition: all 1s ease-in-out; /* マーカーを引く速度を調整 */
+  font-weight: bold; /* ついでに太字にしたい場合 */
+}
+
+/* アニメーション発火時 */
+.js-marker.inview {
+  background-size: 100% 20%; /* '30%'の部分は上で設定した太さに合わせる */
+}
 /*---------------------------------
   カーテンエフェクト
 ---------------------------------*/
@@ -127,7 +163,7 @@ a {
 /* .curtainに.activeがついたら擬似要素のアニメーションを開始させる */
 /* アニメーション名,アニメーション完了までの所要時間,変化の度合い,遅延時間,回数,再生方向,アニメーション前後のスタイル,アニメーションの再生・停止 */
 .curtain.active:after {
-  animation: curtainEffect 1s ease-in-out 0.3s 1 normal both running;
+  animation: curtainEffect .9s ease-in-out 0.3s 1 normal both running;
 }
 
 .curtain.slow.active:after {
@@ -459,14 +495,13 @@ a {
 
 
 .main_title {
-  height: 85vh;
+  height: 90vh;
   background-image: url('top1.jpg');
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   background-size: cover;
   position: relative;
-  animation: fadeIn 4.5s ease 0s 1 normal;
-  -webkit-animation: fadeIn 4.5s ease 0s 1 normal;
+  background-attachment: fixed;
 }
 
 .main_title_box {
@@ -484,6 +519,7 @@ a {
   color: #000;
   line-height: 1.6;
 }
+
 
 .main_title_sub {
   margin-top: 60px;
@@ -517,7 +553,6 @@ a {
   list-style: initial;
   list-style-position: inside;
 }
-
 /*---------------------------------
   SHARE SPACEとは？
 ---------------------------------*/
@@ -601,13 +636,7 @@ a {
   }
 }
 
-.orange {
-  color: #FF6928;
-}
 
-.blue {
-  color: #4689FF;
-}
 
 .intro_top {
   text-align: center;
@@ -627,6 +656,39 @@ a {
   }
 }
 
+.conversion {
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: url('top_image.jpg');
+  color: #000;
+}
+
+.inner {
+  display: flex;
+  padding: 100px 60px 100px 0;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heading_large {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 0 2px 2px #333;
+}
+
+.description_large {
+  font-size: 16px;
+  line-height: 1.7em;
+  color: #fff;
+  text-shadow: 0 2px 2px #333;
+  font-weight: bold;
+}
 /*---------------------------------
   新規登録ページ
 ---------------------------------*/

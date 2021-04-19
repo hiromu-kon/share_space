@@ -17,6 +17,8 @@ require('./header_dropdown.js')
 require('./word_count.js')
 require('./curtain.js')
 require('./humburger_menu.js')
+require('./marker.js')
+
 
 
 Rails.start()
