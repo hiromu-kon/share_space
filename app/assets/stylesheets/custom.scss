@@ -561,13 +561,16 @@ a {
   font-size: 2.6rem;
   font-weight: bold;
   line-height: 1.6;
-  margin: 30px 0;
+  padding-top: 60px;
 }
 
 .container_new {
   margin: 0 auto 100px auto;
   max-width: 1140px;
 
+  .section_title {
+    padding-top: 30px;
+  }
 }
 
 .en {
@@ -670,7 +673,7 @@ a {
   align-items: center;
   position: relative;
   box-sizing: border-box;
-  width: 1000px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -682,12 +685,41 @@ a {
   text-shadow: 0 2px 2px #333;
 }
 
+.text {
+  flex: 1;
+}
+
 .description_large {
   font-size: 16px;
   line-height: 1.7em;
   color: #fff;
   text-shadow: 0 2px 2px #333;
   font-weight: bold;
+}
+
+.btn_top {
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  padding: 0 40px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .1s;
+  letter-spacing: .05em;
+  background-color: #2ba;
+  color: #fff !important;
+  transition: .5s;
+
+  &:hover {
+    transition: .5s;
+    background-color: #299;
+  }
+}
+
+.container_about_box {
+  background-color: #f8f9fa;
+  padding-bottom: 20px;
 }
 /*---------------------------------
   新規登録ページ
@@ -2779,6 +2811,7 @@ a {
   .main_title {
     height: 60vh;
     background-position: center center;
+    background-attachment: scroll;
   }
 
   .main_title_top {
@@ -2809,16 +2842,14 @@ a {
 
   .intro_top {
     font-size: 16px;
-    margin-top: 40px;
-    line-height: 40px;
+    line-height: 50px;
     width: 85%;
-    margin: 0 auto;
+    margin: 40px auto 0 auto;
+    text-align: left;
   }
 
   .blue {
-    display: flex;
-    justify-content: center;
-    text-align: left;
+    line-height: 0.5;
   }
 
   .content_list {
