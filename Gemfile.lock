@@ -286,6 +286,8 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    simple_calendar (2.4.2)
+      rails (>= 3.0)
     spring (2.1.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -360,6 +362,7 @@ DEPENDENCIES
   rubocop-airbnb
   sass-rails (>= 6)
   selenium-webdriver
+  simple_calendar (~> 2.0)
   spring
   spring-commands-rspec
   turbolinks (~> 5)
