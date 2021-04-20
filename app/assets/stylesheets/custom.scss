@@ -2809,13 +2809,13 @@ a {
   }
 
   .main_title {
-    height: 60vh;
+    height: 65vh;
     background-position: center center;
     background-attachment: scroll;
   }
 
   .main_title_top {
-    font-size: 26px;
+    font-size: 28px;
   }
 
   .section_title {
@@ -2824,9 +2824,9 @@ a {
 
   .main_title_sub {
     margin-top: 50px;
-    font-size: 12px;
+    font-size: 10px;
     display: flex;
-    width: 90%;
+    width: 80%;
     justify-content: center;
     text-align: left;
     line-height: 18px;
@@ -2858,11 +2858,12 @@ a {
   }
 
   .content_list_item {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
   }
 
   .content_message {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
     text-indent: 0;
     width: auto;
   }
@@ -2872,12 +2873,48 @@ a {
     padding-left: 15px;
   }
 
-  .container_new {
-    max-width: 540px;
+  .inner {
+    display: inherit;
+    padding: 0;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    width: 90%;
+  }
+
+  .conversion {
+    background-attachment: scroll;
+    background-size: cover;
     margin-bottom: 100px;
   }
+
+  .heading_large {
+    font-size: 20px;
+  }
+
+  .description_large {
+    font-size: 10px;
+  }
+
+  .btn_top {
+    width: 40%;
+    height: 30px;
+    margin: 20px auto 0 auto;
+    text-align: center;
+    line-height: 30px;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+
+  .container_new {
+    max-width: 540px;
+    margin-bottom: 0px;
+  }
   .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
-    bottom: 350px;
+    bottom: 320px;
+  }
+
+  .swiper-container {
+    padding-bottom: 10px;
   }
 
   .swiper-button-next, .swiper-button-prev {
@@ -2894,8 +2931,6 @@ a {
   .swiper-container {
     border: 0;
     max-width: 100%;
-    padding-top: 0;
-    padding-bottom: 45px;
   }
   .swiper_item_width {
     border: 0;
