@@ -2678,7 +2678,48 @@ a {
   font-size: 20px;
 }
 
+/*---------------------------------
+   Reservation 一覧
+---------------------------------*/
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
 
+.simple-calendar .prev-month, .simple-calendar .next-month {
+  background: inherit;
+}
+
+.simple-calendar {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.simple-calendar .wday-1 {
+  height: 120px;
+}
+
+.simple-calendar .wday-6 {
+  background-color: skyblue;
+}
+
+.simple-calendar .wday-0 {
+  background-color: pink;
+}
+
+.calendar-heading {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 15px;
+
+  a {
+    color: #337AB7;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
 /*---------------------------------
    タブレット用レイアウト
 ---------------------------------*/

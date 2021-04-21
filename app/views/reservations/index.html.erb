@@ -1,0 +1,11 @@
+<div class="post_index">
+  <h3>予約</h3>
+  <%= month_calendar events: @reservations do |date, reservations| %>
+    <%= date.day %>
+    <% reservations.each do |reservation| %>
+      <div class="reservation_index_time">
+        <%= reservation.start_time.strftime("%-H:%-M") %>〜<%= reservation.end_time.strftime("%-H:%-M") %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
