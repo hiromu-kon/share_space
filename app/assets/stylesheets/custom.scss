@@ -1003,6 +1003,7 @@ a {
   color: #fff;
   border-style: none;
   outline: 0;
+  display: inline-block;
 
   a {
     color: #fff;
@@ -1013,6 +1014,24 @@ a {
     background-position: right center;
     transition: .5s;
   }
+}
+
+.opportunity_link {
+  margin: 40px auto 10px auto;
+  border-radius: 150px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 18px 0;
+  width: 250px;
+  border: 2px solid #3366FF;
+  transition: .5s;
+  color: #3366FF;
+  outline: 0;
+  display: inline-block;
+}
+
+.company_block form {
+  display: inline-block;
 }
 
 .mypage_edit {
@@ -1063,7 +1082,7 @@ a {
 }
 
 .direct_message .fa-envelope {
-  font-size: 12px;
+  font-size: 14px;
   margin: 0;
 }
 /*---------------------------------
@@ -1753,9 +1772,10 @@ a {
 }
 
 .post_show .btn-border:hover {
-  border: 2px solid #00BB00;
+  border: 2px solid #009933;
   color: #fff;
-  background-color: #00BB00;
+  background-color: #009933;
+  opacity: 0.6;
 }
 
 .btn-border_reverse {
@@ -2699,11 +2719,13 @@ a {
 }
 
 .simple-calendar .wday-6 {
-  background-color: skyblue;
+  background-color: #d6eaff;
+  border-bottom-color: #bbb;
 }
 
 .simple-calendar .wday-0 {
-  background-color: pink;
+  background-color: #ffd6ea;
+  border-bottom-color: #bbb;
 }
 
 .calendar-heading {
@@ -2718,6 +2740,136 @@ a {
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+.simple-calendar .today {
+  background: #fff;
+}
+
+.reservation_index_time {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 2px;
+
+  p {
+    padding: 3px 0;
+    background-color: #fad796;
+
+    .reservation_time {
+      padding: 6px 4px;
+    }
+  }
+}
+
+.reservation_show {
+  h3 {
+    font-size: 30px;
+    margin: 20px 0 40px 0;
+  }
+
+  p {
+    font-size: 20px;
+    border-bottom: 1px solid #ebebeb;
+    padding-bottom: 10px;
+    width: 60%;
+    margin: 0 auto 30px auto;
+  }
+
+  span {
+    font-weight: bold;
+    margin-right: 20px;
+  }
+}
+
+.reservation_link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.reservation_circle {
+  color: #fff;
+  background-color: #ff4242;
+  font-weight: bold;
+  margin-right: 3px;
+}
+
+.reservation_cross {
+  color: #fff;
+  background-color: #888;
+  font-weight: bold;
+  margin-right: 3px;
+}
+
+.myself {
+  width: 90%;
+  margin: 20px auto 0 auto;
+}
+
+.reservation_title {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 28px;
+}
+
+.myself_reservation_form {
+  text-align: center;
+  margin: 0 auto 30px auto;
+  width: 50%;
+
+  .time {
+    margin-bottom: 10px;
+
+    select {
+      height: 35px;
+      outline: none;
+      padding: 0px 10px;
+      border-radius: 5px;
+      border: 2px solid #BBB;
+      font-size: 16px;
+      margin: 0 3px;
+    }
+
+    span {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  }
+
+  .btn_primary {
+    width: 60%;
+    margin: 25px auto 40px auto;
+  }
+
+  h3 {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+}
+
+.end_time {
+}
+
+.reserved_submit {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #339900;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 50px;
+
+  &:hover {
+    opacity: .5;
+  }
+}
+
+.opportunity {
+  font-size: 20px;
+  margin-bottom: 10px;
+
+  input {
+    margin-right: 20px;
   }
 }
 /*---------------------------------
