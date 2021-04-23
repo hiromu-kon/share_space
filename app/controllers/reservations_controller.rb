@@ -42,6 +42,10 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
   end
 
+  def mylist
+    @reserved_list = Reservation.where(reservation_user_id: current_user.id).or(Reservation.where(user_id: current_user.id).where.not(reservation_user_id: nil)).order(start_time: :asc)
+  end
+
   private
 
   def reservation_params

@@ -47,6 +47,11 @@
               <i class="fas fa-bookmark"></i>ブックマーク
             </li>
           <% end %>
+          <%= link_to mylist_user_reservations_path(current_user), class:"bookmark_link" do %>
+            <li>
+              <i class="fa fa-calendar-check-o"></i>マイ予約一覧
+            </li>
+          <% end %>
           <%= link_to destroy_user_session_path, :method => :delete do %>
             <li>
               <i class="fas fa-sign-out-alt"></i>ログアウト
@@ -98,6 +103,11 @@
         <li class="navItem login_btn">
           <%= link_to user_bookmarks_path(current_user), class:"bookmark_link" do %>
             <i class="fas fa-bookmark"></i>ブックマーク一覧
+          <% end %>
+        </li>
+        <li class="navItem login_btn">
+          <%= link_to mylist_user_reservations_path(current_user), class:"bookmark_link" do %>
+            <i class="fa fa-calendar-check-o"></i>マイ予約一覧
           <% end %>
         </li>
         <li class="navItem login_btn">

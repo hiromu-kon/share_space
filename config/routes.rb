@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
   resources :users, only: :show do
     resources :bookmarks, only: [:index]
-    resources :reservations, only: [:index, :create, :show, :destroy, :update]
+    resources :reservations, only: [:index, :create, :show, :destroy, :update] do
+      collection do
+        get :mylist
+      end
+    end
   end
   resources :posts do
     resources :bookmarks, only: [:create, :destroy]

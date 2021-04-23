@@ -20,7 +20,9 @@
         </div>
       <% else %>
         <%= render "contact" %>
-        <span class="opportunity_link"><i class="fa fa-calendar"></i> 商談予約をする</span>
+        <%= link_to user_reservations_path(@user) do %>
+          <span class="opportunity_link"><i class="fa fa-calendar"></i> 商談予約をする</span>
+        <% end %>
       <% end %>
       <%= render 'user_detail', user: @user %>
     </div>

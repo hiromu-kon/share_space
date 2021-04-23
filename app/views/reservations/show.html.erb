@@ -8,8 +8,11 @@
         <%= form_for @reservation, :url => {:action => :update} do |f| %>
           <div class="opportunity"><input type="radio" name="opportunity" value="">対面希望</div>
           <div class="opportunity"><input type="radio" name="opportunity" value="">電話希望</div>
+          <h4 class="request">要望</h4>
+          <textarea name="" rows="" class="reservation_textarea form_control" cols="40"></textarea>
           <%= f.submit "予約を確定する", class: "form_control reserved_submit" %>
         <% end %>
+        <% else %>
       <% end %>
     </div>
   </div>
