@@ -35,6 +35,7 @@ gem 'coderay'
 gem 'geocoder'
 gem 'gon'
 gem "simple_calendar", "~> 2.0"
+gem 'unicorn'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
