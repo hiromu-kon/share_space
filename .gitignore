@@ -36,3 +36,5 @@ yarn-debug.log*
 .yarn-integrity
 /environments/db.env
 /.env
+
+/docker/dev/mysql/db_data
