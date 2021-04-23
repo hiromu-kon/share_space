@@ -5,71 +5,91 @@
       &nbsp;新たな価値に変える”</span>
     </div>
     <div class="main_title_sub curtain slow">
-      <span>空きリソースを利用して自社で足りないスキルを他社にオンサイトで依頼できる。<br>
+      <span class="">空きリソースを利用して自社で足りないスキルを他社にオンサイトで依頼できる。<br>
       空きスペースとスキルをシェアするマッチングサイト。</span>
     </div>
   </div>
 </div>
-<h3 class="section_title">
-  <span class="en">About</span>
-  <span class="ja">SHARE SPACEとは?</span>
-</h3>
-<h4 class="intro_top fade_in"><span class="blue">「スペースを提供しオンサイトで仕事を依頼したい企業」</span>と<br>
-<span class="orange">「スキルを提供したい企業」</span>を繋ぐマッチングサイトです。</h4>
-<div class="container_about fade_in">
-  <ul class="content_list">
-    <li class="content_list_item">
-      <p class="icon_image"><%= image_tag "icon1.png" %></p>
-      <p class="content_message">新しいビジネスパートナーの発見
-      </p>
-    </li>
-    <li class="content_list_item">
-      <p class="icon_image"><%= image_tag "icon2.png" %></p>
-      <p class="content_message">オンサイトのため連絡事項や相談もスムーズにできる
-      </p>
-    </li>
-    <li class="content_list_item">
-      <p class="icon_image"><%= image_tag "icon3.png" %></p>
-      <p class="content_message">専門業務に専念できるため社員のスキル向上/業務の効率化が図れる
-      </p>
-    </li>
-  </ul>
+<div class="main">
+  <div class="container_about_box">
+    <h3 class="section_title">
+      <span class="en">About</span>
+      <span class="ja">SHARE SPACEとは?</span>
+    </h3>
+    <h4 class="intro_top"><span class="blue js-marker">｢スペースを提供しオンサイトで仕事を依頼したい企業｣</span>と<br>
+    <span class="orange js-marker">｢スキルを提供したい企業｣</span> を繋ぐマッチングサイトです。</h4>
+    <div class="container_about">
+      <ul class="content_list">
+        <li class="content_list_item fade_in">
+          <p class="icon_image"><%= image_tag "icon1.png" %></p>
+          <p class="content_message">新しいビジネスパートナーの発見
+          </p>
+        </li>
+        <li class="content_list_item fade_in">
+          <p class="icon_image"><%= image_tag "icon2.png" %></p>
+          <p class="content_message">オンサイトのため連絡事項や相談もスムーズにできる
+          </p>
+        </li>
+        <li class="content_list_item fade_in">
+          <p class="icon_image"><%= image_tag "icon3.png" %></p>
+          <p class="content_message">専門業務に専念できるため社員のスキル向上/業務の効率化が図れる
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container_new">
+    <% if @new_post.present? %>
+    <h3 class="section_title">
+      <span class="en">New</span>
+      <span class="ja">最新のスペース募集</span>
+    </h3>
+    <div class="swiper-container fade_in">
+      <!-- メイン表示部分 -->
+      <div class="swiper-wrapper">
+        <!-- 各スライド -->
+        <% @new_post.each do |post| %>
+          <div class="swiper-slide">
+            <%= link_to post do %>
+              <% if post.image.attached? %>
+                <%= image_tag post.image, class:"image_swiper" %>
+              <% end %>
+              <div class="swiper_item_width">
+                <h1 class="post_title"><%= truncate(post.title, length: 60) %></h1>
+                <p class="post_content"><%= truncate(post.content, length: 90) %></p>
+                <div class="group group_start"><h3>報酬(月単価)<span><%= number_to_currency(post.reward) if post.reward.present? %></span></h3></div>
+                <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
+                <div class="group phone_recruit_date"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
+                <h3 class="post_address">オフィス住所<span><%= post.map&.address %></span></h3>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+     <div class="swiper-pagination"></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="conversion">
+    <div class="inner">
+      <div class="text">
+        <h2 class="heading_large">
+          自社の課題を<br>
+          オンサイトマッチングで解決
+        </h2>
+        <p class="description_large">知見を持ったアドバイザーに、1時間から対面・電話で相談。<br>
+          SHARE SPACEの登録はこちらから。</p>
+      </div>
+      <div class="btn_top">
+        SHARE SPACEに登録
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="container_new">
-  <% if @new_post.present? %>
-  <h3 class="section_title">
-    <span class="en">New</span>
-    <span class="ja">最新のスペース募集</span>
-  </h3>
-  <div class="swiper-container fade_in">
-    <!-- メイン表示部分 -->
-    <div class="swiper-wrapper">
-      <!-- 各スライド -->
-      <% @new_post.each do |post| %>
-        <div class="swiper-slide">
-          <%= link_to post do %>
-            <% if post.image.attached? %>
-              <%= image_tag post.image, class:"image_swiper" %>
-            <% end %>
-            <div class="swiper_item_width">
-              <h1 class="post_title"><%= truncate(post.title, length: 60) %></h1>
-              <p class="post_content"><%= truncate(post.content, length: 90) %></p>
-              <div class="group group_start"><h3>報酬(月単価)<span><%= number_to_currency(post.reward) if post.reward.present? %></span></h3></div>
-              <div class="group"><h3>募集人数<span><%= post.recruit_people %>人</span></h3></div>
-              <div class="group phone_recruit_date"><h3>募集期間<span><%= post.start_date %> 〜 <%= post.finish_date %></span></h3></div>
-              <h3 class="post_address">オフィス住所<span><%= post.map&.address %></span></h3>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-   <div class="swiper-pagination"></div>
-  </div>
-  <% end %>
-</div>
 
 <script>
 var mySwiper = new Swiper('.swiper-container', {

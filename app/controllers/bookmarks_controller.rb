@@ -16,7 +16,6 @@ class BookmarksController < ApplicationController
 
   def index
     @posts = current_user.bookmark_posts.includes(:user).order(created_at: :desc).page(params[:page]).per(5)
-
     respond_to do |format|
       format.html
       format.csv do |csv|

@@ -16,10 +16,6 @@ class PostsController < ApplicationController
       @host_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @host_post
       @search = @host_posts.ransack(params[:q])
       @host_posts = @search.result.includes(:user).page(params[:page]).per(10)
-
-      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
-      @search = @skill_posts.ransack(params[:q])
-      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
     end
     @sort_list = Post.sort_list
   end

@@ -34,6 +34,7 @@ gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
 gem 'geocoder'
 gem 'gon'
+gem "simple_calendar", "~> 2.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -70,3 +71,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem 'aws-sdk-s3', require: false
