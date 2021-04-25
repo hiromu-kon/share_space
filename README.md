@@ -1,7 +1,7 @@
-# README
+# SHARE SPACE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+オフィスの空きスペースを利用して、自社で足りないスキルを他者にオンサイトで依頼できるオフィス常駐専用マッチングサービスです。
+
 
 Things you may want to cover:
 
