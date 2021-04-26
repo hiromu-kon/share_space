@@ -38,3 +38,10 @@ yarn-debug.log*
 /.env
 
 /docker/dev/mysql/db_data
+/docker/dev/.env
+
+vender/bundle
+/yarn-error.log
+/yarn-debug.log*
+/.yarn-integrity
+/public/uploads/*

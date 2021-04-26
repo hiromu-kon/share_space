@@ -6,7 +6,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ~/git/github/share_space:/var/www/app/
+      - ~/share_space:/var/www/app/
     tty: true
     depends_on:
       - db
@@ -16,9 +16,8 @@ services:
     ports:
       - '3308:3306'
     environment:
-      MYSQL_DATABASE: ENV['MYSQL_DATABASE']
-      MYSQL_ROOT_PASSWORD: ENV['MYSQL_ROOT_PASSWORD']
+      MYSQL_DATABASE: share_space
+      MYSQL_ROOT_PASSWORD: password
       TZ: "Asia/Tokyo"
     volumes:
       - ./mysql/db_data:/var/lib/mysql
-    env_file: .env
