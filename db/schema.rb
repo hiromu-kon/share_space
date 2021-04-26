@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_04_20_132926) do
 
-  create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", charset: "utf8", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "bookmarks", charset: "utf8", force: :cascade do |t|
+  create_table "bookmarks", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "comments", charset: "utf8", force: :cascade do |t|
+  create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.string "content"
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "entries", charset: "utf8", force: :cascade do |t|
+  create_table "entries", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
-  create_table "maps", charset: "utf8", force: :cascade do |t|
+  create_table "maps", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.string "address"
     t.float "latitude"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["post_id"], name: "index_maps_on_post_id"
   end
 
-  create_table "messages", charset: "utf8", force: :cascade do |t|
+  create_table "messages", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "room_id"
     t.text "message", null: false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "notifications", charset: "utf8", force: :cascade do |t|
+  create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
     t.bigint "comment_id"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
-  create_table "posts", charset: "utf8", force: :cascade do |t|
+  create_table "posts", charset: "utf8mb4", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.integer "reward"
@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "pvs", charset: "utf8", force: :cascade do |t|
+  create_table "pvs", charset: "utf8mb4", force: :cascade do |t|
     t.string "ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reservations", charset: "utf8", force: :cascade do |t|
+  create_table "reservations", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "reservation_user_id"
     t.datetime "start_time"
@@ -137,12 +137,12 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
-  create_table "rooms", charset: "utf8", force: :cascade do |t|
+  create_table "rooms", charset: "utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tag_relationships", charset: "utf8", force: :cascade do |t|
+  create_table "tag_relationships", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -152,13 +152,13 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.index ["tag_id"], name: "index_tag_relationships_on_tag_id"
   end
 
-  create_table "tags", charset: "utf8", force: :cascade do |t|
+  create_table "tags", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
