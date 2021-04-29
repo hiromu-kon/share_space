@@ -1,9 +1,9 @@
 # SHARE SPACE
 
-オフィスの空きスペースを利用して、自社で足りないスキルを他者にオンサイトで依頼できるオフィス常駐専用マッチングサービスです。
-
+オフィスの空きスペースを利用して、自社で足りないスキルを他者にオンサイトで依頼できるオフィス常駐専用マッチングサービスです。<br>
 ｢スペースを提供しオンサイトで仕事を依頼したい企業｣と｢スキルを提供したい企業｣をつなぎ、企業間でコミュニケーションをとることができます！
-![top_page](https://user-images.githubusercontent.com/74192993/116544187-c3e12e80-a929-11eb-96c2-c4bf9513005c.jpeg)
+
+![トップページ](https://user-images.githubusercontent.com/74192993/116544187-c3e12e80-a929-11eb-96c2-c4bf9513005c.jpeg)
 
 # 使用技術
 * フロントエンド
@@ -20,6 +20,7 @@
   * MySQL
   * Nginx
   * Unicorn
+  * supervisor
 * テスト・静的コード解析
   * Rspec
   * Rubocop
@@ -41,6 +42,8 @@
 
 # こだわった点
 * 直感的に動かせるUI/UX
+
+
 * Simple Calendarによる商談予約機能の実装
 * 投稿機能において外部APIを使用（Google Maps API, Geocoding API）
 
