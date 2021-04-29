@@ -1,5 +1,7 @@
 # docker_dev
 
+![開発環境](https://user-images.githubusercontent.com/74192993/116555304-31e02280-a937-11eb-8808-7c5787d5dddb.png)
+
 * docker images
 
  * app-rails
@@ -30,7 +32,8 @@ sudo vim /etc/hosts
 
 ```
 cd share_space
-cd docker/dev/
+cp .env.example .env
+cd docker/dev
 docker-compose up -d
 ```
 
