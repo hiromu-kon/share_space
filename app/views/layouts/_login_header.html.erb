@@ -2,11 +2,11 @@
   <div class="pc_list_nav_header">
     <li class="pc_list <%= "current_page" if current_page?(posts_path) %>">
       <% if current_user.skill == true %>
-        <%= link_to skill_posts_path do %>
+        <%= link_to posts_path do %>
           <i class="fas fa-search"></i>投稿を探す
         <% end %>
       <% else %>
-        <%= link_to posts_path do %>
+        <%= link_to skill_posts_path do %>
           <i class="fas fa-search"></i>投稿を探す
         <% end %>
       <% end %>
@@ -39,7 +39,7 @@
           <% end %>
           <%= link_to edit_user_registration_path do %>
             <li>
-              <i class="fas fa-user-edit"></i>ユーザー編集
+              <i class="fas fa-user-edit"></i>アカウント編集
             </li>
           <% end %>
           <%= link_to user_bookmarks_path(current_user) do %>
@@ -72,16 +72,16 @@
         </li>
         <li class="navItem login_btn">
           <%= link_to edit_user_registration_path, class:"user_edit_link" do %>
-            <i class="fas fa-user-edit"></i>ユーザー編集
+            <i class="fas fa-user-edit"></i>アカウント編集
           <% end %>
         </li>
         <li class="navItem login_btn">
           <% if current_user.skill == true  %>
-            <%= link_to skill_posts_path, class:"post_link" do %>
+            <%= link_to posts_path, class:"post_link" do %>
               <i class="fas fa-search"></i>投稿を探す
             <% end %>
           <% else %>
-            <%= link_to posts_path, class:"post_link" do %>
+            <%= link_to skill_posts_path, class:"post_link" do %>
               <i class="fas fa-search"></i>投稿を探す
             <% end %>
           <% end %>

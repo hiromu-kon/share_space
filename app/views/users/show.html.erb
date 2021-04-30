@@ -15,9 +15,14 @@
         <%= raw Rinku.auto_link(@user.home_page, :all, 'target="_blank"') if @user.home_page %>
       </p>
       <% if current_user == @user %>
-        <div class="button_block">
-          <%= link_to 'アカウントを編集する', edit_user_registration_path, class:"mypage_edit" %>
-        </div>
+        <%= link_to edit_user_registration_path do %>
+          <div class="direct_message">
+            <i class="fas fa-user-edit"></i>アカウントを編集する
+          </div>
+        <% end %>
+        <%= link_to user_reservations_path(current_user) do %>
+          <span class="opportunity_link"><i class="fa fa-calendar"></i>　予約可能時間を作成</span>
+        <% end %>
       <% else %>
         <%= render "contact" %>
         <%= link_to user_reservations_path(@user) do %>

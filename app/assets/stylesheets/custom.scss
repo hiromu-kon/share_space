@@ -1054,7 +1054,7 @@ a {
   transition: .5s;
   margin: 40px auto 10px auto;
   border-radius: 150px;
-  font-size: 16.5px;
+  font-size: 15px;
   font-weight: bold;
   padding: 18px 0;
   width: 250px;
@@ -1310,10 +1310,6 @@ a {
   margin: 0 auto;
 }
 
-.recruit_title {
-  margin-bottom: 30px;
-}
-
 .title_name {
   font-weight: 700;
   margin-right: 20px;
@@ -1430,9 +1426,9 @@ a {
   margin-left: 150px;
   background: linear-gradient(to right,#136FFF 0%, #5D99FF 51%, #00FFFF 100%);
   background-size: 200% auto;
-  padding: 20px 80px;
+  padding: 18px 40px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 52px;
   color: white !important;
   border: none;
@@ -1462,6 +1458,12 @@ a {
     box-shadow: 0 0 4px rgba(46,185,230,0.7);
     transition: .4s;
   }
+}
+
+.link_post_index {
+  margin-left: 30px;
+  font-size: 14px;
+  line-height: 50px;
 }
 
 .number_start, .number_finish {
@@ -2223,6 +2225,15 @@ a {
   margin: 10px 0;
 }
 /*---------------------------------
+  skill企業一覧投稿ページ
+---------------------------------*/
+.skill_container {
+  max-width: 1280px;
+  padding: 0 10px 0 48px;
+  margin: 0 auto;
+}
+
+/*---------------------------------
   投稿編集ページ
 ---------------------------------*/
 .post_delete {
@@ -2942,6 +2953,7 @@ a {
   padding: 25px 25px;
   font-size: 14px;
   letter-spacing: 1px;
+  text-align: left;
 }
 
 .reserved table tbody tr {
@@ -2951,7 +2963,6 @@ a {
 .reserved table tbody td {
   padding: 14px;
   font-size: 14px;
-  text-align: center;
 }
 
 .reserved table tbody tr:nth-child(even) {
@@ -4302,5 +4313,16 @@ a {
 
   .option-input05 + label {
     text-align: center;
+  }
+
+  .recruit_link {
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-left: 30%;
+    max-width: 200px;
+  }
+
+  .company_pr {
+    margin-bottom: 30px;
   }
 }
