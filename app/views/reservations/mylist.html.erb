@@ -8,8 +8,7 @@
           <th>予約企業</th>
           <th>予約開始時間</th>
           <th>予約終了時間</th>
-          <th>商談</th>
-          <th>要望</th>
+          <th>電話/対面</th>
         </thead>
         <tbody>
           <% @reserved_list.each do |reserved| %>
@@ -19,7 +18,6 @@
               <td classs=""><%= reserved.start_time.strftime("%-m月%-d日 %H:%M") %></td>
               <td classs=""><%= reserved.end_time.strftime("%-m月%-d日 %H:%M") %></td>
               <td classs="">電話希望</td>
-              <td class="reserved_request">アリスは川辺でおねえさんのよこにすわって、なんにもすることがないのでとても退屈（たいくつ）しはじめていました。一、二回はおねえさんの読んでいる本をのぞいてみたけれど、そこには絵も会話もないのです。「絵</td>
             </tr>
           <% end %>
         </tbody>
