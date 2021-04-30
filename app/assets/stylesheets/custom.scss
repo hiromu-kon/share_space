@@ -711,6 +711,10 @@ a {
   color: #fff !important;
   transition: .5s;
 
+  a {
+    color: #fff;
+  }
+
   &:hover {
     transition: .5s;
     background-color: #299;
@@ -1225,10 +1229,10 @@ a {
 }
 
 .form_select {
-  width: 104%;
+  width: 107%;
   padding: 8px 10px;
 }
-/*---------------------------------
+/*--------------------------------
   要素フェードイン
 ---------------------------------*/
 .fade_in {
@@ -1777,6 +1781,10 @@ a {
     outline: none;
     transition: .5s;
   }
+}
+
+.post_show .fa-calendar {
+  margin-right: 5px;
 }
 
 .post_show .btn-border:hover {
@@ -2754,7 +2762,7 @@ a {
 }
 
 .simple-calendar .today {
-  background: #fff;
+  background: inherit;
 }
 
 .reservation_index_time {
@@ -3263,10 +3271,30 @@ a {
   .inner {
     padding: 100px 60px 100px 20px;
   }
+
+  .end_time {
+    line-height: 35px;
+  }
 }
 
 @media screen and (max-width: 540px) {
   /* トップページ（スマホ用） */
+
+  input[type="submit"],
+  input[type="button"] {
+    -webkit-box-sizing: content-box;
+    -webkit-appearance: button;
+    appearance: button;
+    border: none;
+    box-sizing: border-box;
+
+    &::-webkit-search-decoration {
+      display: none;
+    }
+    &::focus {
+      outline-offset: -2px;
+    }
+  }
   body, input, textarea, select {
     font-size: 16px;
   }
@@ -3491,6 +3519,10 @@ a {
 
   .edit_page .index_link {
     margin-bottom: 15px;
+  }
+
+  .form_select {
+    width: 107%;
   }
 
   .form_control {
@@ -4207,5 +4239,68 @@ a {
   .reserved table tbody td {
     padding: 10px;
     font-size: 12px;
+  }
+
+  .simple-calendar {
+    font-size: 14px;
+  }
+
+  .myself_reservation_form {
+    width: 100%;
+  }
+  .myself_reservation_form .time select {
+    height: 30px;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .recommend_post_item:hover {
+    width: 100%;
+
+    p {
+      text-decoration: none;
+    }
+  }
+
+  .post_show .btn-border {
+    font-size: 14px;
+    padding: 7px 25px;
+    margin: 20px auto 0 auto;
+    text-align: center;
+    display: block;
+    max-width: 135px;
+  }
+
+  .opportunity_link {
+    margin: 10px auto 10px auto;
+    font-size: 12px;
+    max-width: 180px;
+    padding: 10px 0;
+  }
+
+  .post_show_company .user_icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .post_company_name {
+    font-size: 16px;
+    margin: 15px 0 0 10px;
+  }
+
+  .post_company_introduction {
+    font-size: 12px;
+  }
+
+  .gest_button {
+    text-align: center;
+  }
+
+  .link_blue {
+    text-align: center;
+  }
+
+  .option-input05 + label {
+    text-align: center;
   }
 }

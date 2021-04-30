@@ -80,12 +80,14 @@
           自社の課題を<br>
           オンサイトマッチングで解決
         </h2>
-        <p class="description_large">知見を持ったアドバイザーに、1時間から対面・電話で相談。<br>
+        <p class="description_large">募集をすることでスキル企業に依頼ができる。<br>
           SHARE SPACEの登録はこちらから。</p>
       </div>
-      <div class="btn_top">
-        SHARE SPACEに登録
-      </div>
+      <% unless user_signed_in? %>
+        <div class="btn_top">
+          <%= link_to 'SHARE SPACEに登録', new_user_registration_path %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
