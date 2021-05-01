@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :show, :index]
 
   def create
     @reservation = Reservation.new(reservation_params)
@@ -6,7 +7,8 @@ class ReservationsController < ApplicationController
       flash[:notice] = "予約を作成しました"
       redirect_to user_reservations_path
     else
-      render :new
+      flash[:alert] = "正しい日付を入力してください"
+      redirect_to user_reservations_path
     end
   end
 

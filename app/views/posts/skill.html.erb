@@ -1,43 +1,57 @@
 <%= provide(:title, "スキル企業PR一覧") %>
 
-<div class="container">
+<div class="skill_container">
   <div class="post_index">
     <div class="post_device">
       <div class="skill_post_detail">
         <div class="recruit_title">
           <span class="title_name">スキル企業PR一覧</span>
+          <% if current_user && current_user.skill == true %>
+            <%= link_to "企業PRを投稿する", new_post_path, class:"recruit_link" %>
+          <% else %>
+            <%= link_to "スペース募集をする", new_post_path, class:"recruit_link" %>
+          <% end %>
+          <span class="link_post_index">
+            <%= link_to posts_path, class:"index_link" do %>
+              <i class="fa fa-mail-forward"></i>スペース募集を探す
+            <% end %>
+          </span>
         </div>
-        <% @skill_posts.each do |post| %>
-          <hr class="post_separate">
-          <div class="post_user_area">
-            <%= link_to post.user do %>
-              <div class="post_company">
-                <%= render 'shared/icon_default', user: post.user %>
-                <span><%= post.user.name %></span>
+        <hr class="post_separate">
+        <div class="post-inner">
+          <% @skill_posts.each do |post| %>
+          <div class="post-partial-card">
+            <div class="post_user_area">
+              <%= link_to post.user do %>
+                <div class="post_company">
+                  <%= render 'shared/icon_default', user: post.user %>
+                  <span><%= post.user.name %></span>
+                </div>
+              <% end %>
+            </div>
+            <div class="post_area">
+              <%= link_to post do %>
+                <div>
+                  <% if post.image.attached? %>
+                    <%= image_tag post.image, class:"skill_post_index_image" %>
+                  <% end %>
+                </div>
+                <h1 class="post_title"><%= post.title %></h1>
+                <span><div class="grad_item"><%= markdown(post.content) %></div></span>
+                <h3 class="post_address">オフィス住所<span><%= post.map&.address %></span></h3>
+                <div class="post_index_tag">
+                  <% post.tags.each do |tag| %>
+                    <span><%= tag.name %></span>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="post_index_bookmark">
+                <%= render 'bookmarks/bookmark' , post: post if post.user != current_user %>
               </div>
-            <% end %>
-          </div>
-          <div class="post_area">
-            <%= link_to post do %>
-              <div>
-                <% if post.image.attached? %>
-                  <%= image_tag post.image, class:"skill_post_index_image" %>
-                <% end %>
-              </div>
-              <h1 class="post_title"><%= post.title %></h1>
-              <span><div class="grad_item"><%= markdown(post.content) %></div></span>
-              <h3 class="post_address">オフィス住所<span><%= post.map&.address %></span></h3>
-              <div class="post_index_tag">
-                <% post.tags.each do |tag| %>
-                  <span><%= tag.name %></span>
-                <% end %>
-              </div>
-            <% end %>
-            <div class="post_index_bookmark">
-              <%= render 'bookmarks/bookmark' , post: post if post.user != current_user %>
             </div>
           </div>
-        <% end %>
+          <% end %>
+        </div>
         <%= paginate @skill_posts %>
       </div>
     </div>

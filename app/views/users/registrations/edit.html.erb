@@ -41,14 +41,14 @@
         <%= render 'users/select_industry', f: f %>
       </div>
 
-      <div class="field post_date_field">
-        <h4 class="user_edit_heading left_column">従業員数</h4>
-        <h4 class="user_edit_heading">平均年齢</h4>
+      <div class="field">
+        <%= f.label :従業員数, class:"label_name" %>
+        <%= f.number_field :employee, autofocus: true, class:"form_control", placeholder:"数字で入力してください" %>
       </div>
 
-      <div class="field post_date_field">
-        <%= f.number_field :employee, autofocus: true, class:"form_control number_input left_column", placeholder:"数字で入力してください" %>
-        <%= f.number_field :average_age, autofocus: true, class:"form_control number_input left_column", placeholder:"数字で入力してください" %>
+      <div class="">
+        <%= f.label :平均年齢, class:"label_name" %>
+        <%= f.number_field :average_age, autofocus: true, class:"form_control", placeholder:"数字で入力してください" %>
       </div>
 
       <div class="field">

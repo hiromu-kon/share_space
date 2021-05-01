@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   validates :recruit_people, presence: true, numericality: true, if: :user_skill?
   has_one_attached :image
   validate :image_valid?
+  validate :start_finish_check
+  validate :start_check
 
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
@@ -86,4 +88,14 @@ class Post < ApplicationRecord
       "作成の新しい順" => "updated_at DESC"
     }
   }
+
+  def start_finish_check
+    if start_date.present? && finish_date.present?
+      errors.add("終了日は開始日より遅い時間を選択してください") if self.start_date > self.finish_date
+    end
+  end
+
+  def start_check
+    errors.add("開始日は今日以降を選択してください") if self.start_date < Date.today
+  end
 end
