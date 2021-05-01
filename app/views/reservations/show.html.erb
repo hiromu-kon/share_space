@@ -7,8 +7,14 @@
       <% if @reservation.reservation_user.nil? %>
         <% unless current_user == @reservation.user %>
           <%= form_for @reservation, :url => {:action => :update} do |f| %>
-            <div class="opportunity"><input type="radio" name="opportunity" value="">対面希望</div>
-            <div class="opportunity"><input type="radio" name="opportunity" value="">電話希望</div>
+            <div class="opportunity">
+              <input type="radio" id="01-D" name="radio01" checked="true">
+              <label for="01-D" class="radio01">電話希望</label>
+            </div>
+            <div class="opportunity">
+              <input type="radio" id="01-E" name="radio01">
+              <label for="01-E" class="radio01">対面希望</label>
+            </div>
             <%= f.submit "予約を確定する", class: "form_control reserved_submit" %>
           <% end %>
         <% end %>
