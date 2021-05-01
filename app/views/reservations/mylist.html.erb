@@ -24,7 +24,7 @@
               <td class=""><%= render 'shared/icon_default', user: reserved.reservation_user %><%= reserved.reservation_user.name %></td>
               <td classs=""><%= reserved.start_time.strftime("%-m月%-d日 %H:%M") %></td>
               <td classs=""><%= reserved.end_time.strftime("%-m月%-d日 %H:%M") %></td>
-              <td classs="">電話希望</td>
+              <td classs=""><%= reserved.opportunity_type %></td>
             </tr>
           <% end %>
         </tbody>

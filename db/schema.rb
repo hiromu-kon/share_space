@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_132926) do
+ActiveRecord::Schema.define(version: 2021_05_01_113435) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_132926) do
     t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "opportunity_type"
     t.index ["reservation_user_id"], name: "index_reservations_on_reservation_user_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end

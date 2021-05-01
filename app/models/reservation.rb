@@ -3,6 +3,7 @@ class Reservation < ApplicationRecord
   belongs_to :reservation_user, class_name: 'User', optional: true
   validates :start_time, presence: true
   validates :end_time, presence: true
+  validates :opportunity_type, presence: true, on: :update
 
   validate :start_end_check
   validate :start_check

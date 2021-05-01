@@ -8,11 +8,11 @@
         <% unless current_user == @reservation.user %>
           <%= form_for @reservation, :url => {:action => :update} do |f| %>
             <div class="opportunity">
-              <input type="radio" id="01-D" name="radio01" checked="true">
+              <%= f.radio_button :opportunity_type, "電話希望", checked: true, id:"01-D" %>
               <label for="01-D" class="radio01">電話希望</label>
             </div>
             <div class="opportunity">
-              <input type="radio" id="01-E" name="radio01">
+              <%= f.radio_button :opportunity_type, "対面希望", id:"01-E" %>
               <label for="01-E" class="radio01">対面希望</label>
             </div>
             <%= f.submit "予約を確定する", class: "form_control reserved_submit" %>
