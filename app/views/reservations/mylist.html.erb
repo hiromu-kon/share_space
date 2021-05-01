@@ -1,6 +1,13 @@
 <div class="post_index">
   <div class="reserved">
     <h3>確定した商談予約一覧</h3>
+    <div class="my_reserved_create">
+      <%= link_to user_reservations_path(current_user) do %>
+      <div class="btn-border_reverse">
+        <i class="fa fa-calendar" aria-hidden="true"></i> 予約可能時間を作成
+      </div>
+      <% end %>
+    </div>
     <div class="x-scroll">
       <table>
         <thead>

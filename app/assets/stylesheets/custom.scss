@@ -1020,6 +1020,10 @@ a {
   }
 }
 
+.myedit.direct_message {
+  padding: 15px 10px;
+}
+
 .opportunity_link {
   margin: 40px auto 20px auto;
   border-radius: 150px;
@@ -2974,6 +2978,11 @@ a {
   font-size: 14px;
 }
 
+
+.my_reserved_create {
+  text-align: center;
+  margin-bottom: 25px;
+}
 /*---------------------------------
    タブレット用レイアウト
 ---------------------------------*/
@@ -4324,5 +4333,13 @@ a {
 
   .company_pr {
     margin-bottom: 30px;
+  }
+
+  .myself_reservation_form .btn_primary {
+    width: 90%;
+  }
+
+  .myedit.direct_message {
+    padding: 10px 0;
   }
 }

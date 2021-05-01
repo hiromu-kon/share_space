@@ -6,7 +6,8 @@ class ReservationsController < ApplicationController
       flash[:notice] = "予約を作成しました"
       redirect_to user_reservations_path
     else
-      render :new
+      flash[:alert] = "正しい日付を入力してください"
+      redirect_to user_reservations_path
     end
   end
 

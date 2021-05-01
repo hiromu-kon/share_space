@@ -1,5 +1,5 @@
 <div class="post_index">
-  <% if current_user.id == @reservation_user.id %>
+  <% if current_user == @reservation_user %>
     <div class="myself_reservation_form">
       <h3>予約可能日時作成</h3>
       <%= form_with(model: @reservation, local: true) do |f| %>
