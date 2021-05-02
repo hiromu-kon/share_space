@@ -83,16 +83,18 @@
 <% end %>
 <p class="post_company_introduction"><%= @post.user.introduction %><p>
 <hr class="post_separate">
-<h3 class="">おすすめ投稿</h3>
-<div class="recommend_post">
-  <% @new_post.each do |new_post| %>
-  <%= link_to new_post do%>
-    <div class="recommend_post_item">
-      <%= image_tag new_post.image %>
-      <p><%= truncate(new_post.title, length: 50) %></p>
-      <div class="recommend_post_item_detail">報酬(月単価)<span><%= number_to_currency(new_post.reward) if new_post.reward %></span></div>
-      <div class="recommend_post_item_detail">オフィス住所<span><%= new_post.map&.address %></span></div>
-    </div>
+<% if @new_post.present? %>
+  <h3 class="">おすすめ投稿</h3>
+  <div class="recommend_post">
+    <% @new_post.each do |new_post| %>
+    <%= link_to new_post do%>
+      <div class="recommend_post_item">
+        <%= image_tag new_post.image %>
+        <p><%= truncate(new_post.title, length: 50) %></p>
+        <div class="recommend_post_item_detail">報酬(月単価)<span><%= number_to_currency(new_post.reward) if new_post.reward %></span></div>
+        <div class="recommend_post_item_detail">オフィス住所<span><%= new_post.map&.address %></span></div>
+      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -19,6 +19,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     if @reservation.update(update_reservation_params)
+      @reservation.create_notification_reservation!(current_user, @reservation_id)
       flash[:notice] = "予約をしました"
       redirect_to mylist_user_reservations_path(current_user)
     else

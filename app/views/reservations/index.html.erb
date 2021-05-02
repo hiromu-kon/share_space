@@ -11,6 +11,7 @@
           <span>終了日時</span>
           <%= f.datetime_select :end_time %>
         </div>
+        <p class="reservation_disclaimer">※日付を跨いで登録できません</p>
         <div class="submit">
           <%= f.submit "予約可能日時を作成する", class:"btn_primary form_control" %>
         </div>
@@ -19,24 +20,20 @@
   <% else %>
     <h3 class="reservation_title"><%= @reservation_user.name %>さんの予約可能時間</h3>
   <% end %>
-
   <%= month_calendar events: @reservations_user do |date, reservations| %>
     <%= date.day %>
     <% reservations.each do |reservation| %>
       <div class="reservation_index_time">
-        <% if reservation.reservation_user_id.nil? %>
-          <%= link_to user_reservation_path(@reservation_user, reservation), class:"reservation_link" do %>
-            <p><span class="reservation_circle reservation_time">○</span><%= reservation.start_time.strftime("%-H:%-M") %>〜<span class="end_time"><%= reservation.end_time.strftime("%-H:%-M") %></span></p>
-          <% end %>
+        <% if reservation.reservation_user_id.present? %>
+          <p><span class="reservation_cross reservation_time">×</span><%= reservation.start_time.strftime("%-H:%M") %>〜<span class="end_time"><%= reservation.end_time.strftime("%-H:%M") %></span></p>
+        <% elsif reservation.start_time < Time.now %>
+          <p><span class="reservation_cross reservation_time">×</span><%= reservation.start_time.strftime("%-H:%M") %>〜<span class="end_time"><%= reservation.end_time.strftime("%-H:%M") %></span></p>
         <% else %>
-          <p><span class="reservation_cross reservation_time">×</span><%= reservation.start_time.strftime("%-H:%-M") %>〜<span class="end_time"><%= reservation.end_time.strftime("%-H:%-M") %></span></p>
+          <%= link_to user_reservation_path(@reservation_user, reservation), class:"reservation_link" do %>
+            <p><span class="reservation_circle reservation_time">○</span><%= reservation.start_time.strftime("%-H:%M") %>〜<span class="end_time"><%= reservation.end_time.strftime("%-H:%M") %></span></p>
+          <% end %>
         <% end %>
       </div>
     <% end %>
   <% end %>
-  <div class="myself">
-    <% @reserved.each do |reserved| %>
-      <p><%= reserved.start_time.strftime("%-H:%-M") %>〜<%= reserved.end_time.strftime("%-H:%-M") %></p>
-    <% end %>
-  </div>
 </div>

@@ -8,6 +8,11 @@
       </div>
       <div class="post_detail">
         <div class="recruit_title">
+          <span class="link_post_index">
+            <%= link_to skill_posts_path, class:"index_link" do %>
+              <i class="fa fa-mail-forward"></i>スキル企業のPRを探す
+            <% end %>
+          </span>
           <span class="title_name">募集一覧</span>
         </div>
         <% if current_user && current_user.skill == true %>
@@ -16,11 +21,6 @@
           <%= link_to "スペース募集をする", new_post_path, class:"recruit_link" %>
         <% else %>
         <% end %>
-        <span class="link_post_index">
-          <%= link_to skill_posts_path, class:"index_link" do %>
-            <i class="fa fa-mail-forward"></i>スキル企業のPRを探す
-          <% end %>
-        </span>
         <%= render @host_posts  %>
         <%= paginate @host_posts %>
       </div>

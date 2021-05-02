@@ -3,7 +3,7 @@
     <div class="device_frame">
       <h3>商談予約確認</h3>
       <p><span>商談相手企業 :</span> <%= @reservation.user.name %>さん</p>
-      <p><span>商談可能日時 :</span> <%= @reservation.start_time.strftime("%-m月%-d日 %H:%M") %>〜<%= @reservation.end_time.strftime("%-H:%-M") %></p>
+      <p><span>商談可能日時 :</span> <%= @reservation.start_time.strftime("%-m月%-d日 %H:%M") %>〜<%= @reservation.end_time.strftime("%-H:%M") %></p>
       <% if @reservation.reservation_user.nil? %>
         <% unless current_user == @reservation.user %>
           <%= form_for @reservation, :url => {:action => :update} do |f| %>

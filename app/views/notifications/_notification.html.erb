@@ -14,6 +14,12 @@
         を送信しました
         <i class="far fa-envelope fa-2x right"></i>
         <div class="room_index_date"><%= time_ago_in_words(notification.created_at).upcase %></div>
+      <% elsif notification.action == "reservation" %>
+        あなたとの
+        <%= link_to '予約', mylist_user_reservations_path(current_user), class:"notification" %>
+        を作成しました
+        <i class="far fa-clock fa-2x right"></i>
+        <div class="room_index_date"><%= time_ago_in_words(notification.created_at).upcase %></div>
       <% end %>
     </span>
   </li>

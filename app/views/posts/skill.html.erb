@@ -5,17 +5,17 @@
     <div class="post_device">
       <div class="skill_post_detail">
         <div class="recruit_title">
+          <span class="link_post_index">
+            <%= link_to posts_path, class:"index_link" do %>
+              <i class="fa fa-mail-forward"></i>スペース募集を探す
+            <% end %>
+          </span>
           <span class="title_name">スキル企業PR一覧</span>
           <% if current_user && current_user.skill == true %>
             <%= link_to "企業PRを投稿する", new_post_path, class:"recruit_link" %>
           <% else %>
             <%= link_to "スペース募集をする", new_post_path, class:"recruit_link" %>
           <% end %>
-          <span class="link_post_index">
-            <%= link_to posts_path, class:"index_link" do %>
-              <i class="fa fa-mail-forward"></i>スペース募集を探す
-            <% end %>
-          </span>
         </div>
         <hr class="post_separate">
         <div class="post-inner">
