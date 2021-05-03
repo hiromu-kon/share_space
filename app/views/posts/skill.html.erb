@@ -20,6 +20,7 @@
         <hr class="post_separate">
         <div class="post-inner">
           <% @skill_posts.each do |post| %>
+          <hr class="post_separate">
           <div class="post-partial-card">
             <div class="post_user_area">
               <%= link_to post.user do %>
@@ -36,7 +37,7 @@
                     <%= image_tag post.image, class:"skill_post_index_image" %>
                   <% end %>
                 </div>
-                <h1 class="post_title"><%= post.title %></h1>
+                <h1 class="post_title"><%= truncate(post.title, length: 40) %></h1>
                 <span><div class="grad_item"><%= markdown(post.content) %></div></span>
                 <h3 class="post_address">オフィス住所<span><%= post.map&.address %></span></h3>
                 <div class="post_index_tag">

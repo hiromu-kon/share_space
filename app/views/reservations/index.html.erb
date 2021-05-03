@@ -1,3 +1,5 @@
+<%= provide(:title, "#{@reservation_user.name}さんの予約一覧") %>
+
 <div class="post_index">
   <% if current_user == @reservation_user %>
     <div class="myself_reservation_form">

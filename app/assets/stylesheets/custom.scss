@@ -1352,7 +1352,7 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .skill_post_detail {
-  max-width: 70%;
+  max-width: 90%;
   padding: 0;
   margin: 0 auto;
 }
@@ -1415,7 +1415,7 @@ input[type=radio]:checked + .radio01::after {
   object-fit: cover;
   object-position: center;
   width: 100%;
-  max-height: 300px;
+  height: 200px;
 }
 
 .group {
@@ -1822,7 +1822,7 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .post_show {
-  width: 800px;
+  max-width: 800px;
   margin: 0px auto 100px;
 
   .post_show_h1 {
@@ -2282,9 +2282,23 @@ input[type=radio]:checked + .radio01::after {
   skill企業一覧投稿ページ
 ---------------------------------*/
 .skill_container {
-
 }
 
+.post-inner {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .post_separate {
+    display: none;
+  }
+}
+
+.post-partial-card {
+  box-shadow: 0 3px 10px 2px rgba(21, 27, 20, 0.2);
+  border-radius: 20px;
+  padding: 15px;
+}
 /*---------------------------------
   投稿編集ページ
 ---------------------------------*/
@@ -2540,7 +2554,6 @@ input[type=radio]:checked + .radio01::after {
   max-width: 800px;
   margin: 0 auto;
 }
-
 /*---------------------------------
   Swiper
 ---------------------------------*/
@@ -2906,7 +2919,7 @@ input[type=radio]:checked + .radio01::after {
 .myself_reservation_form {
   text-align: center;
   margin: 0 auto 30px auto;
-  width: 50%;
+  width: 90%;
 
   .time {
     margin-bottom: 10px;
@@ -3050,6 +3063,106 @@ input[type=radio]:checked + .radio01::after {
    タブレット用レイアウト
 ---------------------------------*/
 @media screen and (max-width: 959px) {
+  .post_index_menu {
+    display: block;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 15px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .search_box {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .search_submit {
+    margin: 20px auto 0 auto;
+  }
+
+  .recruit_title {
+    margin-top: 30px;
+  }
+
+  .link_post_index {
+    text-align: right;
+    font-size: 14px;
+    line-height: 0px;
+    margin-top: 20px;
+    display: block;
+  }
+
+  .search_menu_nav.search-menu {
+    display: block;
+  }
+
+  .search_menu_nav {
+    display: none;
+  }
+
+  .left_box {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .search_reset {
+    display: none;
+  }
+
+  .post_device {
+    display: block;
+  }
+
+  .industry_more, .prefecture_more {
+    width: 90%;
+  }
+
+  .search_box .index_h3 {
+    display: none;
+  }
+
+  .post_detail {
+    max-width: 80%;
+    padding: 0px;
+    margin: 0 auto;
+
+    .recruit_link {
+      font-size: 14px;
+      margin-left: 30%;
+    }
+  }
+  .search_submit.form_control {
+    background: linear-gradient(to right, #999 0%, #777 51%, #555 100%);
+  }
+
+  .fa-angle-down {
+    transform: rotate(0deg);
+    transition: transform 0.2s linear;
+  }
+
+  .angle_down {
+    .fa-angle-down {
+      transform: rotate(180deg);
+      transition: transform 0.2s linear;
+    }
+  }
+
+  .form_search {
+    width: 75%;
+    padding: 15px 20px;
+    margin-right: 10px;
+  }
+
+  .post_index_container {
+    .container {
+      padding: 0px;
+    }
+  }
+
   .pc_list_nav_header {
     display: none;
   }
@@ -3358,10 +3471,53 @@ input[type=radio]:checked + .radio01::after {
   .end_time {
     line-height: 35px;
   }
+
+
+  /* スクロールバー */
+  .x-scroll {
+    overflow: auto;
+  }
+  .x-scroll table {
+    width: 300%;
+  }
+  .x-scroll::-webkit-scrollbar{
+    height: 5px; /* スクロールバーの高さ */
+  }
+  .x-scroll::-webkit-scrollbar-track{
+    background: #F1F1F1; /* スクロールバーの背景色 */
+  }
+  .x-scroll::-webkit-scrollbar-thumb {
+    background: #d6d6d6; /* スクロールバーの色 */
+  }
+  .simple-calendar td {
+    min-width: 120px;
+  }
+
+  .reserved {
+    .x-scroll table {
+      width: inherit;
+    }
+  }
+
+  .post_show {
+    width: 95%;
+  }
+
+  .post-inner {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media screen and (max-width: 540px) {
   /* トップページ（スマホ用） */
+
+  .post-inner {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr;
+  }
 
   input[type="submit"],
   input[type="button"] {
@@ -3374,7 +3530,7 @@ input[type=radio]:checked + .radio01::after {
     &::-webkit-search-decoration {
       display: none;
     }
-    &::focus {
+    &:focus {
       outline-offset: -2px;
     }
   }
@@ -3881,6 +4037,9 @@ input[type=radio]:checked + .radio01::after {
       transform: rotate(180deg);
       transition: transform 0.2s linear;
     }
+  }
+  .search_menu_nav {
+    display: none;
   }
 
   .form_search {
@@ -4473,6 +4632,25 @@ input[type=radio]:checked + .radio01::after {
   .post_area {
     .post_content {
       margin: 0px 0px 15px 0px;
+    }
+  }
+
+  .reserved {
+    .x-scroll table {
+      width: 250%;
+    }
+  }
+
+  .post-partial-card {
+    box-shadow: none;
+    padding: 0px;
+  }
+
+  .post-inner .post_separate {
+    display: block;
+
+    &:first-child {
+      display: none;
     }
   }
 }
