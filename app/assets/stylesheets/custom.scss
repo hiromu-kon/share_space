@@ -949,8 +949,12 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .user_show .post_separate {
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 45px auto;
+
+  &:first-child {
+    display: none;
+  }
 }
 
 .user_show .user_icon {
@@ -1143,6 +1147,12 @@ input[type=radio]:checked + .radio01::after {
 .direct_message .fa-envelope {
   font-size: 14px;
   margin: 0;
+}
+
+.user_post_area {
+  .post_user_area {
+    display: none;
+  }
 }
 /*---------------------------------
   ユーザー編集ページ
@@ -1360,6 +1370,21 @@ input[type=radio]:checked + .radio01::after {
 .title_name {
   font-weight: 700;
   margin-right: 20px;
+}
+
+.skill_container {
+  .title_name {
+    text-align: center;
+    display: block;
+  }
+}
+
+.skill_post_detail .recruit_link {
+  display: block;
+  line-height: 30px;
+  margin: 30px auto 0 auto;
+  padding: 5px 5px;
+  max-width: 200px;
 }
 
 .post_index_image {
@@ -2296,7 +2321,7 @@ input[type=radio]:checked + .radio01::after {
 
 .post-partial-card {
   box-shadow: 0 3px 10px 2px rgba(21, 27, 20, 0.2);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 15px;
 }
 /*---------------------------------
@@ -4652,5 +4677,9 @@ input[type=radio]:checked + .radio01::after {
     &:first-child {
       display: none;
     }
+  }
+
+  .reservation_index_time p .reservation_time {
+    padding: 11px 4px;
   }
 }

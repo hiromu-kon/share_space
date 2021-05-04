@@ -31,7 +31,11 @@
       <% end %>
       <%= render 'user_detail', user: @user %>
     </div>
-    <h2 class="user_post_index"><%= @user.name %>さんのスペース投稿(<%= @user.posts.count %>件)</h2>
-    <%= render 'host_post_area', post: @user.posts %>
+    <h2 class="user_post_index"><%= @user.name %>さんの投稿(<%= @user.posts.count %>件)</h2>
+    <div class="user_post_area">
+      <% @user.posts.each do |post| %>
+        <%= render 'shared/post_divide_show', post: post %>
+      <% end %>
+    </div>
   </div>
 </div>
