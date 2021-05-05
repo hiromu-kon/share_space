@@ -1,6 +1,6 @@
 # docker_dev
 
-![開発環境](https://user-images.githubusercontent.com/74192993/116555304-31e02280-a937-11eb-8808-7c5787d5dddb.png)
+![開発環境](https://user-images.githubusercontent.com/74192993/117123929-a18c5c80-add2-11eb-9870-ab6bf7ecbe4d.png)
 
 * docker images
 
