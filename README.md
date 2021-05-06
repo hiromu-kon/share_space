@@ -33,7 +33,7 @@ https://www.share-space.work/
   * Rspec
   * Rubocop
 
-# 📚 機能一覧
+# 機能一覧
 * ユーザー機能
 * 管理者機能
 * 投稿機能
@@ -48,7 +48,7 @@ https://www.share-space.work/
 * 商談予約機能
 
 
-# 💡 こだわった点
+# こだわった点
 * 直感的に動かせるUI/UX
 
 
@@ -65,7 +65,6 @@ https://www.share-space.work/
 今までにはなかったオフィスのありかたが誕生するのではないかと思い、オフィスの隙間を利用したオンサイト専用マッチングサイトを作成しました。
 
 # インフラ構成図
-![インフラ構成図](https://user-images.githubusercontent.com/74192993/117253279-05219300-ae82-11eb-9966-4cd5612a2340.png)
-
+![インフラ構成図](https://user-images.githubusercontent.com/74192993/117253920-c6400d00-ae82-11eb-8a3a-b95223719ba7.png)
 
 #  ER図
