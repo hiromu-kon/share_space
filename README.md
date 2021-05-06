@@ -7,9 +7,10 @@
 
 
 # URL
+https://www.share-space.work/
 
-常時SSL化 (AWS ACM, Route53, ALB)
-トップページ内にゲストログインボタンを配置しております。
+* 常時SSL化 (AWS ACM, Route53, ALB)
+* トップページ内にゲストログインボタンを配置しております。
 
 
 # 使用技術
@@ -64,28 +65,7 @@
 今までにはなかったオフィスのありかたが誕生するのではないかと思い、オフィスの隙間を利用したオンサイト専用マッチングサイトを作成しました。
 
 # インフラ構成図
-
+![インフラ構成図](https://user-images.githubusercontent.com/74192993/117253279-05219300-ae82-11eb-9966-4cd5612a2340.png)
 
 
 #  ER図
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
