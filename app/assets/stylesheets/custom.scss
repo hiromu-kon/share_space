@@ -539,7 +539,7 @@ input[type=radio]:checked + .radio01::after {
 
 .main_title {
   height: 90vh;
-  background-image: url('top1.jpg');
+  background-image: image-url("top1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -706,7 +706,7 @@ input[type=radio]:checked + .radio01::after {
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url('top_image.jpg');
+  background-image: image-url("top_image.jpg");
   color: #000;
 }
 
@@ -1963,6 +1963,8 @@ input[type=radio]:checked + .radio01::after {
   color: #555;
   margin: 50px auto 0 auto;
   text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .company_list {
@@ -4681,5 +4683,10 @@ input[type=radio]:checked + .radio01::after {
 
   .reservation_index_time p .reservation_time {
     padding: 11px 4px;
+  }
+
+  .detail_frame {
+    z-index: 1;
+    margin-bottom: 150px;
   }
 }
