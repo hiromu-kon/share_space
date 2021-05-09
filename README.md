@@ -1,10 +1,11 @@
-# 🏘 SHARE SPACE
+# SHARE SPACE
 
 オフィスの空きスペースを利用して、自社で足りないスキルを他者にオンサイトで依頼できるオフィス常駐専用マッチングサービスです。<br>
 ｢スペースを提供しオンサイトで仕事を依頼したい企業｣と｢スキルを提供したい企業｣をつなぎ、企業間でコミュニケーションをとることができます！
 
 ![トップページ](https://user-images.githubusercontent.com/74192993/116544187-c3e12e80-a929-11eb-96c2-c4bf9513005c.jpeg)
 
+<br>
 
 # 🌐 URL
 https://www.share-space.work/
@@ -12,26 +13,37 @@ https://www.share-space.work/
 * 常時SSL化 (AWS ACM, Route53, ALB)
 * トップページ内にゲストログインボタンを配置しております。
 
+<br>
 
 # ⚙️ 使用技術
 * フロントエンド
   * HTML/CSS
   * SCSS
-  * Javascript 
+  * Javascript
 * バックエンド
   * Ruby:2.7.2
   * Rails:6.1.3
-* インフラ・開発環境  
+* インフラ・本番環境  
   * AWS(VPC, Route53, ALB, EC2, RDS, S3, ACM)
-  * CircleCI(CI/CD)
-  * Docker/docker-compose
-  * MySQL
+  * CircleCI(CD)
   * Nginx
   * Unicorn
   * supervisor
+* 開発環境
+  * appコンテナ（nginx,ruby,unicorn,supervisor）
+  * mysqlコンテナ(mysql5.7)
+    * nginx(webサーバー)とunicorn(アプリの起動)はsupervisorで起動
+
+  <br>
+
+  (開発環境のREADME)  
+  https://github.com/hiromu-kon/share_space/blob/master/docker/dev/app/README.md
+
 * テスト・静的コード解析
   * Rspec
   * Rubocop
+
+<br>
 
 # 📚 機能一覧
 * ユーザー機能
@@ -47,6 +59,7 @@ https://www.share-space.work/
 * 通知機能
 * 商談予約機能
 
+<br>
 
 # 💡 こだわった点
 * 直感的に動かせるUI/UX
@@ -55,6 +68,8 @@ BtoBのマッチングサイトのため、誰が使ってもわかりやすく�
 
 * Simple Calendarによる商談予約機能の実装
 * 投稿機能において外部APIを使用（Google Maps API, Geocoding API）
+
+<br>
 
 # 👀 SHARE SPACEの開発背景
 私の現職が営業会社でして、営業が苦手なクライアント先に常駐をしてコールセンター等で営業を手助けするという仕事をしております。
@@ -65,7 +80,10 @@ BtoBのマッチングサイトのため、誰が使ってもわかりやすく�
 現在コロナ禍の情勢において、新しくオフィスを契約することも金銭面等でできない企業も少なくないです。そこで空きスペースを利用することにより,
 今までにはなかったオフィスのありかたが誕生するのではないかと思い、オフィスの隙間を利用したオンサイト専用マッチングサイトを作成しました。
 
+<br>
+
 # 🔧 インフラ構成図
-![インフラ構成図](https://user-images.githubusercontent.com/74192993/117253920-c6400d00-ae82-11eb-8a3a-b95223719ba7.png)
+
+<img width="834" alt="インフラ構成図" src="https://user-images.githubusercontent.com/74192993/117576357-ab8ac400-b120-11eb-9e93-517963f99a49.png">
 
 # 📝 ER図
