@@ -1,15 +1,22 @@
-version: 2.1
+version: 2
 orbs:
   ruby: circleci/ruby@0.1.2 
 
 jobs:
-  build:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
+  deploy:
+    machine:
+      enabled: true
     steps:
-      - checkout
-      - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+      - add_ssh_keys:
+          fingerprints:
+            - "e1:76:2a:f5:4f:00:dd:a7:8e:41:67:55:e4:26:26:70"
+      - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "/var/www/rails/share_space/deploy.sh"
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
