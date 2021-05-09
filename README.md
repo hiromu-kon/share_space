@@ -30,11 +30,14 @@ https://www.share-space.work/
   * Unicorn
   * supervisor
 * 開発環境
-  * Docker/docker-compose
-  * MySQL
-  * Nginx
-  * Unicorn
-  * supervisor
+  * appコンテナ（nginx,ruby,unicorn,supervisor）
+  * mysqlコンテナ(mysql5.7)
+    * nginx(webサーバー)とunicorn(アプリの起動)はsupervisorで起動
+
+  <br>
+
+  (開発環境のREADME)  
+  https://github.com/hiromu-kon/share_space/blob/master/docker/dev/app/README.md
 
 * テスト・静的コード解析
   * Rspec
