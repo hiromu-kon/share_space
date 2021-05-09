@@ -28,7 +28,6 @@ https://www.share-space.work/
   * CircleCI(CD)
   * Nginx
   * Unicorn
-  * supervisor
 * 開発環境
   * appコンテナ（nginx,ruby,unicorn,supervisor）
   * mysqlコンテナ(mysql5.7)
