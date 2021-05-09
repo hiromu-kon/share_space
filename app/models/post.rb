@@ -96,6 +96,8 @@ class Post < ApplicationRecord
   end
 
   def start_check
-    errors.add("開始日は今日以降を選択してください") if self.start_date < Date.today
+    if start_date.present? && finish_date.present?
+      errors.add("開始日は今日以降を選択してください") if self.start_date < Date.today
+    end
   end
 end

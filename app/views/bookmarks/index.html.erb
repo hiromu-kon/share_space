@@ -6,12 +6,18 @@
         <div class="bookmark_index">
           <h5 class="bookmark_title">ブックマーク一覧</h5>
           <%= link_to "csvで出力する", user_bookmarks_path(format: :csv), class:"mypage_edit" %>
-          <%= render @posts %>
+          <% @posts.each do |post| %>
+            <%= render 'shared/post_divide_show', post: post %>
+          <% end %>
           <%= paginate @posts %>
         </div>
       <% else %>
         <h5 class="empty_bookmark">ブックマークした募集はありません</h5>
-        <%= link_to "スペース募集を探す", posts_path, class:"mypage_edit" %>
+        <% if current_user.skill == true %>
+          <%= link_to "スペース募集を探す", posts_path, class:"mypage_edit" %>
+        <% else %>
+          <%= link_to "企業PRを探す", skill_posts_path, class:"mypage_edit" %>
+        <% end %>
       <% end %>
     </div>
   </div>

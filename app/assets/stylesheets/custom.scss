@@ -539,7 +539,7 @@ input[type=radio]:checked + .radio01::after {
 
 .main_title {
   height: 90vh;
-  background-image: url('top1.jpg');
+  background-image: image-url("top1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -706,7 +706,7 @@ input[type=radio]:checked + .radio01::after {
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url('top_image.jpg');
+  background-image: image-url("top_image.jpg");
   color: #000;
 }
 
@@ -949,8 +949,12 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .user_show .post_separate {
-  width: 70%;
-  margin: 0 auto;
+  width: 100%;
+  margin: 45px auto;
+
+  &:first-child {
+    display: none;
+  }
 }
 
 .user_show .user_icon {
@@ -1143,6 +1147,12 @@ input[type=radio]:checked + .radio01::after {
 .direct_message .fa-envelope {
   font-size: 14px;
   margin: 0;
+}
+
+.user_post_area {
+  .post_user_area {
+    display: none;
+  }
 }
 /*---------------------------------
   ユーザー編集ページ
@@ -1352,7 +1362,7 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .skill_post_detail {
-  max-width: 70%;
+  max-width: 90%;
   padding: 0;
   margin: 0 auto;
 }
@@ -1360,6 +1370,21 @@ input[type=radio]:checked + .radio01::after {
 .title_name {
   font-weight: 700;
   margin-right: 20px;
+}
+
+.skill_container {
+  .title_name {
+    text-align: center;
+    display: block;
+  }
+}
+
+.skill_post_detail .recruit_link {
+  display: block;
+  line-height: 30px;
+  margin: 30px auto 0 auto;
+  padding: 5px 5px;
+  max-width: 200px;
 }
 
 .post_index_image {
@@ -1415,7 +1440,7 @@ input[type=radio]:checked + .radio01::after {
   object-fit: cover;
   object-position: center;
   width: 100%;
-  max-height: 300px;
+  height: 200px;
 }
 
 .group {
@@ -1508,9 +1533,16 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .link_post_index {
-  margin-left: 30px;
   font-size: 14px;
-  line-height: 50px;
+  display: block;
+
+  .index_link {
+    margin-bottom: 15px;
+  }
+
+  .fa-mail-forward {
+    margin-right: 5px;
+  }
 }
 
 .number_start, .number_finish {
@@ -1815,7 +1847,7 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .post_show {
-  width: 800px;
+  max-width: 800px;
   margin: 0px auto 100px;
 
   .post_show_h1 {
@@ -1931,6 +1963,8 @@ input[type=radio]:checked + .radio01::after {
   color: #555;
   margin: 50px auto 0 auto;
   text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .company_list {
@@ -2275,11 +2309,23 @@ input[type=radio]:checked + .radio01::after {
   skill企業一覧投稿ページ
 ---------------------------------*/
 .skill_container {
-  max-width: 1280px;
-  padding: 0 10px 0 48px;
-  margin: 0 auto;
 }
 
+.post-inner {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .post_separate {
+    display: none;
+  }
+}
+
+.post-partial-card {
+  box-shadow: 0 3px 10px 2px rgba(21, 27, 20, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+}
 /*---------------------------------
   投稿編集ページ
 ---------------------------------*/
@@ -2535,7 +2581,6 @@ input[type=radio]:checked + .radio01::after {
   max-width: 800px;
   margin: 0 auto;
 }
-
 /*---------------------------------
   Swiper
 ---------------------------------*/
@@ -2605,6 +2650,10 @@ input[type=radio]:checked + .radio01::after {
 
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
   margin: 0 8px;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 0px;
 }
 /*---------------------------------
   ページネーション
@@ -2725,7 +2774,7 @@ input[type=radio]:checked + .radio01::after {
     background-color: #fff;
   }
 
-  .fa-envelope, .fa-comment-dots {
+  .fa-envelope, .fa-comment-dots, .fa-clock {
     margin-left: 20px;
     vertical-align: bottom;
   }
@@ -2782,7 +2831,12 @@ input[type=radio]:checked + .radio01::after {
 }
 
 .simple-calendar .prev-month, .simple-calendar .next-month {
-  background: inherit;
+  background: #DDD;
+  border: 1px solid #CCC;
+}
+
+.simple-calendar .wday-6.next-month, .simple-calendar .wday-0.next-month {
+  background: #DDD;
 }
 
 .simple-calendar {
@@ -2892,7 +2946,7 @@ input[type=radio]:checked + .radio01::after {
 .myself_reservation_form {
   text-align: center;
   margin: 0 auto 30px auto;
-  width: 50%;
+  width: 90%;
 
   .time {
     margin-bottom: 10px;
@@ -2915,7 +2969,7 @@ input[type=radio]:checked + .radio01::after {
 
   .btn_primary {
     width: 60%;
-    margin: 25px auto 40px auto;
+    margin: 5px auto 40px auto;
   }
 
   h3 {
@@ -2947,6 +3001,12 @@ input[type=radio]:checked + .radio01::after {
   input {
     margin-right: 20px;
   }
+}
+
+.reservation_disclaimer {
+  font-size: 12px;
+  color: #777;
+  margin-top: 35px;
 }
 
 .reservation_textarea {
@@ -3030,6 +3090,106 @@ input[type=radio]:checked + .radio01::after {
    タブレット用レイアウト
 ---------------------------------*/
 @media screen and (max-width: 959px) {
+  .post_index_menu {
+    display: block;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 15px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  .search_box {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .search_submit {
+    margin: 20px auto 0 auto;
+  }
+
+  .recruit_title {
+    margin-top: 30px;
+  }
+
+  .link_post_index {
+    text-align: right;
+    font-size: 14px;
+    line-height: 0px;
+    margin-top: 20px;
+    display: block;
+  }
+
+  .search_menu_nav.search-menu {
+    display: block;
+  }
+
+  .search_menu_nav {
+    display: none;
+  }
+
+  .left_box {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .search_reset {
+    display: none;
+  }
+
+  .post_device {
+    display: block;
+  }
+
+  .industry_more, .prefecture_more {
+    width: 90%;
+  }
+
+  .search_box .index_h3 {
+    display: none;
+  }
+
+  .post_detail {
+    max-width: 80%;
+    padding: 0px;
+    margin: 0 auto;
+
+    .recruit_link {
+      font-size: 14px;
+      margin-left: 30%;
+    }
+  }
+  .search_submit.form_control {
+    background: linear-gradient(to right, #999 0%, #777 51%, #555 100%);
+  }
+
+  .fa-angle-down {
+    transform: rotate(0deg);
+    transition: transform 0.2s linear;
+  }
+
+  .angle_down {
+    .fa-angle-down {
+      transform: rotate(180deg);
+      transition: transform 0.2s linear;
+    }
+  }
+
+  .form_search {
+    width: 75%;
+    padding: 15px 20px;
+    margin-right: 10px;
+  }
+
+  .post_index_container {
+    .container {
+      padding: 0px;
+    }
+  }
+
   .pc_list_nav_header {
     display: none;
   }
@@ -3338,10 +3498,53 @@ input[type=radio]:checked + .radio01::after {
   .end_time {
     line-height: 35px;
   }
+
+
+  /* スクロールバー */
+  .x-scroll {
+    overflow: auto;
+  }
+  .x-scroll table {
+    width: 300%;
+  }
+  .x-scroll::-webkit-scrollbar{
+    height: 5px; /* スクロールバーの高さ */
+  }
+  .x-scroll::-webkit-scrollbar-track{
+    background: #F1F1F1; /* スクロールバーの背景色 */
+  }
+  .x-scroll::-webkit-scrollbar-thumb {
+    background: #d6d6d6; /* スクロールバーの色 */
+  }
+  .simple-calendar td {
+    min-width: 120px;
+  }
+
+  .reserved {
+    .x-scroll table {
+      width: inherit;
+    }
+  }
+
+  .post_show {
+    width: 95%;
+  }
+
+  .post-inner {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media screen and (max-width: 540px) {
   /* トップページ（スマホ用） */
+
+  .post-inner {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr;
+  }
 
   input[type="submit"],
   input[type="button"] {
@@ -3354,7 +3557,7 @@ input[type=radio]:checked + .radio01::after {
     &::-webkit-search-decoration {
       display: none;
     }
-    &::focus {
+    &:focus {
       outline-offset: -2px;
     }
   }
@@ -3825,9 +4028,11 @@ input[type=radio]:checked + .radio01::after {
 
   .search_submit.form_control {
     width: 95%;
+    background: linear-gradient(to right, #999 0%, #777 51%, #555 100%);
   }
 
   .search_reset {
+    display: none;
     width: 95%;
   }
   .number_start.period_start {
@@ -3859,6 +4064,9 @@ input[type=radio]:checked + .radio01::after {
       transform: rotate(180deg);
       transition: transform 0.2s linear;
     }
+  }
+  .search_menu_nav {
+    display: none;
   }
 
   .form_search {
@@ -4020,7 +4228,7 @@ input[type=radio]:checked + .radio01::after {
       font-size: 16px;
     }
   }
-  .notification_index .fa-envelope, .notification_index .fa-comment-dots {
+  .notification_index .fa-envelope, .notification_index .fa-comment-dots, .notification_index .fa-clock {
     margin-left: 0px;
     font-size: 14px;
     margin-right: 0px;
@@ -4384,5 +4592,101 @@ input[type=radio]:checked + .radio01::after {
 
   .myedit.direct_message {
     padding: 10px 0;
+  }
+
+  .simple-calendar td {
+     min-width: 120px;
+  }
+
+  .reservation_show h3 {
+    text-align: center;
+  }
+
+  .reservation_show .device_frame {
+    padding: 24px 0px 0px 0px;
+  }
+
+  .reservation_show p {
+    width: 90%;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .reservation_show span {
+    font-size: 18px;
+    margin-right: 10px;
+    display: block;
+    margin-bottom: 25px;
+    text-align: left;
+  }
+  .opportunity {
+    text-align: center;
+  }
+
+  .skill_post_detail {
+    .recruit_link {
+      display: block;
+      line-height: 30px;
+      margin: 20px auto 0 auto;
+      padding: 5px 5px;
+    }
+
+    .title_name {
+      text-align: center;
+      display: block;
+    }
+  }
+
+  .link_post_index {
+    text-align: right;
+    font-size: 12px;
+    line-height: 0px;
+    margin-top: 20px;
+    display: block;
+
+    .index_link {
+
+    }
+  }
+  .post_content {
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  .post_area {
+    .post_content {
+      margin: 0px 0px 15px 0px;
+    }
+  }
+
+  .reserved {
+    .x-scroll table {
+      width: 250%;
+    }
+  }
+
+  .post-partial-card {
+    box-shadow: none;
+    padding: 0px;
+  }
+
+  .post-inner .post_separate {
+    display: block;
+
+    &:first-child {
+      display: none;
+    }
+  }
+
+  .reservation_index_time p .reservation_time {
+    padding: 11px 4px;
+  }
+
+  .detail_frame {
+    z-index: 1;
+    margin-bottom: 150px;
   }
 }

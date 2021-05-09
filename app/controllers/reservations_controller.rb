@@ -19,9 +19,12 @@ class ReservationsController < ApplicationController
   def update
     @reservation = Reservation.find(params[:id])
     if @reservation.update(update_reservation_params)
-      redirect_to user_reservations_path
+      @reservation.create_notification_reservation!(current_user, @reservation_id)
+      flash[:notice] = "予約をしました"
+      redirect_to mylist_user_reservations_path(current_user)
     else
-      redirect_to root_path
+      flash[:alert] = "予約できませんでした"
+      redirect_to user_reservations_path
     end
   end
 
@@ -55,6 +58,6 @@ class ReservationsController < ApplicationController
   end
 
   def update_reservation_params
-    params.permit(:reservation_user_id).merge(reservation_user_id: current_user.id)
+    params.require(:reservation).permit(:reservation_user_id, :opportunity_type).merge(reservation_user_id: current_user.id)
   end
 end

@@ -3,16 +3,16 @@
     <div class="device_frame">
       <h3>商談予約確認</h3>
       <p><span>商談相手企業 :</span> <%= @reservation.user.name %>さん</p>
-      <p><span>商談可能日時 :</span> <%= @reservation.start_time.strftime("%-m月%-d日 %H:%M") %>〜<%= @reservation.end_time.strftime("%-H:%-M") %></p>
+      <p><span>商談可能日時 :</span> <%= @reservation.start_time.strftime("%-m月%-d日 %H:%M") %>〜<%= @reservation.end_time.strftime("%-H:%M") %></p>
       <% if @reservation.reservation_user.nil? %>
         <% unless current_user == @reservation.user %>
           <%= form_for @reservation, :url => {:action => :update} do |f| %>
             <div class="opportunity">
-              <input type="radio" id="01-D" name="radio01" checked="true">
+              <%= f.radio_button :opportunity_type, "電話希望", checked: true, id:"01-D" %>
               <label for="01-D" class="radio01">電話希望</label>
             </div>
             <div class="opportunity">
-              <input type="radio" id="01-E" name="radio01">
+              <%= f.radio_button :opportunity_type, "対面希望", id:"01-E" %>
               <label for="01-E" class="radio01">対面希望</label>
             </div>
             <%= f.submit "予約を確定する", class: "form_control reserved_submit" %>
