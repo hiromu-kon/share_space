@@ -64,7 +64,10 @@ class PostsController < ApplicationController
     @comments = @post.comments
 
     @host_post = Post.left_joins(:user).where(user: { skill: false })
-    @new_post = @host_post.order(created_at: :desc).where.not(id: @post.id).limit(2)
+    @new_post = @host_post.order("RAND()").where.not(id: @post.id).limit(2)
+
+    @skill_post = Post.left_joins(:user).where(user: { skill: true })
+    @skill_new_post = @skill_post.order("RAND()").where.not(id: @post.id).limit(2)
   end
 
   def edit
@@ -142,18 +145,9 @@ class PostsController < ApplicationController
   def skill
     @skill_post = Post.left_joins(:user).where(user: { skill: true })
 
-    if params[:q].present?
       @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
       @search = @skill_posts.ransack(params[:q])
       @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
-
-    else
-      params[:q] = { sorts: 'id desc' }
-      @skill_posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : @skill_post
-      @search = @skill_posts.ransack(params[:q])
-      @skill_posts = @search.result.includes(:user).page(params[:page]).per(10)
-    end
-    @sort_list = Post.sort_list
   end
 
   private

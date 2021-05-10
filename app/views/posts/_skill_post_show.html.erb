@@ -11,9 +11,32 @@
 <% if @post.image.attached? %>
   <%= image_tag @post.image, class:"post_show_img" %>
 <% end %>
+<% if @post.user == current_user %>
+  <div class="post_show_btn">
+    <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
+  </div>
+<% elsif current_user && current_user.admin? %>
+  <div class="post_show_btn">
+    <%= link_to "投稿を削除する", @post, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class:"btn-border_reverse" %>
+  </div>
+<% else %>
+  <div class="post_show_btn">
+    <%= render "post_contact" %>
+    <%= link_to user_reservations_path(@post.user.id), class:"btn-border" do %>
+      <i class="fa fa-calendar" aria-hidden="true"></i>商談予約をする
+    <% end %>
+    <span class="bookmark_show"><%= render 'bookmarks/bookmark' , post: @post %></span>
+  </div>
+<% end %>
 <h1 class="post_show_h1"><%= @post.title %></h1>
 <div class="markdown_area">
   <%= markdown(@post.content) %>
+</div>
+<div class="tag_show">
+  <h3>タグ</h3>
+  <% @post.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+  <% end %>
 </div>
 <div class="require_area">
   <% unless @map.nil? %>
@@ -21,26 +44,6 @@
     <h3>オフィス住所</h3>
     <div class="address"><%= @map.address %></div>
     <div id="map"></div>
-  <% end %>
-  <div class="tag_show">
-    <h3>タグ</h3>
-    <% @post.tags.each do |tag| %>
-      <span><%= tag.name %></span>
-    <% end %>
-  </div>
-  <% if @post.user == current_user %>
-    <div class="post_show_btn">
-      <%= link_to "投稿を編集する", edit_post_path, class:"btn-border_reverse" %>
-    </div>
-  <% elsif current_user && current_user.admin? %>
-    <div class="post_show_btn">
-      <%= link_to "投稿を削除する", @post, method: :delete, data: { confirm: "【確認】投稿を削除してもよろしいですか？" }, class:"btn-border_reverse" %>
-    </div>
-  <% else %>
-    <div class="post_show_btn">
-      <%= render "post_contact" %>
-      <span class="bookmark_show"><%= render 'bookmarks/bookmark' , post: @post %></span>
-    </div>
   <% end %>
   <hr class="post_separate">
   <div class="card_content">
@@ -59,19 +62,18 @@
   <% end %>
   <p class="post_company_introduction"><%= @post.user.introduction %><p>
   <hr class="post_separate">
-  <h3 class="">おすすめ投稿</h3>
-  <div class="recommend_post">
-    <div class="recommend_post_item">
-      <%= image_tag 'header_default.jpg' %>
-      <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-      <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-      <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
+  <% if @skill_new_post.present? %>
+    <h3 class="">おすすめ投稿</h3>
+    <div class="recommend_post">
+      <% @skill_new_post.each do |new_post| %>
+      <%= link_to new_post do%>
+        <div class="recommend_post_item">
+          <%= image_tag new_post.image %>
+          <p><%= truncate(new_post.title, length: 50) %></p>
+          <div class="recommend_post_item_detail">オフィス住所<span><%= new_post.map&.address %></span></div>
+        </div>
+        <% end %>
+      <% end %>
     </div>
-    <div class="recommend_post_item">
-      <%= image_tag 'header_default.jpg' %>
-      <p>【スーパーバイザー募集/フルリモート】コールセンターのスーパーバイザーとしてお客様からのお問い合わせ…</p>
-      <div class="recommend_post_item_detail">報酬(月単価)<span>1000000円</span></div>
-      <div class="recommend_post_item_detail">オフィス住所<span>北海道札幌市南区藤野3条4丁目1-24 プレジールビル6階</span></div>
-    </div>
-  </div>
+  <% end %>
 </div>
