@@ -85,4 +85,7 @@ BtoBのマッチングサイトのため、誰が使ってもわかりやすく�
 
 <img width="834" alt="インフラ構成図" src="https://user-images.githubusercontent.com/74192993/117576357-ab8ac400-b120-11eb-9e93-517963f99a49.png">
 
+<br>
+
 # 📝 ER図
+![ER図](https://user-images.githubusercontent.com/74192993/117969651-a87f1600-b362-11eb-9a38-32747fa4d933.png)
